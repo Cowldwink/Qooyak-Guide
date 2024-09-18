@@ -119,8 +119,6 @@ The structure I am going for here is going to look like this:
 
 - ***Unlink_T6.bat***
 
-  - We will be going over this in Chapter 2 but let's do it now anyways
-
   - Make a "New Text Document" and rename it to "Unlink_T6.bat" changing the file extension of ".txt" with ".bat"
 
   - Right-click the bat file and click edit and add these lines:
