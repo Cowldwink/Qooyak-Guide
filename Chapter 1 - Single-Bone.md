@@ -84,7 +84,6 @@ The structure I am going for here is going to look like this:
 - ***Linker_Help.bat***
 
   - Make a "New Text Document" and rename it to "Linker_Help.bat" changing the file extension of ".txt" with ".bat"
-
   - Right-click the bat file and click edit and add these lines:
   ```
   Linker --help
@@ -96,7 +95,6 @@ The structure I am going for here is going to look like this:
 - ***Unlinker_Version.bat***
 
   - Make a "New Text Document" and rename it to "Unlinker_Version.bat" changing the file extension of ".txt" with ".bat"
-
   - Right-click the bat file and click edit and add these lines:
   ```
   Unlinker --version
@@ -108,7 +106,6 @@ The structure I am going for here is going to look like this:
 - ***Unlinker_Help.bat***
 
   - Make a "New Text Document" and rename it to "Unlinker_Help.bat" changing the file extension of ".txt" with ".bat"
-
   - Right-click the bat file and click edit and add these lines:
   ```
   Unlinker --help
@@ -120,7 +117,6 @@ The structure I am going for here is going to look like this:
 - ***Unlink_T6.bat***
 
   - Make a "New Text Document" and rename it to "Unlink_T6.bat" changing the file extension of ".txt" with ".bat"
-
   - Right-click the bat file and click edit and add these lines:
   ```
   Unlinker --verbose "D:/STEAM/steamapps/common/Call of Duty - Black Ops 2/zone/all/common_mp.ff"
@@ -129,17 +125,13 @@ The structure I am going for here is going to look like this:
   ```
 
   - Here, "D:/STEAM/steamapps/common/Call of Duty - Black Ops 2/" is the BO2 Game folder path, "/zone/all/" the path in BO2 Game folder where the Fast Files are found and "common_mp.ff" is the Fast File being unlinked in that example
-
   - Click save and run it to Unlink the Fast File
 
 - ***Unlink_T6_WC.bat***
 
-  - This is to Unlink the Campaign Weapon Fast Files that are included in Weapons Clump mentioned above
-
+  - This is to Unlink the Campaign Weapon Fast Files that are included in Weapons Clump mentioned earlier
   - When you download it (it's in zip file) extract it in the "(OAT_FOLDER)\zone_dump\zone_raw\"
-
   - Make a "New Text Document" and rename it to "Unlink_T6_WC.bat" changing the file extension of ".txt" with ".bat"
-
   - Right-click the bat file and click edit and add these lines:
   ```
   Unlinker  --verbose "C:/Users/USER/Desktop/Applications/OAT/zone_dump/zone_raw/weapon_clump_dump/weapons!m60_sp.ff"
@@ -149,15 +141,12 @@ The structure I am going for here is going to look like this:
   pause
   ```
   - Here, "C:/Users/USER/Desktop/Applications/OAT/zone_dump/zone_raw/weapon_clump_dump/" is the Weapons Clump Folder and "weapons!m60_sp.ff" is the M60 Fast File being unlinked in this example. In the CMD line " --include-assets "weapon" " is to dump the weapon file that normally does not get dumped for some reason
-
   - Click save and run it to Unlink Weapon Fast File
 
 - ***Unlink_T5.bat***
 
   - In this we'll see how to Unlink T5's Fast Files for the sake of porting models and etc to T6 in "Chapter 5 - Knife-Skull"
-
   - Make a "New Text Document" and rename it to "Unlink_T5.bat" changing the file extension of ".txt" with ".bat"
-
   - Right-click the bat file and click edit and add these lines:
   ```
   Unlinker --verbose "D:/STEAM/steamapps/common/Call of Duty - Black Ops/zone/common/zm_theater.ff"
@@ -165,13 +154,11 @@ The structure I am going for here is going to look like this:
   pause
   ```
   - Here, "D:/STEAM/steamapps/common/Call of Duty - Black Ops/" is the BO1 Game folder path, "/zone/common/" the path in BO1 Game folder where the Fast Files are found and "zm_theater.ff" is the Fast File being unlinked in that example
-
   - Click save and run it to Unlink the Fast File
 
 - ***Unlink_IW3.bat***
 
   - Make a "New Text Document" and rename it to "Unlink_IW3.bat" changing the file extension of ".txt" with ".bat"
-
   - Right-click the bat file and click edit and add these lines:
   ```
   Unlinker --verbose "D:/STEAM/steamapps/common/Call of Duty 4 Modern Warfare/zone/english/common_mp.ff"
@@ -179,15 +166,12 @@ The structure I am going for here is going to look like this:
   pause
   ```
   - Here, "D:/STEAM/steamapps/common/Call of Duty 4 Modern Warfare/" is the COD4 Game folder path, "/zone/english/" the path in BO2 Game folder where the Fast Files are found and "common_mp.ff" is the Fast File being unlinked in that example
-
   - Click save and run it to Unlink the Fast File
 
 - ***Unlink_IW4.bat***
 
   - I do not have IW4/MW2 for now so I won't exactly tell my folder paths here
-
   - Make a "New Text Document" and rename it to "Unlink_T6.bat" changing the file extension of ".txt" with ".bat"
-
   - Right-click the bat file and click edit and add these lines:
   ```
   Unlinker --verbose "D:/STEAM/steamapps/common/(IW4/MW2 Game Folder)/(zone path)/(Fast File to Unlink)"
@@ -195,15 +179,12 @@ The structure I am going for here is going to look like this:
   pause
   ```
   - Here, "D:/STEAM/steamapps/common/(IW4/MW2 Game Folder)/" is the MW2 Game folder path, "/(zone path)/" the path in BO2 Game folder where the Fast Files are found and "(Fast File to Unlink)" is the Fast File to be unlinked in that example
-
   - Click save and run it to Unlink the Fast File
 
 - ***Unlink_IW5.bat***
 
   - I do not have IW5/MW3 for now so I won't exactly tell my folder paths here either
-
   - Make a "New Text Document" and rename it to "Unlink_IW5.bat" changing the file extension of ".txt" with ".bat"
-
   - Right-click the bat file and click edit and add these lines:
   ```
   Unlinker --verbose "D:/STEAM/steamapps/common/(IW5/MW3 Game Folder)/(zone path)/(Fast File to Unlink)"
@@ -211,7 +192,6 @@ The structure I am going for here is going to look like this:
   pause
   ```
   - Here, "D:/STEAM/steamapps/common/(IW5/MW3 Game Folder)/" is the MW2 Game folder path, "/(zone path)/" the path in MW3 Game folder where the Fast Files are found and "(Fast File to Unlink)" is the Fast File to be unlinked in that example
-
   - Click save and run it to Unlink the Fast File
 
 #
