@@ -2,7 +2,7 @@
 - Tutorial for modding using [OAT](https://github.com/Laupetin/OpenAssetTools) by [Laupetin](https://github.com/Laupetin)
 - Focused on mainly T6 modding as of now
 
-# Chapters
+# Completed Chapters
 - **Chapter 1** - *Single-Bone* (Intro)
 
 - **Chapter 2** - *Dual-Bones* (Main/Basics)
