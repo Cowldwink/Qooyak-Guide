@@ -30,10 +30,10 @@ There are several links you must check out before using OAT:
 
 ## MUST READ
 
-- Do not distribute this Tutorial outside Discord.
-- Making mods using this Tutorial does not necessarily require any credits to be given to me; I intend to kickstart the modding community a bit on OAT side.
-- PIRATED COPIES DO NOT WORK ALL THE TIME WITH OAT MODDING; YOU WILL BE LIMITED IN MANY AREAS :P
-- OAT being WIP may have some changes over time that'll outdate this tutorial, so it may not be as reliable in the future.
+- **PIRATED COPIES DO NOT WORK ALL THE TIME WITH OAT MODDING, YOU WILL BE LIMITED IN MANY AREAS** :P
+- Making mods using this Tutorial does not necessarily require any credits to be given to me, I intend to kickstart the modding community abit on OAT side
+- OAT being WIP may have some changes overtime that'll outdate this tutorial so it may not be as relaible in future
+- *Guide is valid for all OAT versions up to v0.16.3*
 
 Just an FYI by me: Author of this Tutorial is Cawldwink (me). For any questions, you can DM me on my Discord (My display name is Cawldwink and just name is: "cowldwink" or "cowldwink#0000").
 
