@@ -45,23 +45,23 @@ Here, we'll see how to download OAT, check OAT version, ask for different option
 
 The structure I am going for here is going to look like this:
 ```
--OAT_FOLDER
-|	-Linker_Version.bat				// BAT file for checking Linker version
-|	-Linker_Help.bat				// BAT file for getting ARGs and other stuff from Linker
-|	-Unlinker_Version.bat				// BAT file for checking Unlinker version
-|	-Unlinker_Help.bat				// BAT file for getting ARGs and other stuff from Unlinker
-|	-Unlink_T6.bat					// Decompile/Unlink Fast Files for T6 (Explained in Dual-Bones chapter)
-|	-Unlink_T6_WC.bat				// Decompile/Unlink Weapon Fast Files for T6
-|	-Unlink_T5.bat					// Decompile/Unlink Fast Files for T5
-|	-Unlink_IW3.bat					// Decompile/Unlink Fast Files for IW3
-|	-Unlink_IW4.bat					// Decompile/Unlink Fast Files for IW4
-|	-Unlink_IW5.bat					// Decompile/Unlink Fast Files for IW5
-|	-Linker.exe					// The Linker to Link/Compile Fast Files
-|	-Unlinker.exe					// The Unlinker to Unlink/Decompile Fast Files
-|	-raw						// Just an important Folder, no need to touch this
-|	-zone_dump
-|	|	-zone_raw				// Unlinked/Decompiled Fast files go here, in form of sub-directories with their files
-|	MODS2MAKE					// This Folder is where you'll make more folders with files for mods
+OAT_FOLDER
+├───Linker_Version.bat                // BAT file for checking Linker version
+├───Linker_Help.bat                   // BAT file for getting ARGs and other stuff from Linker
+├───Unlinker_Version.bat              // BAT file for checking Unlinker version
+├───Unlinker_Help.bat                 // BAT file for getting ARGs and other stuff from Unlinker
+├───Unlink_T6.bat                     // Decompile/Unlink Fast Files for T6 (Explained in Dual-Bones chapter)
+├───Unlink_T6_WC.bat                  // Decompile/Unlink Weapon Fast Files for T6
+├───Unlink_T5.bat                     // Decompile/Unlink Fast Files for T5
+├───Unlink_IW3.bat                    // Decompile/Unlink Fast Files for IW3
+├───Unlink_IW4.bat                    // Decompile/Unlink Fast Files for IW4
+├───Unlink_IW5.bat                    // Decompile/Unlink Fast Files for IW5
+├───Linker.exe                        // The Linker to Link/Compile Fast Files
+├───Unlinker.exe                      // The Unlinker to Unlink/Decompile Fast Files
+├───raw                               // Just an important Folder, no need to touch this
+├───zone_dump
+│   └───zone_raw                      // Unlinked/Decompiled Fast files go here, in form of sub-directories with their files
+└───MODS2MAKE                         // This Folder is where you'll make more folders with files for mods
 ```
 
 - ***OAT Download & Install***
@@ -140,7 +140,8 @@ The structure I am going for here is going to look like this:
   
   pause
   ```
-  - Here, "C:/Users/USER/Desktop/Applications/OAT/zone_dump/zone_raw/weapon_clump_dump/" is the Weapons Clump Folder and "weapons!m60_sp.ff" is the M60 Fast File being unlinked in this example. In the CMD line " --include-assets "weapon" " is to dump the weapon file that normally does not get dumped for some reason
+  - Here, "C:/Users/USER/Desktop/Applications/OAT/zone_dump/zone_raw/weapon_clump_dump/" is the Weapons Clump Folder and "weapons!m60_sp.ff" is the M60 Fast File being unlinked in this example.
+  - In the 2nd CMD line " --include-assets "weapon" " is to dump the weapon file that normally does not get dumped for some reason
   - Click save and run it to Unlink Weapon Fast File
 
 - ***Unlink_T5.bat***
