@@ -1,173 +1,167 @@
 # Fast File Structure and Properties
 - ***Fast File***
 ```
-- FAST FILE:
-|	-accuracy			// Weapon accuracy files
-|	|	-aivsai
-|	|	-aivsplayer
-|	-aitype
-|	|	-clientscripts
-|	-aim_assist
-|	-animstatedefs			// Animation definitions for certain entities
-|	-animtrees
-|	-animscripts
-|	|	-traverse
-|	-attachment			// Overall attachment files
-|	-attachmentunique		// Attachment files for applying on specific weapons with different sizes and positions
-|	-camo				// JSON files for how camos are meant to work
-|	-character			// Probably for characters with multiple assets like Bullet-proof vest on MP soldiers or SP soldiers...
-|	|	-clientscripts
-|	-clientscripts
-|	|	-mp
-|	-english
-|	|	-localizedstrings	// Assign display names to Weapon names (i.e: "WEAPON_M4" to be displayed as "M4" in-game)
-|	-images				// Texture files
-|	-info
-|	-maps
-|	|	-mp			// Map specifics
-|	-materials			// Manages base textures
-|	|	-mc
-|	|	-ws
-|	-model_export			// Xmodels exported in .glb format. Can't be trusted for model names
-|	-mp
-|	-physic
-|	-radient
-|	-rumble
-|	-scripts
-|	|	-mp			// GSC scripts for MP
-|	|	-zm			// GSC scripts for ZM
-|	-shader_bin
-|	-shock
-|	-sound				// Sound files
-|	-soundbank			// Includes the soundaliase file in which actions are assigned their sounds
-|	-tracer
-|	-ui_mp				// LUA files impacting certain UI elements
-|	-ui				// Same as <ui_mp>
-|	-vehicle
-|	-vehicles			// Special vehicles like Mounted Turret, Attack Chopper, SP horses from Afghanistan maps
-|	-vision				// Similar to shock
-|	-weapons			// Weapon files that make up the main weapon
-|	-xmodelaliase			// Aliase for some special models
-|	-xmodel				// JSON files that make use of the models inside model_export [^v^]
-|	-zbarrier
-|	-zone_source			// Includes Fast File's zone file, that includes all assets that the Fast File will include
+FAST FILE
+├───accuracy                           // Weapon accuracy files
+│   ├───aivsai
+│   └───aivsplayer
+├───aim_assist
+├───animstatedefs                     // Animation definitions for certain entities
+├───animtrees
+├───animscripts
+│   └───traverse
+├───attachment                         // Overall attachment files
+├───attachmentunique                   // Attachment files for applying on specific weapons with different sizes and positions
+├───camo                               // JSON files for how camos are meant to work
+├───character                          // Probably for characters with multiple assets like Bullet-proof vest on MP soldiers or SP soldiers...
+│   └───clientscripts
+├───clientscripts
+│   └───mp
+├───english
+│   └───localizedstrings               // Assign display names to Weapon names (i.e: "WEAPON_M4" to be displayed as "M4" in-game)
+├───images                             // Texture files
+├───info
+├───maps
+│   └───mp                             // Map specifics
+├───materials                          // Manages base textures
+│   ├───mc
+│   └───ws
+├───model_export                       // Xmodels exported in .glb format. Can't be trusted for model names
+├───mp
+├───physic
+├───radient
+├───rumble
+├───scripts
+│   ├───mp                             // GSC scripts for MP
+│   └───zm                             // GSC scripts for ZM
+├───shader_bin
+├───shock
+├───sound                              // Sound files
+├───soundbank                          // Includes the soundaliase file in which actions are assigned their sounds
+├───tracer
+├───ui                                 // Same as <ui_mp>
+├───ui_mp                              // LUA files impacting certain UI elements
+├───vehicle
+├───vehicles                           // Special vehicles like Mounted Turret, Attack Chopper, SP horses from Afghanistan maps
+├───vision                             // Similar to shock
+├───weapons                            // Weapon files that make up the main weapon
+├───xmodel                             // JSON files that make use of the models inside model_export [^v^]
+├───xmodelaliase                       // Aliase for some special models
+├───zbarrier                           // Additional folder
+└───zone_source                        // Includes Fast File's zone file, that includes all assets that the Fast File will include
 ```
 
 - ***A yet-to-be-compiled Mod Folder***
 ```
-- 2B_MOD_FOLDER:
-|	-accuracy
-|	|	-aivsai
-|	|	-aivsplayer
-|	-aitype
-|	|	-clientscripts
-| 	-aim_assist
-|	-animstatedefs
-|	-animtrees
-|	-animscripts
-|	|	-traverse
-|	-attachment
-|	-attachmentunique
-|	-camo
-|	-character
-|	|	-clientscripts
-|	-clientscripts
-|	|	-mp
-|	-english
-|	|	-localizedstrings
-|	-images
-|	-maps
-|	|	-mp
-|	-materials
-|	|	-mc
-|	|	-ws
-|	-mp
-|	-model_exports
-|	-physic
-|	-radient
-|	-rumble
-|	-shader_bin
-|	-scripts
-|	|	-mp
-|	|	-zm
-|	-shock
-|	-sounds
-|	-soundbank
-|	-tracer
-|	-ui_mp
-|	-ui
-|	-vehicle
-|	-vehicles
-|	-vision
-|	-weapons
-|	-xmodelaliase
-|	-xmodel
-|	-zbarrier
-|	-zone				// Compiled mod files (Fast File and SABL file) are dropped upon compilation of the mod
-|	-zone_sorce
-|	-mod.iwd			// OPTIONAL+TUTORIAL_REASONS - Fast File Junior, as I like to call
-|	-mod.json			// OPTIONAL+TUTORIAL_REASONS - Makes a mod readable, as well as, giving it some information (i.e: mod's name, description, author, version)
-|	-Compile.bat			// OPTIONAL+TUTORIAL_REASONS - Builds a Fast File and SABL file for your mod
+2B_COMPILED_MOD_FOLDER
+├───accuracy
+│   ├───aivsai
+│   └───aivsplayer
+├───aim_assist
+├───animstatedefs
+├───animtrees
+├───animscripts
+│   └───traverse
+├───attachment
+├───attachmentunique
+├───camo
+├───character
+│   └───clientscripts
+├───clientscripts
+│   └───mp
+├───Compile.bat                       // OPTIONAL+TUTORIAL_REASONS - Builds a Fast File and SABL file for your mod
+├───english
+│   └───localizedstrings               // Assign display names to Weapon names
+├───images                             // Texture files
+├───maps
+│   └───mp                             // Map specifics
+├───materials                          // Manages base textures
+│   ├───mc
+│   └───ws
+├───model_exports                      // Xmodels exported
+├───mp
+├───physic
+├───radient
+├───rumble
+├───shader_bin
+├───scripts
+│   ├───mp                             // GSC scripts for MP
+│   └───zm                             // GSC scripts for ZM
+├───shock
+├───sounds                             // Sound files
+├───soundbank                          // Includes the soundaliase file
+├───tracer
+├───ui                                 // Same as <ui_mp>
+├───ui_mp                              // LUA files impacting certain UI elements
+├───vehicle
+├───vehicles                           // Special vehicles
+├───vision                             // Similar to shock
+├───weapons                            // Weapon files
+├───xmodel                             // JSON files using models
+├───xmodelaliase                       // Aliase for some special models
+├───zbarrier                           // Additional folder
+├───zone                               // Compiled mod files (Fast File and SABL file) are dropped upon compilation of the mod
+├───zone_sorce                         // Typo corrected to zone_source
+├───mod.iwd                            // OPTIONAL+TUTORIAL_REASONS - Fast File Junior, as I like to call
+└───mod.json                           // OPTIONAL+TUTORIAL_REASONS - Makes a mod readable
 
 ```
 
 - ***mod.iwd***
 ```
-- mod.iwd:
-|	-accuracy
-|	|	-aivsai
-|	|	-aivsplayer
-|	-aitype
-|	|	-clientscripts
-| 	-aim_assist
-|	-animstatedefs
-|	-animtrees
-|	-animscripts
-|	|	-traverse
-|	-attachment
-|	-attachmentunique
-|	-camo
-|	-character
-|	|	-clientscripts
-|	-clientscripts
-|	|	-mp
-|	-english
-|	|	-localizedstrings
-|	-images
-|	-maps
-|		-mp
-|	-materials
-|	|	-mc
-|	|	-ws
-|	-mp
-|	-physic
-|	-radient
-|	-rumble
-|	-shader_bin
-|	-scripts
-|	|	-mp
-|	|	-zm
-|	-shock
-|	-soundbank
-|	-tracer
-|	-ui_mp
-|	-ui
-|	-vehicle
-|	-vehicles
-|	-vision
-|	-weapons
-|	-xmodelaliase
-|	-xmodel
-|	-zbarrier
+mod.iwd
+├───accuracy
+│   ├───aivsai
+│   └───aivsplayer
+├───aim_assist
+├───animstatedefs
+├───animtrees
+├───animscripts
+│   └───traverse
+├───attachment
+├───attachmentunique
+├───camo
+├───character
+│   └───clientscripts
+├───clientscripts
+│   └───mp
+├───english
+│   └───localizedstrings               // Assign display names to weapon names
+├───images                             // Texture files
+├───maps
+│   └───mp                             // Map specifics
+├───materials                          // Manages base textures
+│   ├───mc
+│   └───ws
+├───mp
+├───physic
+├───radient
+├───rumble
+├───shader_bin
+├───scripts
+│   ├───mp                             // GSC scripts for MP
+│   └───zm                             // GSC scripts for ZM
+├───shock
+├───soundbank                          // Includes the soundaliase file
+├───tracer
+├───ui                                 // Same as <ui_mp>
+├───ui_mp                              // LUA files impacting certain UI elements
+├───vehicle
+├───vehicles                           // Special vehicles
+├───vision                             // Similar to shock
+├───weapons                            // Weapon files
+├───xmodel                             // JSON files using models
+├───xmodelaliase                       // Aliase for some special models
+└───zbarrier                           // Additional folder
 ```
 
 - ***Compiled Mod folder***
 ```
-- COMPILED_MOD_FOLDER:			// Mod dependent. Not Necessray for every file to be here that are being listed below.
-|	-mod.ff				// Main fast file
-|	-mod.all.sabl			// Sounds file
-|	-mod.json			// In simple words: mod's Personality or Identity
-|	-mod.iwd			// Little Fast File JR
+COMPILED_MOD_FOLDER                    // Mod dependent. Not necessary for every file to be here that are being listed below.
+├───mod.all.sabl                       // Sounds file
+├───mod.ff                             // Main fast file
+├───mod.iwd                            // Little Fast File JR
+└───mod.json                           // In simple words: mod's personality or identity
 ```
 
 # Unlinking Fast Files
