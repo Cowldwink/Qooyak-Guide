@@ -1,0 +1,146 @@
+{
+    "_type": "material",
+    "_version": 1,
+    "cameraRegion": "emissiveTrans",
+    "constants": [
+        {
+            "literal": [
+                2.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "name": "Emissive_Amount"
+        }
+    ],
+    "contents": 536870913,
+    "gameFlags": [],
+    "hashIndex": 0,
+    "layeredSurfaceTypes": 536870912,
+    "probeMipBits": 0,
+    "sortKey": 57,
+    "stateBits": [
+        {
+            "alphaTest": "gt0",
+            "blendOpAlpha": "add",
+            "blendOpRgb": "add",
+            "colorWriteAlpha": true,
+            "colorWriteRgb": true,
+            "cullFace": "back",
+            "depthTest": "less_equal",
+            "depthWrite": false,
+            "dstBlendAlpha": "one",
+            "dstBlendRgb": "invsrcalpha",
+            "polygonOffset": "offset0",
+            "polymodeLine": false,
+            "srcBlendAlpha": "invdestalpha",
+            "srcBlendRgb": "srcalpha"
+        },
+        {
+            "alphaTest": "disabled",
+            "blendOpAlpha": "disabled",
+            "blendOpRgb": "disabled",
+            "colorWriteAlpha": false,
+            "colorWriteRgb": true,
+            "cullFace": "back",
+            "depthTest": "less_equal",
+            "depthWrite": false,
+            "dstBlendAlpha": "zero",
+            "dstBlendRgb": "zero",
+            "polygonOffset": "offset2",
+            "polymodeLine": true,
+            "srcBlendAlpha": "one",
+            "srcBlendRgb": "one"
+        },
+        {
+            "alphaTest": "disabled",
+            "blendOpAlpha": "disabled",
+            "blendOpRgb": "add",
+            "colorWriteAlpha": true,
+            "colorWriteRgb": true,
+            "cullFace": "back",
+            "depthTest": "less_equal",
+            "depthWrite": false,
+            "dstBlendAlpha": "zero",
+            "dstBlendRgb": "one",
+            "polygonOffset": "offset0",
+            "polymodeLine": false,
+            "srcBlendAlpha": "one",
+            "srcBlendRgb": "one"
+        }
+    ],
+    "stateBitsEntry": [
+        -1,
+        -1,
+        0,
+        0,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        1,
+        -1,
+        -1,
+        2
+    ],
+    "stateFlags": 21,
+    "surfaceFlags": 0,
+    "surfaceTypeBits": 0,
+    "techniqueSet": "mc_sw4_3d_viewmodel_unlit_alpha_85z6j5w5",
+    "textureAtlas": {
+        "columns": 1,
+        "rows": 1
+    },
+    "textures": [
+        {
+            "image": "mtl_t6_attach_optic_colt3x_reticle",
+            "isMatureContent": false,
+            "name": "Color_Map",
+            "samplerState": {
+                "clampU": false,
+                "clampV": false,
+                "clampW": false,
+                "filter": "aniso4x",
+                "mipMap": "linear"
+            },
+            "semantic": "colorMap"
+        },
+        {
+            "image": "sw_radiant_default",
+            "isMatureContent": false,
+            "name": "radiantDiffuseMap",
+            "samplerState": {
+                "clampU": false,
+                "clampV": false,
+                "clampW": false,
+                "filter": "aniso4x",
+                "mipMap": "linear"
+            },
+            "semantic": "colorMap"
+        }
+    ]
+}

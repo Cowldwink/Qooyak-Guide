@@ -1,0 +1,11 @@
+VERSION             "1"
+CONFIG              "C:/projects/cod/t6/bin/StringEd.cfg"
+FILENOTES           ""
+
+REFERENCE           WEAPON_M60
+LANG_ENGLISH        "M60"
+
+REFERENCE           WEAPON_M60_UPGRADED
+LANG_ENGLISH        "MeatMincer6000"
+
+ENDMARKER

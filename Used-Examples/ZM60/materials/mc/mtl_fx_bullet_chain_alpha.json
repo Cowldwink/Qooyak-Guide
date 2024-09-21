@@ -1,0 +1,177 @@
+{
+    "_type": "material",
+    "_version": 1,
+    "cameraRegion": "litTrans",
+    "constants": [
+        {
+            "literal": [
+                1.0,
+                1.0,
+                1.0,
+                1.0
+            ],
+            "name": "occlusionAmount"
+        }
+    ],
+    "contents": 1,
+    "gameFlags": [
+        "10"
+    ],
+    "hashIndex": 0,
+    "layeredSurfaceTypes": 536870912,
+    "probeMipBits": 0,
+    "sortKey": 40,
+    "stateBits": [
+        {
+            "alphaTest": "gt0",
+            "blendOpAlpha": "add",
+            "blendOpRgb": "add",
+            "colorWriteAlpha": true,
+            "colorWriteRgb": true,
+            "cullFace": "none",
+            "depthTest": "less_equal",
+            "depthWrite": false,
+            "dstBlendAlpha": "one",
+            "dstBlendRgb": "invsrcalpha",
+            "polygonOffset": "offset0",
+            "polymodeLine": false,
+            "srcBlendAlpha": "invdestalpha",
+            "srcBlendRgb": "srcalpha"
+        },
+        {
+            "alphaTest": "gt0",
+            "blendOpAlpha": "add",
+            "blendOpRgb": "add",
+            "colorWriteAlpha": true,
+            "colorWriteRgb": true,
+            "cullFace": "none",
+            "depthTest": "less_equal",
+            "depthWrite": false,
+            "dstBlendAlpha": "one",
+            "dstBlendRgb": "invsrcalpha",
+            "polygonOffset": "offset0",
+            "polymodeLine": false,
+            "srcBlendAlpha": "invdestalpha",
+            "srcBlendRgb": "one"
+        },
+        {
+            "alphaTest": "disabled",
+            "blendOpAlpha": "disabled",
+            "blendOpRgb": "disabled",
+            "colorWriteAlpha": false,
+            "colorWriteRgb": true,
+            "cullFace": "back",
+            "depthTest": "less_equal",
+            "depthWrite": false,
+            "dstBlendAlpha": "zero",
+            "dstBlendRgb": "zero",
+            "polygonOffset": "offset2",
+            "polymodeLine": true,
+            "srcBlendAlpha": "one",
+            "srcBlendRgb": "one"
+        },
+        {
+            "alphaTest": "disabled",
+            "blendOpAlpha": "disabled",
+            "blendOpRgb": "add",
+            "colorWriteAlpha": true,
+            "colorWriteRgb": true,
+            "cullFace": "none",
+            "depthTest": "less_equal",
+            "depthWrite": false,
+            "dstBlendAlpha": "zero",
+            "dstBlendRgb": "one",
+            "polygonOffset": "offset0",
+            "polymodeLine": false,
+            "srcBlendAlpha": "one",
+            "srcBlendRgb": "one"
+        }
+    ],
+    "stateBitsEntry": [
+        -1,
+        -1,
+        0,
+        -1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        2,
+        -1,
+        0,
+        3
+    ],
+    "stateFlags": 20,
+    "surfaceFlags": 0,
+    "surfaceTypeBits": 0,
+    "techniqueSet": "mc_lit_sm_b0c0s0_805w75j2",
+    "textureAtlas": {
+        "columns": 1,
+        "rows": 1
+    },
+    "textures": [
+        {
+            "image": "~~-gfx_bullet_chain_spc-rgb&~~cf27f2d4",
+            "isMatureContent": false,
+            "name": "specularMap",
+            "samplerState": {
+                "clampU": false,
+                "clampV": false,
+                "clampW": false,
+                "filter": "aniso4x",
+                "mipMap": "linear"
+            },
+            "semantic": "specularMap"
+        },
+        {
+            "image": "$identitynormalmap",
+            "isMatureContent": false,
+            "name": "normalMap",
+            "samplerState": {
+                "clampU": false,
+                "clampV": false,
+                "clampW": false,
+                "filter": "nearest",
+                "mipMap": "disabled"
+            },
+            "semantic": "normalMap"
+        },
+        {
+            "image": "~-gfx_bullet_chain_col",
+            "isMatureContent": false,
+            "name": "colorMap",
+            "samplerState": {
+                "clampU": false,
+                "clampV": false,
+                "clampW": false,
+                "filter": "aniso4x",
+                "mipMap": "linear"
+            },
+            "semantic": "colorMap"
+        }
+    ]
+}

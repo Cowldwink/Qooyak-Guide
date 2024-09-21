@@ -1,0 +1,20 @@
+VERSION             "1"
+CONFIG              "C:/projects/cod/t6/bin/StringEd.cfg"
+FILENOTES           ""
+
+REFERENCE           WEAPON_M1911
+LANG_ENGLISH        "M1911"
+
+REFERENCE           WEAPON_M1911_DW
+LANG_ENGLISH        "M1911 Dual-weild"
+
+REFERENCE           WEAPON_M1911_DESC
+LANG_ENGLISH        "Your Baddie M1911 that'll be an easy 3-5 shot kill"
+
+REFERENCE           WEAPON_SPAS
+LANG_ENGLISH        "SPAS-12"
+
+REFERENCE           WEAPON_SPAS_DESC
+LANG_ENGLISH        "A balanced, fast fire-rate and high damage weapon. Good for head-on combat"
+
+ENDMARKER

@@ -1,0 +1,11 @@
+VERSION             "1"
+CONFIG              "C:/projects/cod/t6/bin/StringEd.cfg"
+FILENOTES           ""
+
+REFERENCE           WEAPON_FNP45
+LANG_ENGLISH        "TAC45"
+
+REFERENCE           WEAPON_FNP45_UPGRADED
+LANG_ENGLISH        "^5Mason and Woods"
+
+ENDMARKER
