@@ -31,6 +31,7 @@ There are several links you must check out before using OAT:
 ## MUST READ
 
 - **PIRATED COPIES DO NOT WORK ALL THE TIME WITH OAT MODDING, YOU WILL BE LIMITED IN MANY AREAS** :P
+- Make donor copy of games while keeping the copy's name similar to orignal for ease and precaution
 - Making mods using this Tutorial does not necessarily require any credits to be given to me, I intend to kickstart the modding community abit on OAT side
 - OAT being WIP may have some changes overtime that'll outdate this tutorial so it may not be as relaible in future
 - *Guide is valid for all OAT versions up to v0.16.3*
