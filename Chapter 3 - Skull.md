@@ -2759,4 +2759,2502 @@ init()
 - Save this file. You do not need to compile it
 - Now you'll have to add map GSC/CSC files from Zombies maps patch fast files that include weapons. The CSC file includes weapon in box and GSC makes the weapon PaP-able. You'll also have to include only the required threads.
 - For ease of access, you can [download](https://mega.nz/file/Mi9WWAIZ#SqlqUOje7f-1hGMDZqyrl3KCbJ0FaWKoDV7IsTjfvX8) the edited ones (credits to Sehteria)
-- In each of the CSC files you'll have to include these
+- In each of the CSC files you'll have to include these:
+	- In `include_weapons()` thread:
+	```
+	    include_weapon( "fnp45_zm" );
+	    include_weapon( "fnp45_upgraded_zm", 0 );
+	```
+- And in each of the GSC files, add:
+	- In `include_weapons()` thread:
+	```
+	    include_weapon( "fnp45_zm" );
+	    include_weapon( "fnp45_upgraded_zm", 0 );
+	```
+	- In `custom_add_weapons()` thread:
+	```
+	    add_zombie_weapon( "fnp45_zm", "fnp45_upgraded_zm", &"WEAPON_FNP45", 50, "", "", undefined );
+	```
+- For PaP camos, first copy the `camo_fnp45.json` from `common_mp` and add it your mod's `camo` folder. In this you'll need to add MOTD and Origins PaP camos
+- An important thing to note is that **4th** " `materials": [` index is for **Victus maps** and **Nuketown** PaP camo, **9th** is for **MOTD** and **13th** is for **Origins**. You'll have to do this by making new indexes and taking Origins and MOTD weapons as a reference. In the end it'll look something like this:
+```
+{
+    "_type": "weaponCamo",
+    "_version": 1,
+    "camoMaterials": [
+        {
+            "materials": [
+                {
+                    "materialOverrides": [
+                        {
+                            "baseMaterial": "mc/mtl_t6_wpn_pistol_fnp45",
+                            "camoMaterial": "mc/mtl_weapon_camo_gold"
+                        },
+                        {
+                            "baseMaterial": "mc/mtl_t6_wpn_pistol_fnp45_camo3",
+                            "camoMaterial": "mc/mtl_weapon_camo_gold_1"
+                        }
+                    ],
+                    "shaderConsts": [
+                        10.0,
+                        10.0,
+                        0.3400000035762787,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "useColorMap": false,
+                    "useNormalMap": true,
+                    "useSpecularMap": true
+                },
+                {
+                    "materialOverrides": [
+                        {
+                            "baseMaterial": "mc/mtl_t6_wpn_pistol_fnp45_camo2",
+                            "camoMaterial": "mc/mtl_weapon_camo_gold_alt"
+                        }
+                    ],
+                    "shaderConsts": [
+                        10.0,
+                        10.0,
+                        1.0,
+                        1.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "useColorMap": false,
+                    "useNormalMap": true,
+                    "useSpecularMap": true
+                }
+            ]
+        },
+        {
+            "materials": [
+                {
+                    "materialOverrides": [
+                        {
+                            "baseMaterial": "mc/mtl_t6_wpn_pistol_fnp45",
+                            "camoMaterial": "mc/mtl_weapon_camo_carbon_fiber"
+                        },
+                        {
+                            "baseMaterial": "mc/mtl_t6_wpn_pistol_fnp45_camo3",
+                            "camoMaterial": "mc/mtl_weapon_camo_carbon_fiber_1"
+                        }
+                    ],
+                    "shaderConsts": [
+                        6.0,
+                        6.0,
+                        1.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "useColorMap": false,
+                    "useNormalMap": true,
+                    "useSpecularMap": true
+                },
+                {
+                    "materialOverrides": [
+                        {
+                            "baseMaterial": "mc/mtl_t6_wpn_pistol_fnp45_camo2",
+                            "camoMaterial": "mc/mtl_weapon_camo_carbon_fiber_alt"
+                        }
+                    ],
+                    "shaderConsts": [
+                        10.0,
+                        10.0,
+                        1.0,
+                        1.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "useColorMap": false,
+                    "useNormalMap": true,
+                    "useSpecularMap": true
+                }
+            ]
+        },
+        {
+            "materials": [
+                {
+                    "materialOverrides": [
+                        {
+                            "baseMaterial": "mc/mtl_t6_wpn_pistol_fnp45_camo2",
+                            "camoMaterial": "mc/mtl_weapon_camo_diamond"
+                        },
+                        {
+                            "baseMaterial": "mc/mtl_t6_wpn_pistol_fnp45_camo3",
+                            "camoMaterial": "mc/mtl_weapon_camo_diamond_1"
+                        }
+                    ],
+                    "shaderConsts": [
+                        5.0,
+                        5.0,
+                        0.0,
+                        1.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "useColorMap": false,
+                    "useNormalMap": false,
+                    "useSpecularMap": false
+                },
+                {
+                    "materialOverrides": [
+                        {
+                            "baseMaterial": "mc/mtl_t6_wpn_pistol_fnp45",
+                            "camoMaterial": "mc/mtl_weapon_camo_diamond_alt"
+                        }
+                    ],
+                    "shaderConsts": [
+                        8.0,
+                        8.0,
+                        0.3400000035762787,
+                        0.5,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "useColorMap": false,
+                    "useNormalMap": true,
+                    "useSpecularMap": true
+                }
+            ]
+        },
+        {
+            "materials": [
+                {
+                    "materialOverrides": [
+                        {
+                            "baseMaterial": "mc/mtl_t6_wpn_pistol_fnp45_camo2",
+                            "camoMaterial": "mc/mtl_weapon_camo_zombies"
+                        }
+                    ],
+                    "shaderConsts": [
+                        3.0,
+                        3.0,
+                        0.0,
+                        1.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "useColorMap": false,
+                    "useNormalMap": true,
+                    "useSpecularMap": false
+                }
+            ]
+        },
+        {
+            "materials": [
+                {
+                    "materialOverrides": [],
+                    "shaderConsts": [
+                        1.0,
+                        1.0,
+                        0.0,
+                        1.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "useColorMap": false,
+                    "useNormalMap": true,
+                    "useSpecularMap": true
+                },
+                {
+                    "materialOverrides": [],
+                    "shaderConsts": [
+                        1.0,
+                        1.0,
+                        0.0,
+                        1.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "useColorMap": false,
+                    "useNormalMap": true,
+                    "useSpecularMap": true
+                }
+            ]
+        },
+        {
+            "materials": [
+                {
+                    "materialOverrides": [],
+                    "shaderConsts": [
+                        1.0,
+                        1.0,
+                        1.0,
+                        1.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "useColorMap": false,
+                    "useNormalMap": false,
+                    "useSpecularMap": true
+                },
+                {
+                    "materialOverrides": [],
+                    "shaderConsts": [
+                        1.0,
+                        1.0,
+                        0.0,
+                        1.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "useColorMap": false,
+                    "useNormalMap": true,
+                    "useSpecularMap": true
+                }
+            ]
+        },
+        {
+            "materials": [
+                {
+                    "materialOverrides": [],
+                    "shaderConsts": [
+                        1.0,
+                        1.0,
+                        0.0,
+                        1.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "useColorMap": false,
+                    "useNormalMap": true,
+                    "useSpecularMap": true
+                },
+                {
+                    "materialOverrides": [],
+                    "shaderConsts": [
+                        1.0,
+                        1.0,
+                        0.0,
+                        1.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "useColorMap": false,
+                    "useNormalMap": true,
+                    "useSpecularMap": true
+                }
+            ]
+        },
+        {
+            "materials": [
+                {
+                    "materialOverrides": [],
+                    "shaderConsts": [
+                        1.0,
+                        1.0,
+                        1.0,
+                        1.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "useColorMap": false,
+                    "useNormalMap": true,
+                    "useSpecularMap": true
+                },
+                {
+                    "materialOverrides": [],
+                    "shaderConsts": [
+                        10.0,
+                        10.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "useColorMap": false,
+                    "useNormalMap": true,
+                    "useSpecularMap": true
+                }
+            ]
+        },
+        {
+            "materials": [
+                {
+                    "materialOverrides": [
+                        {
+                            "baseMaterial": "mc/mtl_t6_wpn_pistol_fnp45_camo2",
+                            "camoMaterial": "mc/mtl_weapon_camo_zmb_dlc2"
+                        }
+                    ],
+                    "shaderConsts": [
+                        1.0,
+                        1.0,
+                        0.0,
+                        1.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "useColorMap": false,
+                    "useNormalMap": true,
+                    "useSpecularMap": true
+                },
+                {
+                    "materialOverrides": [
+                        {
+                            "baseMaterial": "mc/mtl_t6_wpn_pistol_fnp45",
+                            "camoMaterial": "mc/mtl_weapon_camo_zmb_dlc2_alt"
+                        }
+                    ],
+                    "shaderConsts": [
+                        1.0,
+                        1.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "useColorMap": false,
+                    "useNormalMap": true,
+                    "useSpecularMap": true
+                }
+            ]
+        },
+        {
+            "materials": [
+                {
+                    "materialOverrides": [],
+                    "shaderConsts": [
+                        1.0,
+                        1.0,
+                        0.0,
+                        1.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "useColorMap": false,
+                    "useNormalMap": true,
+                    "useSpecularMap": true
+                },
+                {
+                    "materialOverrides": [],
+                    "shaderConsts": [
+                        1.0,
+                        1.0,
+                        0.0,
+                        1.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "useColorMap": false,
+                    "useNormalMap": true,
+                    "useSpecularMap": true
+                }
+            ]
+        },
+        {
+            "materials": [
+                {
+                    "materialOverrides": [],
+                    "shaderConsts": [
+                        1.0,
+                        1.0,
+                        0.0,
+                        1.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "useColorMap": false,
+                    "useNormalMap": true,
+                    "useSpecularMap": true
+                },
+                {
+                    "materialOverrides": [],
+                    "shaderConsts": [
+                        10.0,
+                        10.0,
+                        0.0,
+                        1.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "useColorMap": false,
+                    "useNormalMap": true,
+                    "useSpecularMap": true
+                }
+            ]
+        },
+        {
+            "materials": [
+                {
+                    "materialOverrides": [],
+                    "shaderConsts": [
+                        1.0,
+                        1.0,
+                        0.0,
+                        1.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "useColorMap": false,
+                    "useNormalMap": true,
+                    "useSpecularMap": true
+                },
+                {
+                    "materialOverrides": [],
+                    "shaderConsts": [
+                        1.0,
+                        1.0,
+                        0.0,
+                        1.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "useColorMap": false,
+                    "useNormalMap": true,
+                    "useSpecularMap": true
+                }
+            ]
+        },
+        {
+            "materials": [
+                {
+                    "materialOverrides": [
+                        {
+                            "baseMaterial": "mc/mtl_t6_wpn_pistol_fnp45_camo2",
+                            "camoMaterial": "mc/mtl_weapon_camo_3layer"
+                        }
+                    ],
+                    "shaderConsts": [
+                        2.7100000381469727,
+                        1.7799999713897705,
+                        0.0,
+                        0.20000000298023224,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "useColorMap": false,
+                    "useNormalMap": true,
+                    "useSpecularMap": true
+                },
+                {
+                    "materialOverrides": [
+                        {
+                            "baseMaterial": "mc/mtl_t6_wpn_pistol_fnp45",
+                            "camoMaterial": "mc/mtl_weapon_camo_zmb_dlc4_alt"
+                        }
+                    ],
+                    "shaderConsts": [
+                        5.130000114440918,
+                        5.119999885559082,
+                        0.0,
+                        1.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "useColorMap": false,
+                    "useNormalMap": true,
+                    "useSpecularMap": true
+                }
+            ]
+        }
+    ],
+    "camoSets": [
+        {
+            "patternCamoImage": "t6_camo_devgru_pattern",
+            "patternOffset": {
+                "x": 0.5199999809265137,
+                "y": 0.5299999713897705
+            },
+            "patternScale": 0.49000000953674316,
+            "solidCamoImage": "t6_camo_devgru_solid"
+        },
+        {
+            "patternCamoImage": "t6_camo_atacs_pattern",
+            "patternOffset": {
+                "x": 0.3499999940395355,
+                "y": 0.800000011920929
+            },
+            "patternScale": 0.27000001072883606,
+            "solidCamoImage": "t6_camo_atacs_solid"
+        },
+        {
+            "patternCamoImage": "t6_camo_erdl_pattern",
+            "patternOffset": {
+                "x": 0.25999999046325684,
+                "y": 0.6100000143051147
+            },
+            "patternScale": 1.0800000429153442,
+            "solidCamoImage": "t6_camo_erdl_solid"
+        },
+        {
+            "patternCamoImage": "t6_camo_siberia_pattern",
+            "patternOffset": {
+                "x": 0.33000001311302185,
+                "y": 0.07000000029802322
+            },
+            "patternScale": 1.340000033378601,
+            "solidCamoImage": "t6_camo_siberia_solid"
+        },
+        {
+            "patternCamoImage": "t6_camo_choco_pattern",
+            "patternOffset": {
+                "x": 0.36000001430511475,
+                "y": 1.0
+            },
+            "patternScale": 1.9500000476837158,
+            "solidCamoImage": "t6_camo_choco_solid"
+        },
+        {
+            "patternCamoImage": "t6_camo_tiger_blue_pattern",
+            "patternOffset": {
+                "x": 0.6000000238418579,
+                "y": 0.6600000262260437
+            },
+            "patternScale": 1.0099999904632568,
+            "solidCamoImage": "t6_camo_tiger_blue_solid"
+        },
+        {
+            "patternCamoImage": "t6_camo_bloodshot_pattern",
+            "patternOffset": {
+                "x": 0.7900000214576721,
+                "y": 0.9200000166893005
+            },
+            "patternScale": 1.2000000476837158,
+            "solidCamoImage": "t6_camo_bloodshot_solid"
+        },
+        {
+            "patternCamoImage": "t6_camo_ghostex_delta6_pattern",
+            "patternOffset": {
+                "x": 0.7300000190734863,
+                "y": 0.6000000238418579
+            },
+            "patternScale": 1.0,
+            "solidCamoImage": "t6_camo_ghostex_delta6_solid"
+        },
+        {
+            "patternCamoImage": "t6_camo_kryptek_typhon_pattern",
+            "patternOffset": {
+                "x": 1.0,
+                "y": 0.6100000143051147
+            },
+            "patternScale": 1.2599999904632568,
+            "solidCamoImage": "t6_camo_kryptek_typhon_solid"
+        },
+        {
+            "patternCamoImage": "t6_camo_blossom_pattern",
+            "patternOffset": {
+                "x": 0.3799999952316284,
+                "y": 0.3499999940395355
+            },
+            "patternScale": 1.440000057220459,
+            "solidCamoImage": "t6_camo_blossom_solid"
+        },
+        {
+            "patternCamoImage": "t6_camo_artofwar_pattern",
+            "patternOffset": {
+                "x": 0.9700000286102295,
+                "y": 0.33000001311302185
+            },
+            "patternScale": 1.149999976158142,
+            "solidCamoImage": "t6_camo_artofwar_solid"
+        },
+        {
+            "patternCamoImage": "t6_camo_ronin_pattern",
+            "patternOffset": {
+                "x": 0.0,
+                "y": 0.47999998927116394
+            },
+            "patternScale": 1.5099999904632568,
+            "solidCamoImage": "t6_camo_ronin_solid"
+        },
+        {
+            "patternCamoImage": "t6_camo_skulls_pattern",
+            "patternOffset": {
+                "x": 0.23999999463558197,
+                "y": 0.8999999761581421
+            },
+            "patternScale": 1.0800000429153442,
+            "solidCamoImage": "t6_camo_skulls_solid"
+        },
+        {
+            "patternCamoImage": "t6_camo_bo2collectors_pattern",
+            "patternOffset": {
+                "x": 0.8600000143051147,
+                "y": 0.5299999713897705
+            },
+            "patternScale": 1.9600000381469727,
+            "solidCamoImage": "dark_grey_swatch"
+        },
+        {
+            "patternCamoImage": "t6_camo_elite_pattern",
+            "patternOffset": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "patternScale": 1.0,
+            "solidCamoImage": "t6_camo_elite_solid"
+        },
+        {
+            "patternCamoImage": "t6_camo_massacre_pattern",
+            "patternOffset": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "patternScale": 3.0,
+            "solidCamoImage": "t6_camo_massacre_solid"
+        },
+        {
+            "patternOffset": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "patternScale": 1.0
+        },
+        {
+            "patternOffset": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "patternScale": 1.0
+        },
+        {
+            "patternOffset": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "patternScale": 1.0
+        },
+        {
+            "patternOffset": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "patternScale": 1.0
+        },
+        {
+            "patternOffset": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "patternScale": 1.0
+        },
+        {
+            "patternOffset": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "patternScale": 1.0
+        },
+        {
+            "patternOffset": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "patternScale": 1.0
+        },
+        {
+            "patternOffset": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "patternScale": 1.0
+        },
+        {
+            "patternCamoImage": "t6_camo_nevada_pattern",
+            "patternOffset": {
+                "x": 0.27000001072883606,
+                "y": 0.009999999776482582
+            },
+            "patternScale": 1.090000033378601,
+            "solidCamoImage": "t6_camo_nevada_solid"
+        },
+        {
+            "patternCamoImage": "t6_camo_sahara_pattern",
+            "patternOffset": {
+                "x": 0.5299999713897705,
+                "y": 0.12999999523162842
+            },
+            "patternScale": 1.7200000286102295,
+            "solidCamoImage": "t6_camo_sahara_solid"
+        },
+        {
+            "patternCamoImage": "t6_camo_urban_russia_pattern",
+            "patternOffset": {
+                "x": 0.5899999737739563,
+                "y": 0.029999999329447746
+            },
+            "patternScale": 0.9700000286102295,
+            "solidCamoImage": "t6_camo_urban_russia_solid"
+        },
+        {
+            "patternCamoImage": "t6_camo_flecktarn_pattern",
+            "patternOffset": {
+                "x": 0.6700000166893005,
+                "y": 0.49000000953674316
+            },
+            "patternScale": 0.7699999809265137,
+            "solidCamoImage": "t6_camo_flecktarn_solid"
+        },
+        {
+            "patternCamoImage": "t6_camo_flora_pattern",
+            "patternOffset": {
+                "x": 0.5,
+                "y": 0.15000000596046448
+            },
+            "patternScale": 0.9800000190734863,
+            "solidCamoImage": "t6_camo_flora_solid"
+        },
+        {
+            "patternCamoImage": "t6_camo_tiger_jungle_pattern",
+            "patternOffset": {
+                "x": 0.5799999833106995,
+                "y": 0.44999998807907104
+            },
+            "patternScale": 0.7099999785423279,
+            "solidCamoImage": "t6_camo_tiger_jungle_solid"
+        }
+    ],
+    "patternBaseImage": "camo_off_pattern",
+    "solidBaseImage": "camo_off_solid"
+}
+```
+- Not necessary, but copy TAC45's material files to `FNZM45\materials\mc\`. The linker will take them from `common_mp.ff` automatically though
+- On a side note, you'll have to take `menu_mp_weapons_fnp45` image manually from the `base.ipak`, reconvert it to `.iwi` format and add it your `images` folder because for some reason, it does not find it while building the mod and gives error
+- Also make a new materials json file called `menu_mp_weapons_fnp45.json` in the `FNZM45\materials\` folder and add these lines into it:
+```
+{
+    "_type": "material",
+    "_version": 1,
+    "cameraRegion": "none",
+    "constants": [],
+    "contents": 1,
+    "gameFlags": [],
+    "hashIndex": 0,
+    "layeredSurfaceTypes": 536870912,
+    "probeMipBits": 0,
+    "sortKey": 40,
+    "stateBits": [
+        {
+            "alphaTest": "gt0",
+            "blendOpAlpha": "add",
+            "blendOpRgb": "add",
+            "colorWriteAlpha": true,
+            "colorWriteRgb": true,
+            "cullFace": "back",
+            "depthTest": "disabled",
+            "depthWrite": false,
+            "dstBlendAlpha": "one",
+            "dstBlendRgb": "invsrcalpha",
+            "polygonOffset": "offset0",
+            "polymodeLine": false,
+            "srcBlendAlpha": "invdestalpha",
+            "srcBlendRgb": "srcalpha"
+        }
+    ],
+    "stateBitsEntry": [
+        -1,
+        -1,
+        0,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+    ],
+    "stateFlags": 0,
+    "surfaceFlags": 0,
+    "surfaceTypeBits": 0,
+    "techniqueSet": "trivial_9z33feqw",
+    "textureAtlas": {
+        "columns": 1,
+        "rows": 1
+    },
+    "textures": [
+        {
+            "image": "menu_mp_weapons_fnp45",
+            "isMatureContent": false,
+            "name": "colorMap",
+            "samplerState": {
+                "clampU": true,
+                "clampV": true,
+                "clampW": true,
+                "filter": "linear",
+                "mipMap": "disabled"
+            },
+            "semantic": "2D"
+        }
+    ]
+}
+
+```
+- Next up, go in `FNZM45\zone_source\` and create a new file called `mod.zone`. Then go in `FNZM45\zone_source\additions\` and create 3 files called `zm_fnp45.zone` , `scriptadd.zone` and `papcamos.zone` respectively
+- Here's what should be in each file:
+	- `mod.zone`
+	```
+	>game,T6
+	>type,fastfile
+	>name,mod
+
+	>level.ipak_read,zm_prison
+	>level.ipak_read,zm_transit
+	>level.ipak_read,zm_tomb
+	>level.ipak_read,zm_nuked
+	>level.ipak_read,zm_buried
+	>level.ipak_read,zm_highrise
+	>level.ipak_read,base
+	>level.ipak_read,dlczm4
+	>level.ipak_read,dlczm3
+	>level.ipak_read,dlczm2
+	>level.ipak_read,dlczm1
+	>level.ipak_read,dlczm0
+	>level.ipak_read,zm
+	
+	include,additions/papcamos
+	include,additions/scriptadd
+	include,additions/zm_fnp45
+	
+	localize,mod
+	
+	soundbank,mod.all
+	```
+	- `scriptadd.zone`
+	```
+	script,scripts/zm/precache.gsc
+	script,scripts/zm/zm_transit/zm_transit.gsc
+	script,scripts/zm/zm_transit/zm_transit.csc
+	script,scripts/zm/zm_highrise/zm_highrise.gsc
+	script,scripts/zm/zm_highrise/zm_highrise.csc
+	script,scripts/zm/zm_buried/zm_buried.gsc
+	script,scripts/zm/zm_buried/zm_buried.csc
+	script,scripts/zm/zm_prison/zm_prison.gsc
+	script,scripts/zm/zm_prison/zm_prison.csc
+	script,scripts/zm/zm_nuked/zm_nuked.gsc
+	script,scripts/zm/zm_nuked/zm_nuked.csc
+	script,scripts/zm/zm_tomb/zm_tomb.gsc
+	script,scripts/zm/zm_tomb/zm_tomb.csc
+	```
+	- `papcamos.zone`
+	```
+	image,camo_zombies_nml
+	image,~-gcamo_code_spc
+	image,camo_code_nml
+	image,~~-gcamo_zombies_spc-rgb&~-rc~9a2e3000
+	image,~-gcamo_zombies_col
+	material,mc/mtl_weapon_camo_zombies
+	material,mc/mtl_weapon_camo_3layer
+	material,mc/mtl_weapon_camo_3layer_1
+	material,mc/mtl_weapon_camo_3layer_2
+	material,mc/mtl_weapon_camo_3layer_3
+	image,camo_zmb_dlc4_alt_nml
+	image,~~-gcamo_zmb_dlc4_alt_spc-rgb~fc3ae34a
+	image,~-gcamo_zmb_dlc4_alt_col
+	material,mc/mtl_weapon_camo_zmb_dlc4_alt
+	material,mc/mtl_weapon_camo_zmb_dlc4_alt_1
+	image,camo_zmb_dlc2_ember
+	image,camo_zmb_dlc2_nml
+	image,camo_zmb_dlc2_reveal
+	image,~~-gcamo_zmb_dlc2_spc-rgb&~-r~471adc2c
+	image,~-gcamo_zmb_dlc2_col
+	image,camo_zmb_dlc2_heat
+	material,mc/mtl_weapon_camo_zmb_dlc2
+	image,camo_zmb_dlc2_alt_nml
+	image,~~-gcamo_zmb_dlc2_alt_spc-rgb~805ae131
+	image,~-gcamo_zmb_dlc2_alt_col
+	material,mc/mtl_weapon_camo_zmb_dlc2_alt
+	```
+	- `zm_fnp45.zone` (needs including of PaP flashes TAC45 and TAC45 DW related assets as well as replacement of the MP TAC  includes with our ZM TAC)
+	```
+	camo,camo_fnp45
+	image,~~-gmtl_t6_wpn_pistol_fnp45_s~7c305aa0
+	image,mtl_t6_wpn_pistol_fnp45_nml
+	image,~mtl_t6_wpn_pistol_fnp45_ao-l~44229f33
+	image,~-gmtl_t6_wpn_pistol_fnp45_col
+	image,~mtl_t6_wpn_pistol_fnp45_ir-r~dbaf890c
+	material,mc/mtl_t6_wpn_pistol_fnp45_thermal
+	material,mc/mtl_t6_wpn_pistol_fnp45
+	material,mc/mtl_t6_wpn_pistol_fnp45_camo2
+	material,mc/mtl_t6_wpn_pistol_fnp45_camo3
+	xmodel,t6_wpn_pistol_fnp45_view
+	xmodel,t6_wpn_pistol_fnp45_world
+	tracer,pistol
+	tracer,pistol_enemy
+	xanim,viewmodel_fnp45_idle
+	xanim,viewmodel_fnp45_idle_empty
+	xanim,viewmodel_fnp45_fire
+	xanim,viewmodel_fnp45_lastshot
+	xanim,viewmodel_fnp45_tactical_melee
+	xanim,viewmodel_fnp45_tactical_melee_empty
+	xanim,viewmodel_fnp45_reload
+	xanim,viewmodel_fnp45_reload_empty
+	xanim,viewmodel_fnp45_pullout
+	xanim,viewmodel_fnp45_first_raise
+	xanim,viewmodel_fnp45_putaway
+	xanim,viewmodel_fnp45_pullout_empty
+	xanim,viewmodel_fnp45_putaway_empty
+	xanim,viewmodel_fnp45_sprint_loop
+	xanim,viewmodel_fnp45_sprint_loop_empty
+	xanim,viewmodel_fnp45_crawl_in
+	xanim,viewmodel_fnp45_crawl_forward
+	xanim,viewmodel_fnp45_crawl_back
+	xanim,viewmodel_fnp45_crawl_right
+	xanim,viewmodel_fnp45_crawl_left
+	xanim,viewmodel_fnp45_crawl_out
+	xanim,viewmodel_fnp45_crawl_in_empty
+	xanim,viewmodel_fnp45_crawl_forward_empty
+	xanim,viewmodel_fnp45_crawl_back_empty
+	xanim,viewmodel_fnp45_crawl_right_empty
+	xanim,viewmodel_fnp45_crawl_left_empty
+	xanim,viewmodel_fnp45_crawl_out_empty
+	xanim,viewmodel_fnp45_ads_fire
+	xanim,viewmodel_fnp45_d2p_in
+	xanim,viewmodel_fnp45_d2p_loop
+	xanim,viewmodel_fnp45_d2p_out
+	xanim,viewmodel_fnp45_d2p_in_empty
+	xanim,viewmodel_fnp45_d2p_loop_empty
+	xanim,viewmodel_fnp45_d2p_out_empty
+	xanim,viewmodel_fnp45_ads_up
+	xanim,viewmodel_fnp45_ads_down
+	rawfile,rumble/pistol_fire
+	rawfile,rumble/pistol_fire_h.rmb
+	rawfile,rumble/pistol_fire_l.rmb
+	image,menu_mp_weapons_fnp45
+	material,menu_mp_weapons_fnp45
+	weapon,fnp45_zm
+	weapon,fnp45_upgraded_zm
+	weapon,fnp45lh_upgraded_zm
+	xanim,viewmodel_fnp45_reflex_ads_up
+	xanim,viewmodel_fnp45_reflex_ads_down
+	xanim,viewmodel_fnp45_tactical_idle
+	xanim,viewmodel_fnp45_tactical_idle_empty
+	xanim,viewmodel_fnp45_tactical_fire
+	xanim,viewmodel_fnp45_tactical_lastshot
+	xanim,viewmodel_fnp45_tactical_reload
+	xanim,viewmodel_fnp45_tactical_reload_empty
+	xanim,viewmodel_fnp45_tactical_fastmag
+	xanim,viewmodel_fnp45_tactical_fastmag_empty
+	xanim,viewmodel_fnp45_tactical_pullout
+	xanim,viewmodel_fnp45_tactical_putaway
+	xanim,viewmodel_fnp45_tactical_pullout_empty
+	xanim,viewmodel_fnp45_tactical_putaway_empty
+	xanim,viewmodel_fnp45_tactical_sprint_loop
+	xanim,viewmodel_fnp45_tactical_sprint_loop_empty
+	xanim,viewmodel_fnp45_tactical_crawl_in
+	xanim,viewmodel_fnp45_tactical_crawl_forward
+	xanim,viewmodel_fnp45_tactical_crawl_back
+	xanim,viewmodel_fnp45_tactical_crawl_right
+	xanim,viewmodel_fnp45_tactical_crawl_left
+	xanim,viewmodel_fnp45_tactical_crawl_out
+	xanim,viewmodel_fnp45_tactical_crawl_in_empty
+	xanim,viewmodel_fnp45_tactical_crawl_forward_empty
+	xanim,viewmodel_fnp45_tactical_crawl_back_empty
+	xanim,viewmodel_fnp45_tactical_crawl_right_empty
+	xanim,viewmodel_fnp45_tactical_crawl_left_empty
+	xanim,viewmodel_fnp45_tactical_crawl_out_empty
+	xanim,viewmodel_fnp45_tactical_ads_fire
+	xanim,viewmodel_fnp45_tactical_d2p_in
+	xanim,viewmodel_fnp45_tactical_d2p_loop
+	xanim,viewmodel_fnp45_tactical_d2p_out
+	xanim,viewmodel_fnp45_tactical_d2p_in_empty
+	xanim,viewmodel_fnp45_tactical_d2p_loop_empty
+	xanim,viewmodel_fnp45_tactical_d2p_out_empty
+	xanim,viewmodel_fnp45_tactical_ads_up
+	xanim,viewmodel_fnp45_tactical_ads_down
+	xanim,viewmodel_fnp45_tactical_reflex_ads_up
+	xanim,viewmodel_fnp45_tactical_reflex_ads_down
+	xanim,viewmodel_fnp45_dw_right_idle
+	xanim,viewmodel_fnp45_dw_right_idle_empty
+	xanim,viewmodel_fnp45_dw_right_fire
+	xanim,viewmodel_fnp45_dw_right_lastshot
+	xanim,viewmodel_fnp45_dw_right_reload
+	xanim,viewmodel_fnp45_dw_right_reload_empty
+	xanim,viewmodel_fnp45_dw_pullout
+	xanim,viewmodel_fnp45_dw_first_raise
+	xanim,viewmodel_fnp45_dw_putaway
+	xanim,viewmodel_fnp45_dw_pullout_empty
+	xanim,viewmodel_fnp45_dw_putaway_empty
+	xanim,viewmodel_fnp45_dw_sprint_in
+	xanim,viewmodel_fnp45_dw_sprint_loop
+	xanim,viewmodel_fnp45_dw_sprint_out
+	xanim,viewmodel_fnp45_dw_sprint_in_empty
+	xanim,viewmodel_fnp45_dw_sprint_loop_empty
+	xanim,viewmodel_fnp45_dw_sprint_out_empty
+	xanim,viewmodel_fnp45_dw_crawl_in
+	xanim,viewmodel_fnp45_dw_crawl_forward
+	xanim,viewmodel_fnp45_dw_crawl_back
+	xanim,viewmodel_fnp45_dw_crawl_right
+	xanim,viewmodel_fnp45_dw_crawl_left
+	xanim,viewmodel_fnp45_dw_crawl_out
+	xanim,viewmodel_fnp45_dw_crawl_in_empty
+	xanim,viewmodel_fnp45_dw_crawl_forward_empty
+	xanim,viewmodel_fnp45_dw_crawl_back_empty
+	xanim,viewmodel_fnp45_dw_crawl_right_empty
+	xanim,viewmodel_fnp45_dw_crawl_left_empty
+	xanim,viewmodel_fnp45_dw_crawl_out_empty
+	xanim,viewmodel_fnp45_dw_d2p_in
+	xanim,viewmodel_fnp45_dw_d2p_loop
+	xanim,viewmodel_fnp45_dw_d2p_out
+	xanim,viewmodel_fnp45_dw_ads_up
+	xanim,viewmodel_fnp45_dw_ads_down
+	xmodel,t6_wpn_pistol_fnp45_view_lh
+	xmodel,t6_wpn_pistol_fnp45_world_lh
+	xanim,viewmodel_fnp45_dw_d2p_in_empty
+	xanim,viewmodel_fnp45_dw_d2p_loop_empty
+	xanim,viewmodel_fnp45_dw_d2p_out_empty
+	xanim,viewmodel_fnp45_dw_left_fire
+	xanim,viewmodel_fnp45_dw_left_lastshot
+	xanim,viewmodel_fnp45_dw_left_idle
+	xanim,viewmodel_fnp45_dw_left_idle_empty
+	xanim,viewmodel_fnp45_dw_left_reload_empty
+	xanim,viewmodel_fnp45_dw_left_reload
+	fx,weapon/muzzleflashes_zmb_ug/fx_zmb_muz_sm_gas_flash_1p
+	fx,weapon/muzzleflashes_zmb_ug/fx_zmb_muz_sm_gas_flash_3p
+	```
+- Now go in `FNZM45\` and select all folders except `sound` and `zone_source` folders and make a zip file with Compression level 0. Rename that zip file to `mod.iwd`, overwriting the file extension
+- Then make a `New Text Document.txt` in `FNZM45\`, rename it to `mod.json` and this text:
+```
+{
+	"name": "FNZM45",
+	"author": "(YOURNAME)",
+	"description": "(ANYDESCRIPTION)",
+	"version": "(VERSION)"
+}
+```
+- You can replace the `(YOURNAME)` with your name, `(ANYDESCRIPTION)` with description like `TAC45 port for ZM` and `(VERSION)` with anything like `Take 1` or `v1.0`. You can also replace the `FNZM45` but why'd you do that here?
+- Make a `New Text Document.txt`, rename it to `Compile.bat`, right-click it, left-click `Edit` and paste this text:
+```
+set GAME_FOLDER=D:\STEAM\steamapps\common\Call of Duty - Black Ops 2
+set OAT_BASE=C:\Users\USER\Desktop\Applications\OAT
+set MOD_BASE=%cd%
+"%OAT_BASE%\linker.exe" ^
+-v ^
+--load "%GAME_FOLDER%\zone\all\common_mp.ff" ^
+--load "%GAME_FOLDER%\zone\all\common_zm.ff" ^
+--load "%GAME_FOLDER%\zone\all\common.ff" ^
+--load "%GAME_FOLDER%\zone\all\zm_prison.ff" ^
+--load "%GAME_FOLDER%\zone\all\zm_transit.ff" ^
+--load "%GAME_FOLDER%\zone\all\zm_tomb.ff" ^
+--load "%GAME_FOLDER%\zone\all\zm_nuked.ff" ^
+--load "%GAME_FOLDER%\zone\all\zm_highrise.ff" ^
+--load "%GAME_FOLDER%\zone\all\zm_buried.ff" ^
+--base-folder "%OAT_BASE%" ^
+--asset-search-path "%MOD_BASE%" ^
+--source-search-path "%MOD_BASE%\zone_source" ^
+--output-folder "%MOD_BASE%\zone" ^ mod
+
+if %ERRORLEVEL% NEQ 0 pause
+
+set err=%ERRORLEVEL%
+
+if %err% EQU 0 (
+XCOPY "%MOD_BASE%\zone\mod.ff" "%LOCALAPPDATA%\Plutonium\storage\t6\mods\zm_fnzm45\mod.ff" /Y
+XCOPY "%MOD_BASE%\zone\mod.all.sabl" "%LOCALAPPDATA%\Plutonium\storage\t6\mods\zm_fnzm45\mod.all.sabl" /Y
+XCOPY "%MOD_BASE%\mod.iwd" "%LOCALAPPDATA%\Plutonium\storage\t6\mods\zm_fnzm45\mod.iwd" /Y
+XCOPY "%MOD_BASE%\mod.json" "%LOCALAPPDATA%\Plutonium\storage\t6\mods\zm_fnzm45\mod.json" /Y
+) ELSE (
+COLOR C
+echo FAIL!
+)
+
+pause
+```
+-> You'll have to edit the `GAME_FOLDER` and `OAT_BASE` paths to the required paths
+
+-> After that, save, run the `Compile.bat` and it should start compiling the mod and shall automatically place the compiled build in Plutonium's mod directory
+
+# SP to ZM Weapon Port (T6)
+
+- Same stuff, but for SP weapons...
+
+## M60 Port for ZM
+
+- Unlink the Fast File that includes M60 (`weapons!m60_sp.ff`)
+- Now make directories such that the "ZM60" folder has a structure like this:
+```
+ZM60
+├── camo
+├── english
+|   └── localizedstrings
+├── images
+├── materials
+│   └── mc
+├── scripts
+│   └── zm
+│       ├── zm_transit
+│       ├── zm_highrise
+│       ├── zm_buried
+│       ├── zm_nuked
+│       ├── zm_prison
+│       └── zm_tomb
+├── sound
+├── soundbank
+├── weapons
+├── zone
+└── zone_source
+    └── additions
+```
+- Go to the unlinked `weapons!m60_sp.ff` (which will now be a folder under `zone_raw` folder called `weapons!m60_sp`) and copy the `m60_sp` to `weapons` folder in `ZM60` folder
+- Rename the `m60_sp` to `m60_zm` and then open it using Notepad
+- In this weapon file, you can edit many attributes of the weapon. Like the animations, firing sounds, muzzle flashes, damage, ranges, used attachments, weapon type and etc but the only stuff you'd want to change are the damages and attachments. SP weapons sometimes live up to ZM weapon standards so you may not have to change this weapon all too much
+- To do this, set the `damage` value to `194`, `mindamage` value to `176` and `startammo` value to `6`, `maxammo` value to `6`, remove all the attachments and attachmentuniques making it only `attachments//attachmentuniques/` at the end
+- Save this and now make a copy of `m60_zm`, rename the copy to `m60_upgraded_zm` and open it
+- We'll be going for a PaP'ed M60 that's called `MeatMincer6000` with slightly faster fire rate, having ACOG and a Grip attachment at base
+- You'll have change the muzzle flashes, sounds (1911 pap sounds, my preference), ammo, damage, Weapon name (to `WEAPON_M60_UPGRADED`) appropriatly
+- After that, you'll change all the animations to those of the grip attachment and the ads up/down animations to acog ads up/down animations by using the `au_m60_grip` and `au_m60_acog` as reference
+- You'll also have to hide the iron sights. For that you'll have to add `hideTags` in the weapon file `m60_upgraded_zm` (see the end results)
+- Now to add the actual ACOG and Grip attachments by default we'll have to pull-off something similar to what *PaP'ed Mauser C96* and *PaP'ed Grenade Launcher M16* do
+- First we add the `viewmodels` and `worldmodels` from the actual attachment files to `m60_upgraded_zm`
+- ACOG models go in `attachViewModel1` and `attachWorldModel1` respectively and Grip models go in `attachViewModel5` and `attachWorldModel5`
+- *FYI, We can add them in like 2, 3, 4, 6, etc as well but 1 and 5 are just my personal preference*
+- Then we give the ACOG a place to attach to (the top cover of the M60 which can open/close) in `attachViewModelTag1` by adding `j_reload_cover` in between the `//` (Same does not have to be done with grip)
+- Now we give these models, their precise coordinates in `attachViewModelOffsetXn`, `attachViewModelOffsetYn`, `attachViewModelOffsetZn` and `attachWorldModelOffsetXn`, `attachWorldModelOffsetYn`, `attachWorldModelOffsetZn`, where the `n` is the respective attachment number (That being either `1` or `5` due to our ACOG being attachment `1` and Grip being attachment `5` as assigned earlier), using again, the actual attachmentunique files as an info-sheet
+- This is a very tedious task. Once that's done set the `damage` value to `325`, `mindamage` value to `275` and `startammo` value to `4`, `maxammo` value to `4`, `clipSize` to `200`
+- In the end they both each would look something like this respectively:
+	- `m60_zm`
+	```
+	WEAPONFILE\displayName\WEAPON_M60\AIOverlayDescription\\modeName\\playerAnimType\beltfed\gunModel\t6_wpn_lmg_m60_view\gunModel2\\gunModel3\\gunModel4\\gunModel5\\gunModel6\\gunModel7\\gunModel8\\gunModel9\\gunModel10\\gunModel11\\gunModel12\\gunModel13\\gunModel14\\gunModel15\\gunModel16\\handModel\\hideTags\\notetrackSoundMap\\idleAnim\viewmodel_m60_t6_idle\idleAnimLeft\\emptyIdleAnim\viewmodel_m60_t6_idle\emptyIdleAnimLeft\\fireIntroAnim\\fireAnim\viewmodel_m60_t6_fire\fireAnimLeft\\holdFireAnim\\lastShotAnim\\lastShotAnimLeft\\flourishAnim\\flourishAnimLeft\\detonateAnim\\rechamberAnim\\meleeAnim\\meleeAnimEmpty\\meleeAnim1\\meleeAnim2\\meleeAnim3\\meleeChargeAnim\\meleeChargeAnimEmpty\\reloadAnim\viewmodel_m60_t6_reload\reloadAnimRight\\reloadAnimLeft\\reloadEmptyAnim\viewmodel_m60_t6_reload\reloadEmptyAnimLeft\\reloadStartAnim\\reloadEndAnim\\reloadQuickAnim\\reloadQuickEmptyAnim\\raiseAnim\viewmodel_m60_t6_pullout\dropAnim\viewmodel_m60_t6_putaway\firstRaiseAnim\viewmodel_m60_t6_first_raise\altRaiseAnim\viewmodel_m60_t6_pullout\altDropAnim\viewmodel_m60_t6_putaway\quickRaiseAnim\viewmodel_m60_t6_pullout\quickDropAnim\viewmodel_m60_t6_putaway\emptyRaiseAnim\viewmodel_m60_t6_pullout\emptyDropAnim\viewmodel_m60_t6_putaway\sprintInAnim\viewmodel_m60_t6_sprint_in\sprintLoopAnim\viewmodel_m60_t6_sprint_loop\sprintOutAnim\viewmodel_m60_t6_sprint_out\sprintInEmptyAnim\\sprintLoopEmptyAnim\\sprintOutEmptyAnim\\lowReadyInAnim\\lowReadyLoopAnim\\lowReadyOutAnim\\contFireInAnim\\contFireLoopAnim\\contFireOutAnim\\crawlInAnim\viewmodel_m60_t6_crawl_in\crawlForwardAnim\viewmodel_m60_t6_crawl_forward\crawlBackAnim\viewmodel_m60_t6_crawl_back\crawlRightAnim\viewmodel_m60_t6_crawl_right\crawlLeftAnim\viewmodel_m60_t6_crawl_left\crawlOutAnim\viewmodel_m60_t6_crawl_out\crawlEmptyInAnim\\crawlEmptyForwardAnim\\crawlEmptyBackAnim\\crawlEmptyRightAnim\\crawlEmptyLeftAnim\\crawlEmptyOutAnim\\deployAnim\\nightVisionWearAnim\\nightVisionRemoveAnim\\adsFireAnim\viewmodel_m60_t6_ads_fire\adsLastShotAnim\\adsRechamberAnim\\adsUpAnim\viewmodel_m60_t6_ads_up\adsDownAnim\viewmodel_m60_t6_ads_down\adsUpOtherScopeAnim\\adsFireIntroAnim\\breakdownAnim\\dtp_in\viewmodel_m60_t6_d2p_in\dtp_loop\viewmodel_m60_t6_d2p_loop\dtp_out\viewmodel_m60_t6_d2p_out\dtp_empty_in\\dtp_empty_loop\\dtp_empty_out\\slide_in\\mantleAnim\\sprintCameraAnim\\dtpInCameraAnim\\dtpLoopCameraAnim\\dtpOutCameraAnim\\mantleCameraAnim\\script\\weaponType\bullet\weaponClass\mg\penetrateType\large\impactType\bullet_large\inventoryType\primary\fireType\Full Auto\clipType\bottom\barrelType\Single\offhandClass\None\offhandSlot\None\viewFlashEffect\weapon/muzzleflashes/fx_muz_mg_flash_1p_4_sqr_mb\worldFlashEffect\weapon/muzzleflashes/fx_muz_mg_flash_3p\barrelCooldownEffect\\barrelCooldownMinCount\0\viewFlashOffsetF\0\viewFlashOffsetR\0\viewFlashOffsetU\0\worldFlashOffsetF\0\worldFlashOffsetR\0\worldFlashOffsetU\0\pickupSound\fly_generic_pickup_npc\pickupSoundPlayer\fly_generic_pickup_plr\ammoPickupSound\wpn_ammo_pickup_npc\ammoPickupSoundPlayer\wpn_ammo_pickup_plr\projectileSound\\pullbackSound\\pullbackSoundPlayer\\fireSound\wpn_m60_fire_npc\crackSound\\whizbySound\\fireSoundPlayer\wpn_m60_fire_plr\loopFireSound\\loopFireSoundPlayer\\loopFireEndSound\\loopFireEndSoundPlayer\\startFireSound\\stopFireSound\\killcamStartFireSound\\startFireSoundPlayer\\stopFireSoundPlayer\\killcamStartFireSoundPlayer\\lastShotSound\\lastShotSoundPlayer\\emptyFireSound\wpn_generic_dryfire_npc\emptyFireSoundPlayer\wpn_generic_dryfire_plr\meleeSwipeSound\\meleeSwipeSoundPlayer\\meleeHitSound\wpn_melee_hit\meleeMissSound\\rechamberSound\\rechamberSoundPlayer\\reloadSound\\reloadSoundPlayer\\reloadEmptySound\\reloadEmptySoundPlayer\\reloadStartSound\\reloadStartSoundPlayer\\reloadEndSound\\reloadEndSoundPlayer\\rotateLoopSound\\rotateLoopSoundPlayer\\rotateStopSound\\rotateStopSoundPlayer\\deploySound\\deploySoundPlayer\\finishDeploySound\\finishDeploySoundPlayer\\breakdownSound\\breakdownSoundPlayer\\finishBreakdownSound\\finishBreakdownSoundPlayer\\detonateSound\\detonateSoundPlayer\\nightVisionWearSound\\nightVisionWearSoundPlayer\\nightVisionRemoveSound\\nightVisionRemoveSoundPlayer\\raiseSound\fly_generic_raise_npc\raiseSoundPlayer\fly_generic_raise_plr\firstRaiseSound\fly_generic_first_raise_npc\firstRaiseSoundPlayer\fly_generic_first_raise_plr\altSwitchSound\\altSwitchSoundPlayer\\adsRaiseSoundPlayer\fly_generic_ads_plr\adsLowerSoundPlayer\fly_generic_ads_lower_plr\putawaySound\fly_generic_down_npc\putawaySoundPlayer\fly_generic_down_plr\overheatSound\\overheatSoundPlayer\\adsZoomSound\\shellCasing\prj_brass_impact_large\shellCasingPlayer\prj_brass_impact_plr_large\bounceSound\\standMountedWeapdef\\crouchMountedWeapdef\\proneMountedWeapdef\\viewShellEjectEffect\weapon/shellejects/fx_saw\worldShellEjectEffect\weapon/shellejects/fx_saw\viewLastShotEjectEffect\weapon/shellejects/fx_saw\worldLastShotEjectEffect\weapon/shellejects/fx_saw\viewShellEjectOffsetF\0\viewShellEjectOffsetR\0\viewShellEjectOffsetU\0\worldShellEjectOffsetF\0\worldShellEjectOffsetR\0\worldShellEjectOffsetU\0\viewShellEjectRotationP\0\viewShellEjectRotationY\0\viewShellEjectRotationR\0\worldShellEjectRotationP\0\worldShellEjectRotationY\0\worldShellEjectRotationR\0\reticleCenter\\reticleSide\reticle_side_small\reticleCenterSize\4\reticleSideSize\8\reticleMinOfs\0\activeReticleType\None\standMoveF\0\standMoveR\0\standMoveU\0\standRotP\2\standRotY\0\standRotR\-2\duckedOfsF\-1\duckedOfsR\0.8\duckedOfsU\-0.2\duckedMoveF\0\duckedMoveR\0\duckedMoveU\0\duckedSprintOfsF\0\duckedSprintOfsR\0\duckedSprintOfsU\0\duckedSprintRotP\0\duckedSprintRotY\0\duckedSprintRotR\0\duckedSprintBobH\0\duckedSprintBobV\0\duckedSprintScale\0\sprintOfsF\0\sprintOfsR\0\sprintOfsU\0\sprintRotP\0\sprintRotY\0\sprintRotR\0\sprintBobH\1\sprintBobV\1\sprintScale\0.65\lowReadyOfsF\-2\lowReadyOfsR\-1\lowReadyOfsU\-0.1\lowReadyRotP\18\lowReadyRotY\25.1\lowReadyRotR\-30\rideOfsF\-1.8\rideOfsR\-0.5\rideOfsU\-1.7\rideRotP\0\rideRotY\0\rideRotR\0\dtpOfsF\0\dtpOfsR\0\dtpOfsU\0\dtpRotP\0\dtpRotY\0\dtpRotR\0\dtpBobH\0\dtpBobV\0\dtpScale\1\mantleOfsF\0\mantleOfsR\0\mantleOfsU\0\mantleRotP\0\mantleRotY\0\mantleRotR\0\slideOfsF\0\slideOfsR\0\slideOfsU\0\slideRotP\0\slideRotY\0\slideRotR\0\duckedRotP\2\duckedRotY\0\duckedRotR\-2\proneOfsF\-1.3\proneOfsR\0\proneOfsU\0\proneMoveF\0\proneMoveR\0\proneMoveU\0\proneRotP\0\proneRotY\3\proneRotR\-3\strafeMoveF\0\strafeMoveR\0.5\strafeMoveU\0\strafeRotP\0\strafeRotY\0\strafeRotR\3\posMoveRate\6\posProneMoveRate\5\standMoveMinSpeed\0\duckedMoveMinSpeed\0\proneMoveMinSpeed\0\posRotRate\6\posProneRotRate\6\standRotMinSpeed\0\duckedRotMinSpeed\0\proneRotMinSpeed\0\worldModel\t6_wpn_lmg_m60_world\worldModel2\\worldModel3\\worldModel4\\worldModel5\\worldModel6\\worldModel7\\worldModel8\\worldModel9\\worldModel10\\worldModel11\\worldModel12\\worldModel13\\worldModel14\\worldModel15\\worldModel16\\attachViewModel1\\attachViewModel2\\attachViewModel3\\attachViewModel4\\attachViewModel5\\attachViewModel6\\attachViewModel7\\attachViewModel8\\attachWorldModel1\\attachWorldModel2\\attachWorldModel3\\attachWorldModel4\\attachWorldModel5\\attachWorldModel6\\attachWorldModel7\\attachWorldModel8\\attachViewModelTag1\\attachViewModelTag2\\attachViewModelTag3\\attachViewModelTag4\\attachViewModelTag5\\attachViewModelTag6\\attachViewModelTag7\\attachViewModelTag8\\attachWorldModelTag1\\attachWorldModelTag2\\attachWorldModelTag3\\attachWorldModelTag4\\attachWorldModelTag5\\attachWorldModelTag6\\attachWorldModelTag7\\attachWorldModelTag8\\attachViewModelOffsetX1\0\attachViewModelOffsetY1\0\attachViewModelOffsetZ1\0\attachViewModelOffsetX2\0\attachViewModelOffsetY2\0\attachViewModelOffsetZ2\0\attachViewModelOffsetX3\0\attachViewModelOffsetY3\0\attachViewModelOffsetZ3\0\attachViewModelOffsetX4\0\attachViewModelOffsetY4\0\attachViewModelOffsetZ4\0\attachViewModelOffsetX5\0\attachViewModelOffsetY5\0\attachViewModelOffsetZ5\0\attachViewModelOffsetX6\0\attachViewModelOffsetY6\0\attachViewModelOffsetZ6\0\attachViewModelOffsetX7\0\attachViewModelOffsetY7\0\attachViewModelOffsetZ7\0\attachViewModelOffsetX8\0\attachViewModelOffsetY8\0\attachViewModelOffsetZ8\0\attachWorldModelOffsetX1\0\attachWorldModelOffsetY1\0\attachWorldModelOffsetZ1\0\attachWorldModelOffsetX2\0\attachWorldModelOffsetY2\0\attachWorldModelOffsetZ2\0\attachWorldModelOffsetX3\0\attachWorldModelOffsetY3\0\attachWorldModelOffsetZ3\0\attachWorldModelOffsetX4\0\attachWorldModelOffsetY4\0\attachWorldModelOffsetZ4\0\attachWorldModelOffsetX5\0\attachWorldModelOffsetY5\0\attachWorldModelOffsetZ5\0\attachWorldModelOffsetX6\0\attachWorldModelOffsetY6\0\attachWorldModelOffsetZ6\0\attachWorldModelOffsetX7\0\attachWorldModelOffsetY7\0\attachWorldModelOffsetZ7\0\attachWorldModelOffsetX8\0\attachWorldModelOffsetY8\0\attachWorldModelOffsetZ8\0\attachViewModelOffsetPitch1\0\attachViewModelOffsetYaw1\0\attachViewModelOffsetRoll1\0\attachViewModelOffsetPitch2\0\attachViewModelOffsetYaw2\0\attachViewModelOffsetRoll2\0\attachViewModelOffsetPitch3\0\attachViewModelOffsetYaw3\0\attachViewModelOffsetRoll3\0\attachViewModelOffsetPitch4\0\attachViewModelOffsetYaw4\0\attachViewModelOffsetRoll4\0\attachViewModelOffsetPitch5\0\attachViewModelOffsetYaw5\0\attachViewModelOffsetRoll5\0\attachViewModelOffsetPitch6\0\attachViewModelOffsetYaw6\0\attachViewModelOffsetRoll6\0\attachViewModelOffsetPitch7\0\attachViewModelOffsetYaw7\0\attachViewModelOffsetRoll7\0\attachViewModelOffsetPitch8\0\attachViewModelOffsetYaw8\0\attachViewModelOffsetRoll8\0\attachWorldModelOffsetPitch1\0\attachWorldModelOffsetYaw1\0\attachWorldModelOffsetRoll1\0\attachWorldModelOffsetPitch2\0\attachWorldModelOffsetYaw2\0\attachWorldModelOffsetRoll2\0\attachWorldModelOffsetPitch3\0\attachWorldModelOffsetYaw3\0\attachWorldModelOffsetRoll3\0\attachWorldModelOffsetPitch4\0\attachWorldModelOffsetYaw4\0\attachWorldModelOffsetRoll4\0\attachWorldModelOffsetPitch5\0\attachWorldModelOffsetYaw5\0\attachWorldModelOffsetRoll5\0\attachWorldModelOffsetPitch6\0\attachWorldModelOffsetYaw6\0\attachWorldModelOffsetRoll6\0\attachWorldModelOffsetPitch7\0\attachWorldModelOffsetYaw7\0\attachWorldModelOffsetRoll7\0\attachWorldModelOffsetPitch8\0\attachWorldModelOffsetYaw8\0\attachWorldModelOffsetRoll8\0\ignoreAttachments\0\stowedModelOffsetsF\0\stowedModelOffsetsR\0\stowedModelOffsetsU\0\stowedModelOffsetsPitch\0\stowedModelOffsetsYaw\0\stowedModelOffsetsRoll\0\worldClipModel\\rocketModel\\mountedModel\\AdditionalMeleeModel\\fireTypeIcon\\hudIcon\menu_mp_weapons_m60\hudIconRatio\2:1\indicatorIcon\\indicatorIconRatio\1:1\ammoCounterIcon\menu_mp_weapons_m60\ammoCounterIconRatio\1:1\ammoCounterClip\Beltfed\startAmmo\6\ammoDisplayName\\ammoName\7.62x51mm m60\clipName\m60\maxAmmo\6\clipSize\100\shotCount\1\sharedAmmoCapName\\sharedAmmoCap\0\unlimitedAmmo\0\ammoCountClipRelative\1\sharedAmmo\1\jamFireTime\0.05\overheatWeapon\0\overheatRate\1\cooldownRate\30\overheatEndVal\25\coolWhileFiring\0\fuelTankWeapon\0\tankLifeTime\0\damage\194\minDamage\176\maxDamageRange\1024\minDamageRange\2400\damage2\0\damage3\0\damage4\0\damage5\0\damageRange2\0\damageRange3\0\damageRange4\0\damageRange5\0\damageDuration\0\damageInterval\0\playerDamage\50\meleeDamage\25\minPlayerDamage\0\destabilizationRateTime\0\destabilizationCurvatureMax\0\destabilizeDistance\0\fireDelay\0\meleeDelay\0.25\meleeChargeDelay\0\spinUpTime\1\spinDownTime\1\spinRate\1\spinLoopSound\\spinLoopSoundPlayer\\startSpinSound\\startSpinSoundPlayer\\stopSpinSound\\stopSpinSoundPlayer\\applySpinPitch\1\introFireTime\0.1\introFireLength\0\fireTime\0.096\flourishTime\0.096\lastFireTime\0\rechamberTime\0.1\rechamberBoltTime\0\holdFireTime\0.1\burstFireDelay\0.2\detonateTime\0\detonateDelay\0\meleeTime\0.7\meleeChargeTime\0\reloadTime\7\reloadShowRocketTime\0\reloadEmptyTime\7\reloadAddTime\5\reloadEmptyAddTime\5\reloadQuickAddTime\0\reloadQuickEmptyAddTime\0\reloadStartTime\0\reloadStartAddTime\0\reloadEndTime\0\reloadQuickTime\0\reloadQuickEmptyTime\0\dropTime\0.6\raiseTime\0.95\altDropTime\0\altRaiseTime\0.35\quickDropTime\0.35\quickRaiseTime\0.75\firstRaiseTime\1.4\emptyRaiseTime\0.95\emptyDropTime\0.6\sprintInTime\0.3\sprintLoopTime\1.5\sprintOutTime\0.45\lowReadyInTime\0.3\lowReadyLoopTime\0.5\lowReadyOutTime\0.3\contFireInTime\0.5\contFireLoopTime\0.5\contFireOutTime\0.5\dtpInTime\0.3\dtpLoopTime\0.5\dtpOutTime\0.3\crawlInTime\0.2\crawlForwardTime\1.3\crawlBackTime\1.15\crawlRightTime\1.2\crawlLeftTime\1.2\crawlOutFireTime\0.08\crawlOutTime\0.2\slideInTime\0.5\deployTime\0.5\breakdownTime\0.5\nightVisionWearTime\0\nightVisionWearTimeFadeOutEnd\0\nightVisionWearTimePowerUp\0\nightVisionRemoveTime\0\nightVisionRemoveTimePowerDown\0\nightVisionRemoveTimeFadeInStart\0\fuseTime\0\aifuseTime\0\lockOnRadius\0\lockOnSpeed\0\requireLockonToFire\0\noAdsWhenMagEmpty\0\avoidDropCleanup\0\stackFire\0\stackFireSpread\0\stackFireAccuracyDecay\0\stackSound\\autoAimRange\1800\aimAssistRange\3200\aimAssistRangeAds\3200\mountableWeapon\0\aimPadding\0\enemyCrosshairRange\1800\crosshairColorChange\1\moveSpeedScale\0.875\adsMoveSpeedScale\1\sprintDurationScale\1\idleCrouchFactor\0.75\idleProneFactor\0.4\gunMaxPitch\8\gunMaxYaw\25\swayMaxAngle\5\swayLerpSpeed\6\swayPitchScale\-2\swayYawScale\-1\swayHorizScale\0.3\swayVertScale\0.3\swayShellShockScale\5\adsSwayMaxAngle\2\adsSwayLerpSpeed\6\adsSwayPitchScale\0.1\adsSwayYawScale\0.1\adsSwayHorizScale\0.12\adsSwayVertScale\0.15\meleeChargeRange\0\rifleBullet\1\armorPiercing\0\boltAction\0\shotsBeforeRechamber\0\useAltTagFlash\0\useAntiLagRewind\0\isCarriedKillstreakWeapon\0\aimDownSight\1\rechamberWhileAds\1\reloadWhileAds\0\adsViewErrorMin\0\adsViewErrorMax\0\clipOnly\0\canUseInVehicle\0\noDropsOrRaises\0\cookOffHold\0\adsFire\0\cancelAutoHolsterWhenEmpty\0\suppressAmmoReserveDisplay\0\laserSight\0\laserSightDuringNightvision\0\bayonet\0\dualWield\0\hideThirdPerson\0\explodeOnGround\0\throwBack\0\retrievable\0\dieOnRespawn\0\noThirdPersonDropsOrRaises\0\continuousFire\0\useAsMelee\0\antiQuickScope\0\noPing\0\forceBounce\0\useDroppedModelAsStowed\0\noQuickDropWhenEmpty\0\keepCrosshairWhenADS\0\useOnlyAltWeaoponHideTagsInAltMode\0\altWeaponAdsOnly\0\altWeaponDisableSwitching\0\killIcon\menu_mp_weapons_m60\killIconRatio\2:1\flipKillIcon\1\dpadIcon\\dpadIconRatio\1:1\noAmmoOnDpadIcon\1\noPartialReload\0\segmentedReload\0\noADSAutoReload\0\reloadAmmoAdd\0\reloadStartAdd\0\attachmentUnique\\altWeapon\\DualWieldWeapon\\grenadeWeapon\\dropAmmoMin\1\dropAmmoMax\2\dropClipAmmoMin\75\dropClipAmmoMax\100\blocksProne\0\silenced\0\dualMag\0\infrared\0\tvguided\0\airburstWeapon\0\perks1\0\perks0\0\isRollingGrenade\0\useBallisticPrediction\0\isValuable\0\isTacticalInsertion\0\isReviveWeapon\0\bUseRigidBodyOnVehicle\0\showIndicator\0\explosionRadius\0\explosionRadiusMin\0\indicatorRadius\0\explosionInnerDamage\0\explosionOuterDamage\0\damageConeAngle\180\projectileSpeed\0\projectileSpeedRelativeUp\0\projectileSpeedUp\0\projectileSpeedForward\0\projectileTakeParentVel\0\projectileActivateDist\0\projectileLifetime\0\timeToAccelerate\0\projectileCurvature\0\projectileModel\\projExplosionType\grenade\projExplosionEffect\\projExplosionEffectForceNormalUp\0\projExplosionEffect2\\projExplosionEffect2ForceNormalUp\0\projExplosionEffect3\\projExplosionEffect3ForceNormalUp\0\projExplosionEffect4\\projExplosionEffect4ForceNormalUp\0\projExplosionEffect5\\projExplosionEffect5ForceNormalUp\0\projExplosionSound\\projDudEffect\\projDudSound\\projImpactExplode\0\sentientImpactExplode\0\explodeWhenStationary\0\bulletImpactExplode\0\mortarShellSound\\tankShellSound\\stickiness\Don't stick\rotateType\Rotate both axis, grenade style\hasDetonator\0\plantable\0\timedDetonation\0\noCrumpleMissile\0\rotate\0\keepRolling\0\holdButtonToThrow\0\offhandHoldIsCancelable\0\freezeMovementWhenFiring\0\lowAmmoWarningThreshold\0.15\explosionTag\\bDisallowAtMatchStart\0\isCameraSensor\0\isAcousticSensor\0\isLaserSensor\0\isHoldUseGrenade\0\parallelDefaultBounce\0\parallelAsphaltBounce\0\parallelBarkBounce\0\parallelBrickBounce\0\parallelCarpetBounce\0\parallelCeramicBounce\0\parallelClothBounce\0\parallelConcreteBounce\0\parallelCushionBounce\0\parallelDirtBounce\0\parallelFleshBounce\0\parallelFoliageBounce\0\parallelFruitBounce\0\parallelGlassBounce\0\parallelGrassBounce\0\parallelGravelBounce\0\parallelIceBounce\0\parallelMetalBounce\0\parallelMudBounce\0\parallelPaintedMetalBounce\0\parallelPaperBounce\0\parallelPlasterBounce\0\parallelPlasticBounce\0\parallelRockBounce\0\parallelRubberBounce\0\parallelSandBounce\0\parallelSnowBounce\0\parallelWaterBounce\0\parallelWoodBounce\0\parallelRiotShieldBounce\0\perpendicularDefaultBounce\0\perpendicularAsphaltBounce\0\perpendicularBarkBounce\0\perpendicularBrickBounce\0\perpendicularCarpetBounce\0\perpendicularCeramicBounce\0\perpendicularClothBounce\0\perpendicularConcreteBounce\0\perpendicularCushionBounce\0\perpendicularDirtBounce\0\perpendicularFleshBounce\0\perpendicularFoliageBounce\0\perpendicularFruitBounce\0\perpendicularGlassBounce\0\perpendicularGrassBounce\0\perpendicularGravelBounce\0\perpendicularIceBounce\0\perpendicularMetalBounce\0\perpendicularMudBounce\0\perpendicularPaintedMetalBounce\0\perpendicularPaperBounce\0\perpendicularPlasterBounce\0\perpendicularPlasticBounce\0\perpendicularRockBounce\0\perpendicularRubberBounce\0\perpendicularSandBounce\0\perpendicularSnowBounce\0\perpendicularWaterBounce\0\perpendicularWoodBounce\0\perpendicularRiotShieldBounce\0\projTrailEffect\\projectileRed\0\projectileGreen\0\projectileBlue\0\guidedMissileType\None\maxSteeringAccel\0\projIgnitionDelay\0\projIgnitionEffect\\projIgnitionSound\\tagFx_preparationEffect\\tagFlash_preparationEffect\\adsTransInTime\0.35\adsTransOutTime\0.35\adsIdleAmount\2\adsIdleSpeed\0.8\adsZoomFov1\50\adsZoomFov2\50\adsZoomFov3\50\adsZoomInFrac\0.75\adsZoomOutFrac\0.4\adsOverlayShader\\adsOverlayShaderLowRes\\adsOverlayReticle\none\adsOverlayInterface\None\adsOverlayWidth\480\adsOverlayHeight\480\adsOverlayAlphaScale\1\adsBobFactor\0.7\adsViewBobMult\0.2\holdBreathToSteady\0\adsAimPitch\0\adsCrosshairInFrac\1\adsCrosshairOutFrac\0.2\adsReloadTransTime\0.45\adsGunKickReducedKickBullets\0\adsGunKickReducedKickPercent\75\adsGunKickPitchMin\5\adsGunKickPitchMax\15\adsGunKickYawMin\-5\adsGunKickYawMax\10\adsGunKickAccel\800\adsGunKickSpeedMax\2000\adsGunKickSpeedDecay\32\adsGunKickStaticDecay\40\adsViewKickPitchMin\-25\adsViewKickPitchMax\60\adsViewKickMinMagnitude\30\adsViewKickYawMin\-55\adsViewKickYawMax\55\adsRecoilReductionRate\0\adsRecoilReductionLimit\0\adsRecoilReturnRate\1\adsViewKickCenterSpeed\1500\adsViewKickCenterDuckedScale\1\adsViewKickCenterProneScale\1\adsSpread\0\antiQuickScopeTime\0.15\antiQuickScopeScale\8\antiQuickScopeSpreadMultiplier\1\antiQuickScopeSpreadMax\25\antiQuickScopeSwayFactor\20\hipSpreadStandMin\4\hipSpreadDuckedMin\3.5\hipSpreadProneMin\3\hipSpreadMax\10\hipSpreadDuckedMax\8\hipSpreadProneMax\6\hipSpreadDecayRate\4\hipSpreadFireAdd\0.6\hipSpreadTurnAdd\0\hipSpreadMoveAdd\5\hipSpreadDuckedDecay\1.05\hipSpreadProneDecay\1.1\hipReticleSidePos\0\hipIdleAmount\15\hipIdleSpeed\5\hipGunKickReducedKickBullets\0\hipGunKickReducedKickPercent\0\hipGunKickPitchMin\5\hipGunKickPitchMax\15\hipGunKickYawMin\5\hipGunKickYawMax\-5\hipGunKickAccel\800\hipGunKickSpeedMax\2000\hipGunKickSpeedDecay\16\hipGunKickStaticDecay\20\hipViewKickPitchMin\10\hipViewKickPitchMax\60\hipViewKickMinMagnitude\30\hipViewKickYawMin\-80\hipViewKickYawMax\80\hipViewKickCenterSpeed\1500\leftArc\0\rightArc\0\topArc\0\bottomArc\0\accuracy\0\aiSpread\0\playerSpread\0\maxVertTurnSpeed\0\maxHorTurnSpeed\0\minVertTurnSpeed\0\minHorTurnSpeed\0\pitchConvergenceTime\0\yawConvergenceTime\0\suppressionTime\0\maxRange\0\animHorRotateInc\0\playerPositionDist\0\stance\stand\useHintString\\dropHintString\\horizViewJitter\0\vertViewJitter\0\cameraShakeScale\0\cameraShakeDuration\0\cameraShakeRadius\0\explosionCameraShakeScale\0\explosionCameraShakeDuration\0\explosionCameraShakeRadius\0\fightDist\1\maxDist\1500\aiVsAiAccuracyGraph\assault_rifle.accu\aiVsPlayerAccuracyGraph\assault_rifle.accu\locNone\1\locHelmet\2\locHead\2\locNeck\2\locTorsoUpper\2\locTorsoMid\1\locTorsoLower\1\locRightArmUpper\2\locRightArmLower\1\locRightHand\1\locLeftArmUpper\2\locLeftArmLower\1\locLeftHand\1\locRightLegUpper\1\locRightLegLower\1\locRightFoot\1\locLeftLegUpper\1\locLeftLegLower\1\locLeftFoot\1\locGun\0\fireRumble\heavygun_fire\meleeImpactRumble\\reloadRumble\\explosionRumble\\tracerType\lmg\enemyTracerType\\adsDofStart\2\adsDofEnd\7\scanSpeed\0\scanAccel\0\scanPauseTime\0\flameTableFirstPerson\\flameTableThirdPerson\\mmsWeapon\0\mmsInScope\0\mmsFOV\25\mmsAspect\1\mmsMaxDist\1200\ikLeftHandIdlePosF\0\ikLeftHandIdlePosR\0\ikLeftHandIdlePosU\0\ikLeftHandOffsetF\0\ikLeftHandOffsetR\0\ikLeftHandOffsetU\1\ikLeftHandRotationP\40\ikLeftHandRotationY\0\ikLeftHandRotationR\0\usingLeftHandProneIK\0\ikLeftHandProneOffsetF\0\ikLeftHandProneOffsetR\0\ikLeftHandProneOffsetU\0\ikLeftHandProneRotationP\0\ikLeftHandProneRotationY\0\ikLeftHandProneRotationR\0\ikLeftHandUiViewerOffsetF\0\ikLeftHandUiViewerOffsetR\-0.5\ikLeftHandUiViewerOffsetU\0.5\ikLeftHandUiViewerRotationP\0\ikLeftHandUiViewerRotationY\0\ikLeftHandUiViewerRotationR\0\parentWeaponName\m60\doGibbing\1\maxGibDistance\6000\altScopeADSTransInTime\0\altScopeADSTransOutTime\0\meleeSwipeEffect\\meleeImpactEffect\\meleeImpactNoBloodEffect\\throwBackType\\camo\camo_m60\customFloat0\0\customFloat1\0\customFloat2\0\customBool0\0\customBool1\0\customBool2\0\attachments\\attachmentUniques\
+	```
+	- `m60_upgraded_zm`
+	```
+	WEAPONFILE\displayName\WEAPON_M60_UPGRADED\AIOverlayDescription\\modeName\\playerAnimType\beltfed\gunModel\t6_wpn_lmg_m60_view\gunModel2\\gunModel3\\gunModel4\\gunModel5\\gunModel6\\gunModel7\\gunModel8\\gunModel9\\gunModel10\\gunModel11\\gunModel12\\gunModel13\\gunModel14\\gunModel15\\gunModel16\\handModel\\hideTags\tag_front_sights
+	tag_rear_sights\notetrackSoundMap\\idleAnim\viewmodel_m60_t6_grip_idle\idleAnimLeft\\emptyIdleAnim\viewmodel_m60_t6_grip_idle\emptyIdleAnimLeft\\fireIntroAnim\\fireAnim\viewmodel_m60_t6_grip_fire\fireAnimLeft\\holdFireAnim\\lastShotAnim\\lastShotAnimLeft\\flourishAnim\\flourishAnimLeft\\detonateAnim\\rechamberAnim\\meleeAnim\\meleeAnimEmpty\\meleeAnim1\\meleeAnim2\\meleeAnim3\\meleeChargeAnim\\meleeChargeAnimEmpty\\reloadAnim\viewmodel_m60_t6_grip_reload\reloadAnimRight\\reloadAnimLeft\\reloadEmptyAnim\viewmodel_m60_t6_grip_reload\reloadEmptyAnimLeft\\reloadStartAnim\\reloadEndAnim\\reloadQuickAnim\\reloadQuickEmptyAnim\\raiseAnim\viewmodel_m60_t6_grip_pullout\dropAnim\viewmodel_m60_t6_grip_putaway\firstRaiseAnim\viewmodel_m60_t6_grip_first_raise\altRaiseAnim\viewmodel_m60_t6_grip_pullout\altDropAnim\viewmodel_m60_t6_grip_putaway\quickRaiseAnim\viewmodel_m60_t6_grip_pullout\quickDropAnim\viewmodel_m60_t6_grip_putaway\emptyRaiseAnim\viewmodel_m60_t6_grip_pullout\emptyDropAnim\viewmodel_m60_t6_grip_putaway\sprintInAnim\viewmodel_m60_t6_grip_sprint_in\sprintLoopAnim\viewmodel_m60_t6_grip_sprint_loop\sprintOutAnim\viewmodel_m60_t6_grip_sprint_out\sprintInEmptyAnim\\sprintLoopEmptyAnim\\sprintOutEmptyAnim\\lowReadyInAnim\\lowReadyLoopAnim\\lowReadyOutAnim\\contFireInAnim\\contFireLoopAnim\\contFireOutAnim\\crawlInAnim\viewmodel_m60_t6_grip_crawl_in\crawlForwardAnim\viewmodel_m60_t6_grip_crawl_forward\crawlBackAnim\viewmodel_m60_t6_grip_crawl_back\crawlRightAnim\viewmodel_m60_t6_grip_crawl_right\crawlLeftAnim\viewmodel_m60_t6_grip_crawl_left\crawlOutAnim\viewmodel_m60_t6_grip_crawl_out\crawlEmptyInAnim\\crawlEmptyForwardAnim\\crawlEmptyBackAnim\\crawlEmptyRightAnim\\crawlEmptyLeftAnim\\crawlEmptyOutAnim\\deployAnim\\nightVisionWearAnim\\nightVisionRemoveAnim\\adsFireAnim\viewmodel_m60_t6_grip_ads_fire\adsLastShotAnim\\adsRechamberAnim\\adsUpAnim\viewmodel_m60_t6_acog_ads_up\adsDownAnim\viewmodel_m60_t6_acog_ads_down\adsUpOtherScopeAnim\\adsFireIntroAnim\\breakdownAnim\\dtp_in\viewmodel_m60_t6_grip_d2p_in\dtp_loop\viewmodel_m60_t6_grip_d2p_loop\dtp_out\viewmodel_m60_t6_grip_d2p_out\dtp_empty_in\\dtp_empty_loop\\dtp_empty_out\\slide_in\\mantleAnim\\sprintCameraAnim\\dtpInCameraAnim\\dtpLoopCameraAnim\\dtpOutCameraAnim\\mantleCameraAnim\\script\\weaponType\bullet\weaponClass\mg\penetrateType\large\impactType\bullet_large\inventoryType\primary\fireType\Full Auto\clipType\bottom\barrelType\Single\offhandClass\None\offhandSlot\None\viewFlashEffect\weapon/muzzleflashes_zmb_ug/fx_zmb_muz_sm_gas_flash_1p\worldFlashEffect\weapon/muzzleflashes/fx_muz_mg_flash_3p\barrelCooldownEffect\\barrelCooldownMinCount\0\viewFlashOffsetF\0\viewFlashOffsetR\0\viewFlashOffsetU\0\worldFlashOffsetF\0\worldFlashOffsetR\0\worldFlashOffsetU\0\pickupSound\fly_generic_pickup_npc\pickupSoundPlayer\fly_generic_pickup_plr\ammoPickupSound\wpn_ammo_pickup_npc\ammoPickupSoundPlayer\wpn_ammo_pickup_plr\projectileSound\\pullbackSound\\pullbackSoundPlayer\\fireSound\wpn_1911_fire_npc_pap\crackSound\\whizbySound\\fireSoundPlayer\wpn_1911_fire_plr_pap\loopFireSound\\loopFireSoundPlayer\\loopFireEndSound\\loopFireEndSoundPlayer\\startFireSound\\stopFireSound\\killcamStartFireSound\\startFireSoundPlayer\\stopFireSoundPlayer\\killcamStartFireSoundPlayer\\lastShotSound\\lastShotSoundPlayer\\emptyFireSound\wpn_generic_dryfire_npc\emptyFireSoundPlayer\wpn_generic_dryfire_plr\meleeSwipeSound\\meleeSwipeSoundPlayer\\meleeHitSound\wpn_melee_hit\meleeMissSound\\rechamberSound\\rechamberSoundPlayer\\reloadSound\\reloadSoundPlayer\\reloadEmptySound\\reloadEmptySoundPlayer\\reloadStartSound\\reloadStartSoundPlayer\\reloadEndSound\\reloadEndSoundPlayer\\rotateLoopSound\\rotateLoopSoundPlayer\\rotateStopSound\\rotateStopSoundPlayer\\deploySound\\deploySoundPlayer\\finishDeploySound\\finishDeploySoundPlayer\\breakdownSound\\breakdownSoundPlayer\\finishBreakdownSound\\finishBreakdownSoundPlayer\\detonateSound\\detonateSoundPlayer\\nightVisionWearSound\\nightVisionWearSoundPlayer\\nightVisionRemoveSound\\nightVisionRemoveSoundPlayer\\raiseSound\fly_generic_raise_npc\raiseSoundPlayer\fly_generic_raise_plr\firstRaiseSound\fly_generic_first_raise_npc\firstRaiseSoundPlayer\fly_generic_first_raise_plr\altSwitchSound\\altSwitchSoundPlayer\\adsRaiseSoundPlayer\fly_generic_ads_plr\adsLowerSoundPlayer\fly_generic_ads_lower_plr\putawaySound\fly_generic_down_npc\putawaySoundPlayer\fly_generic_down_plr\overheatSound\\overheatSoundPlayer\\adsZoomSound\\shellCasing\prj_brass_impact_large\shellCasingPlayer\prj_brass_impact_plr_large\bounceSound\\standMountedWeapdef\\crouchMountedWeapdef\\proneMountedWeapdef\\viewShellEjectEffect\weapon/shellejects/fx_saw\worldShellEjectEffect\weapon/shellejects/fx_saw\viewLastShotEjectEffect\weapon/shellejects/fx_saw\worldLastShotEjectEffect\weapon/shellejects/fx_saw\viewShellEjectOffsetF\0\viewShellEjectOffsetR\0\viewShellEjectOffsetU\0\worldShellEjectOffsetF\0\worldShellEjectOffsetR\0\worldShellEjectOffsetU\0\viewShellEjectRotationP\0\viewShellEjectRotationY\0\viewShellEjectRotationR\0\worldShellEjectRotationP\0\worldShellEjectRotationY\0\worldShellEjectRotationR\0\reticleCenter\\reticleSide\reticle_side_small\reticleCenterSize\4\reticleSideSize\8\reticleMinOfs\0\activeReticleType\None\standMoveF\0\standMoveR\0\standMoveU\0\standRotP\2\standRotY\0\standRotR\-2\duckedOfsF\-1\duckedOfsR\0.8\duckedOfsU\-0.2\duckedMoveF\0\duckedMoveR\0\duckedMoveU\0\duckedSprintOfsF\0\duckedSprintOfsR\0\duckedSprintOfsU\0\duckedSprintRotP\0\duckedSprintRotY\0\duckedSprintRotR\0\duckedSprintBobH\0\duckedSprintBobV\0\duckedSprintScale\0\sprintOfsF\0\sprintOfsR\0\sprintOfsU\0\sprintRotP\0\sprintRotY\0\sprintRotR\0\sprintBobH\1\sprintBobV\1\sprintScale\0.65\lowReadyOfsF\-2\lowReadyOfsR\-1\lowReadyOfsU\-0.1\lowReadyRotP\18\lowReadyRotY\25.1\lowReadyRotR\-30\rideOfsF\-1.8\rideOfsR\-0.5\rideOfsU\-1.7\rideRotP\0\rideRotY\0\rideRotR\0\dtpOfsF\0\dtpOfsR\0\dtpOfsU\0\dtpRotP\0\dtpRotY\0\dtpRotR\0\dtpBobH\0\dtpBobV\0\dtpScale\1\mantleOfsF\0\mantleOfsR\0\mantleOfsU\0\mantleRotP\0\mantleRotY\0\mantleRotR\0\slideOfsF\0\slideOfsR\0\slideOfsU\0\slideRotP\0\slideRotY\0\slideRotR\0\duckedRotP\2\duckedRotY\0\duckedRotR\-2\proneOfsF\-1.3\proneOfsR\0\proneOfsU\0\proneMoveF\0\proneMoveR\0\proneMoveU\0\proneRotP\0\proneRotY\3\proneRotR\-3\strafeMoveF\0\strafeMoveR\0.5\strafeMoveU\0\strafeRotP\0\strafeRotY\0\strafeRotR\3\posMoveRate\6\posProneMoveRate\5\standMoveMinSpeed\0\duckedMoveMinSpeed\0\proneMoveMinSpeed\0\posRotRate\6\posProneRotRate\6\standRotMinSpeed\0\duckedRotMinSpeed\0\proneRotMinSpeed\0\worldModel\t6_wpn_lmg_m60_world\worldModel2\\worldModel3\\worldModel4\\worldModel5\\worldModel6\\worldModel7\\worldModel8\\worldModel9\\worldModel10\\worldModel11\\worldModel12\\worldModel13\\worldModel14\\worldModel15\\worldModel16\\attachViewModel1\t6_attach_optic_colt3x_view\attachViewModel2\\attachViewModel3\\attachViewModel4\\attachViewModel5\t6_attach_grip_view\attachViewModel6\\attachViewModel7\\attachViewModel8\\attachWorldModel1\t6_attach_optic_colt3x_world\attachWorldModel2\\attachWorldModel3\\attachWorldModel4\\attachWorldModel5\t6_attach_grip_world\attachWorldModel6\\attachWorldModel7\\attachWorldModel8\\attachViewModelTag1\j_reload_cover\attachViewModelTag2\\attachViewModelTag3\\attachViewModelTag4\\attachViewModelTag5\\attachViewModelTag6\\attachViewModelTag7\\attachViewModelTag8\\attachWorldModelTag1\\attachWorldModelTag2\\attachWorldModelTag3\\attachWorldModelTag4\\attachWorldModelTag5\\attachWorldModelTag6\\attachWorldModelTag7\\attachWorldModelTag8\\attachViewModelOffsetX1\-2.261\attachViewModelOffsetY1\0\attachViewModelOffsetZ1\0.813\attachViewModelOffsetX2\0\attachViewModelOffsetY2\0\attachViewModelOffsetZ2\0\attachViewModelOffsetX3\0\attachViewModelOffsetY3\0\attachViewModelOffsetZ3\0\attachViewModelOffsetX4\0\attachViewModelOffsetY4\0\attachViewModelOffsetZ4\0\attachViewModelOffsetX5\8.489\attachViewModelOffsetY5\0\attachViewModelOffsetZ5\0.027\attachViewModelOffsetX6\0\attachViewModelOffsetY6\0\attachViewModelOffsetZ6\0\attachViewModelOffsetX7\0\attachViewModelOffsetY7\0\attachViewModelOffsetZ7\0\attachViewModelOffsetX8\0\attachViewModelOffsetY8\0\attachViewModelOffsetZ8\0\attachWorldModelOffsetX1\-9.385\attachWorldModelOffsetY1\-0.029\attachWorldModelOffsetZ1\2.223\attachWorldModelOffsetX2\0\attachWorldModelOffsetY2\0\attachWorldModelOffsetZ2\0\attachWorldModelOffsetX3\0\attachWorldModelOffsetY3\0\attachWorldModelOffsetZ3\0\attachWorldModelOffsetX4\0\attachWorldModelOffsetY4\0\attachWorldModelOffsetZ4\0\attachWorldModelOffsetX5\-0.611\attachWorldModelOffsetY5\-0.029\attachWorldModelOffsetZ5\-2.061\attachWorldModelOffsetX6\0\attachWorldModelOffsetY6\0\attachWorldModelOffsetZ6\0\attachWorldModelOffsetX7\0\attachWorldModelOffsetY7\0\attachWorldModelOffsetZ7\0\attachWorldModelOffsetX8\0\attachWorldModelOffsetY8\0\attachWorldModelOffsetZ8\0\attachViewModelOffsetPitch1\0\attachViewModelOffsetYaw1\0\attachViewModelOffsetRoll1\0\attachViewModelOffsetPitch2\0\attachViewModelOffsetYaw2\0\attachViewModelOffsetRoll2\0\attachViewModelOffsetPitch3\0\attachViewModelOffsetYaw3\0\attachViewModelOffsetRoll3\0\attachViewModelOffsetPitch4\0\attachViewModelOffsetYaw4\0\attachViewModelOffsetRoll4\0\attachViewModelOffsetPitch5\0\attachViewModelOffsetYaw5\0\attachViewModelOffsetRoll5\0\attachViewModelOffsetPitch6\0\attachViewModelOffsetYaw6\0\attachViewModelOffsetRoll6\0\attachViewModelOffsetPitch7\0\attachViewModelOffsetYaw7\0\attachViewModelOffsetRoll7\0\attachViewModelOffsetPitch8\0\attachViewModelOffsetYaw8\0\attachViewModelOffsetRoll8\0\attachWorldModelOffsetPitch1\0\attachWorldModelOffsetYaw1\0\attachWorldModelOffsetRoll1\0\attachWorldModelOffsetPitch2\0\attachWorldModelOffsetYaw2\0\attachWorldModelOffsetRoll2\0\attachWorldModelOffsetPitch3\0\attachWorldModelOffsetYaw3\0\attachWorldModelOffsetRoll3\0\attachWorldModelOffsetPitch4\0\attachWorldModelOffsetYaw4\0\attachWorldModelOffsetRoll4\0\attachWorldModelOffsetPitch5\0\attachWorldModelOffsetYaw5\0\attachWorldModelOffsetRoll5\0\attachWorldModelOffsetPitch6\0\attachWorldModelOffsetYaw6\0\attachWorldModelOffsetRoll6\0\attachWorldModelOffsetPitch7\0\attachWorldModelOffsetYaw7\0\attachWorldModelOffsetRoll7\0\attachWorldModelOffsetPitch8\0\attachWorldModelOffsetYaw8\0\attachWorldModelOffsetRoll8\0\ignoreAttachments\0\stowedModelOffsetsF\0\stowedModelOffsetsR\0\stowedModelOffsetsU\0\stowedModelOffsetsPitch\0\stowedModelOffsetsYaw\0\stowedModelOffsetsRoll\0\worldClipModel\\rocketModel\\mountedModel\\AdditionalMeleeModel\\fireTypeIcon\\hudIcon\menu_mp_weapons_m60\hudIconRatio\2:1\indicatorIcon\\indicatorIconRatio\1:1\ammoCounterIcon\menu_mp_weapons_m60\ammoCounterIconRatio\1:1\ammoCounterClip\Beltfed\startAmmo\4\ammoDisplayName\\ammoName\7.62x51mm m60\clipName\m60\maxAmmo\4\clipSize\200\shotCount\1\sharedAmmoCapName\\sharedAmmoCap\0\unlimitedAmmo\0\ammoCountClipRelative\1\sharedAmmo\1\jamFireTime\0.05\overheatWeapon\0\overheatRate\1\cooldownRate\30\overheatEndVal\25\coolWhileFiring\0\fuelTankWeapon\0\tankLifeTime\0\damage\325\minDamage\275\maxDamageRange\1024\minDamageRange\2400\damage2\0\damage3\0\damage4\0\damage5\0\damageRange2\0\damageRange3\0\damageRange4\0\damageRange5\0\damageDuration\0\damageInterval\0\playerDamage\50\meleeDamage\25\minPlayerDamage\0\destabilizationRateTime\0\destabilizationCurvatureMax\0\destabilizeDistance\0\fireDelay\0\meleeDelay\0.25\meleeChargeDelay\0\spinUpTime\1\spinDownTime\1\spinRate\1\spinLoopSound\\spinLoopSoundPlayer\\startSpinSound\\startSpinSoundPlayer\\stopSpinSound\\stopSpinSoundPlayer\\applySpinPitch\1\introFireTime\0.075\introFireLength\0\fireTime\0.075\flourishTime\0.075\lastFireTime\0\rechamberTime\0.1\rechamberBoltTime\0\holdFireTime\0.1\burstFireDelay\0.2\detonateTime\0\detonateDelay\0\meleeTime\0.7\meleeChargeTime\0\reloadTime\7\reloadShowRocketTime\0\reloadEmptyTime\7\reloadAddTime\5\reloadEmptyAddTime\5\reloadQuickAddTime\0\reloadQuickEmptyAddTime\0\reloadStartTime\0\reloadStartAddTime\0\reloadEndTime\0\reloadQuickTime\0\reloadQuickEmptyTime\0\dropTime\0.6\raiseTime\0.95\altDropTime\0\altRaiseTime\0.35\quickDropTime\0.35\quickRaiseTime\0.75\firstRaiseTime\1.4\emptyRaiseTime\0.95\emptyDropTime\0.6\sprintInTime\0.3\sprintLoopTime\1.5\sprintOutTime\0.45\lowReadyInTime\0.3\lowReadyLoopTime\0.5\lowReadyOutTime\0.3\contFireInTime\0.5\contFireLoopTime\0.5\contFireOutTime\0.5\dtpInTime\0.3\dtpLoopTime\0.5\dtpOutTime\0.3\crawlInTime\0.2\crawlForwardTime\1.3\crawlBackTime\1.15\crawlRightTime\1.2\crawlLeftTime\1.2\crawlOutFireTime\0.08\crawlOutTime\0.2\slideInTime\0.5\deployTime\0.5\breakdownTime\0.5\nightVisionWearTime\0\nightVisionWearTimeFadeOutEnd\0\nightVisionWearTimePowerUp\0\nightVisionRemoveTime\0\nightVisionRemoveTimePowerDown\0\nightVisionRemoveTimeFadeInStart\0\fuseTime\0\aifuseTime\0\lockOnRadius\0\lockOnSpeed\0\requireLockonToFire\0\noAdsWhenMagEmpty\0\avoidDropCleanup\0\stackFire\0\stackFireSpread\0\stackFireAccuracyDecay\0\stackSound\\autoAimRange\1800\aimAssistRange\3200\aimAssistRangeAds\3200\mountableWeapon\0\aimPadding\0\enemyCrosshairRange\1800\crosshairColorChange\1\moveSpeedScale\0.875\adsMoveSpeedScale\1\sprintDurationScale\1\idleCrouchFactor\0.75\idleProneFactor\0.4\gunMaxPitch\8\gunMaxYaw\25\swayMaxAngle\5\swayLerpSpeed\6\swayPitchScale\-2\swayYawScale\-1\swayHorizScale\0.3\swayVertScale\0.3\swayShellShockScale\5\adsSwayMaxAngle\2\adsSwayLerpSpeed\6\adsSwayPitchScale\0.1\adsSwayYawScale\0.1\adsSwayHorizScale\0.12\adsSwayVertScale\0.15\meleeChargeRange\0\rifleBullet\1\armorPiercing\0\boltAction\0\shotsBeforeRechamber\0\useAltTagFlash\0\useAntiLagRewind\0\isCarriedKillstreakWeapon\0\aimDownSight\1\rechamberWhileAds\1\reloadWhileAds\0\adsViewErrorMin\0\adsViewErrorMax\0\clipOnly\0\canUseInVehicle\0\noDropsOrRaises\0\cookOffHold\0\adsFire\0\cancelAutoHolsterWhenEmpty\0\suppressAmmoReserveDisplay\0\laserSight\0\laserSightDuringNightvision\0\bayonet\0\dualWield\0\hideThirdPerson\0\explodeOnGround\0\throwBack\0\retrievable\0\dieOnRespawn\0\noThirdPersonDropsOrRaises\0\continuousFire\0\useAsMelee\0\antiQuickScope\0\noPing\0\forceBounce\0\useDroppedModelAsStowed\0\noQuickDropWhenEmpty\0\keepCrosshairWhenADS\0\useOnlyAltWeaoponHideTagsInAltMode\0\altWeaponAdsOnly\0\altWeaponDisableSwitching\0\killIcon\menu_mp_weapons_m60\killIconRatio\2:1\flipKillIcon\1\dpadIcon\\dpadIconRatio\1:1\noAmmoOnDpadIcon\1\noPartialReload\0\segmentedReload\0\noADSAutoReload\0\reloadAmmoAdd\0\reloadStartAdd\0\attachmentUnique\\altWeapon\\DualWieldWeapon\\grenadeWeapon\\dropAmmoMin\1\dropAmmoMax\2\dropClipAmmoMin\75\dropClipAmmoMax\100\blocksProne\0\silenced\0\dualMag\0\infrared\0\tvguided\0\airburstWeapon\0\perks1\0\perks0\0\isRollingGrenade\0\useBallisticPrediction\0\isValuable\0\isTacticalInsertion\0\isReviveWeapon\0\bUseRigidBodyOnVehicle\0\showIndicator\0\explosionRadius\0\explosionRadiusMin\0\indicatorRadius\0\explosionInnerDamage\0\explosionOuterDamage\0\damageConeAngle\180\projectileSpeed\0\projectileSpeedRelativeUp\0\projectileSpeedUp\0\projectileSpeedForward\0\projectileTakeParentVel\0\projectileActivateDist\0\projectileLifetime\0\timeToAccelerate\0\projectileCurvature\0\projectileModel\\projExplosionType\grenade\projExplosionEffect\\projExplosionEffectForceNormalUp\0\projExplosionEffect2\\projExplosionEffect2ForceNormalUp\0\projExplosionEffect3\\projExplosionEffect3ForceNormalUp\0\projExplosionEffect4\\projExplosionEffect4ForceNormalUp\0\projExplosionEffect5\\projExplosionEffect5ForceNormalUp\0\projExplosionSound\\projDudEffect\\projDudSound\\projImpactExplode\0\sentientImpactExplode\0\explodeWhenStationary\0\bulletImpactExplode\0\mortarShellSound\\tankShellSound\\stickiness\Don't stick\rotateType\Rotate both axis, grenade style\hasDetonator\0\plantable\0\timedDetonation\0\noCrumpleMissile\0\rotate\0\keepRolling\0\holdButtonToThrow\0\offhandHoldIsCancelable\0\freezeMovementWhenFiring\0\lowAmmoWarningThreshold\0.15\explosionTag\\bDisallowAtMatchStart\0\isCameraSensor\0\isAcousticSensor\0\isLaserSensor\0\isHoldUseGrenade\0\parallelDefaultBounce\0\parallelAsphaltBounce\0\parallelBarkBounce\0\parallelBrickBounce\0\parallelCarpetBounce\0\parallelCeramicBounce\0\parallelClothBounce\0\parallelConcreteBounce\0\parallelCushionBounce\0\parallelDirtBounce\0\parallelFleshBounce\0\parallelFoliageBounce\0\parallelFruitBounce\0\parallelGlassBounce\0\parallelGrassBounce\0\parallelGravelBounce\0\parallelIceBounce\0\parallelMetalBounce\0\parallelMudBounce\0\parallelPaintedMetalBounce\0\parallelPaperBounce\0\parallelPlasterBounce\0\parallelPlasticBounce\0\parallelRockBounce\0\parallelRubberBounce\0\parallelSandBounce\0\parallelSnowBounce\0\parallelWaterBounce\0\parallelWoodBounce\0\parallelRiotShieldBounce\0\perpendicularDefaultBounce\0\perpendicularAsphaltBounce\0\perpendicularBarkBounce\0\perpendicularBrickBounce\0\perpendicularCarpetBounce\0\perpendicularCeramicBounce\0\perpendicularClothBounce\0\perpendicularConcreteBounce\0\perpendicularCushionBounce\0\perpendicularDirtBounce\0\perpendicularFleshBounce\0\perpendicularFoliageBounce\0\perpendicularFruitBounce\0\perpendicularGlassBounce\0\perpendicularGrassBounce\0\perpendicularGravelBounce\0\perpendicularIceBounce\0\perpendicularMetalBounce\0\perpendicularMudBounce\0\perpendicularPaintedMetalBounce\0\perpendicularPaperBounce\0\perpendicularPlasterBounce\0\perpendicularPlasticBounce\0\perpendicularRockBounce\0\perpendicularRubberBounce\0\perpendicularSandBounce\0\perpendicularSnowBounce\0\perpendicularWaterBounce\0\perpendicularWoodBounce\0\perpendicularRiotShieldBounce\0\projTrailEffect\\projectileRed\0\projectileGreen\0\projectileBlue\0\guidedMissileType\None\maxSteeringAccel\0\projIgnitionDelay\0\projIgnitionEffect\\projIgnitionSound\\tagFx_preparationEffect\\tagFlash_preparationEffect\\adsTransInTime\0.35\adsTransOutTime\0.35\adsIdleAmount\2\adsIdleSpeed\0.8\adsZoomFov1\50\adsZoomFov2\50\adsZoomFov3\50\adsZoomInFrac\0.75\adsZoomOutFrac\0.4\adsOverlayShader\\adsOverlayShaderLowRes\\adsOverlayReticle\none\adsOverlayInterface\None\adsOverlayWidth\480\adsOverlayHeight\480\adsOverlayAlphaScale\1\adsBobFactor\0.7\adsViewBobMult\0.2\holdBreathToSteady\0\adsAimPitch\0\adsCrosshairInFrac\1\adsCrosshairOutFrac\0.2\adsReloadTransTime\0.45\adsGunKickReducedKickBullets\0\adsGunKickReducedKickPercent\75\adsGunKickPitchMin\5\adsGunKickPitchMax\15\adsGunKickYawMin\-5\adsGunKickYawMax\10\adsGunKickAccel\800\adsGunKickSpeedMax\2000\adsGunKickSpeedDecay\32\adsGunKickStaticDecay\40\adsViewKickPitchMin\-25\adsViewKickPitchMax\60\adsViewKickMinMagnitude\30\adsViewKickYawMin\-55\adsViewKickYawMax\55\adsRecoilReductionRate\0\adsRecoilReductionLimit\0\adsRecoilReturnRate\1\adsViewKickCenterSpeed\1500\adsViewKickCenterDuckedScale\1\adsViewKickCenterProneScale\1\adsSpread\0\antiQuickScopeTime\0.15\antiQuickScopeScale\8\antiQuickScopeSpreadMultiplier\1\antiQuickScopeSpreadMax\25\antiQuickScopeSwayFactor\20\hipSpreadStandMin\4\hipSpreadDuckedMin\3.5\hipSpreadProneMin\3\hipSpreadMax\10\hipSpreadDuckedMax\8\hipSpreadProneMax\6\hipSpreadDecayRate\4\hipSpreadFireAdd\0.6\hipSpreadTurnAdd\0\hipSpreadMoveAdd\5\hipSpreadDuckedDecay\1.05\hipSpreadProneDecay\1.1\hipReticleSidePos\0\hipIdleAmount\15\hipIdleSpeed\5\hipGunKickReducedKickBullets\0\hipGunKickReducedKickPercent\0\hipGunKickPitchMin\5\hipGunKickPitchMax\15\hipGunKickYawMin\5\hipGunKickYawMax\-5\hipGunKickAccel\800\hipGunKickSpeedMax\2000\hipGunKickSpeedDecay\16\hipGunKickStaticDecay\20\hipViewKickPitchMin\10\hipViewKickPitchMax\60\hipViewKickMinMagnitude\30\hipViewKickYawMin\-80\hipViewKickYawMax\80\hipViewKickCenterSpeed\1500\leftArc\0\rightArc\0\topArc\0\bottomArc\0\accuracy\0\aiSpread\0\playerSpread\0\maxVertTurnSpeed\0\maxHorTurnSpeed\0\minVertTurnSpeed\0\minHorTurnSpeed\0\pitchConvergenceTime\0\yawConvergenceTime\0\suppressionTime\0\maxRange\0\animHorRotateInc\0\playerPositionDist\0\stance\stand\useHintString\\dropHintString\\horizViewJitter\0\vertViewJitter\0\cameraShakeScale\0\cameraShakeDuration\0\cameraShakeRadius\0\explosionCameraShakeScale\0\explosionCameraShakeDuration\0\explosionCameraShakeRadius\0\fightDist\1\maxDist\1500\aiVsAiAccuracyGraph\assault_rifle.accu\aiVsPlayerAccuracyGraph\assault_rifle.accu\locNone\1\locHelmet\2\locHead\2\locNeck\2\locTorsoUpper\2\locTorsoMid\1\locTorsoLower\1\locRightArmUpper\2\locRightArmLower\1\locRightHand\1\locLeftArmUpper\2\locLeftArmLower\1\locLeftHand\1\locRightLegUpper\1\locRightLegLower\1\locRightFoot\1\locLeftLegUpper\1\locLeftLegLower\1\locLeftFoot\1\locGun\0\fireRumble\heavygun_fire\meleeImpactRumble\\reloadRumble\\explosionRumble\\tracerType\lmg\enemyTracerType\\adsDofStart\2\adsDofEnd\7\scanSpeed\0\scanAccel\0\scanPauseTime\0\flameTableFirstPerson\\flameTableThirdPerson\\mmsWeapon\0\mmsInScope\0\mmsFOV\25\mmsAspect\1\mmsMaxDist\1200\ikLeftHandIdlePosF\0\ikLeftHandIdlePosR\0\ikLeftHandIdlePosU\0\ikLeftHandOffsetF\0\ikLeftHandOffsetR\0\ikLeftHandOffsetU\1\ikLeftHandRotationP\40\ikLeftHandRotationY\0\ikLeftHandRotationR\0\usingLeftHandProneIK\0\ikLeftHandProneOffsetF\0\ikLeftHandProneOffsetR\0\ikLeftHandProneOffsetU\0\ikLeftHandProneRotationP\0\ikLeftHandProneRotationY\0\ikLeftHandProneRotationR\0\ikLeftHandUiViewerOffsetF\0\ikLeftHandUiViewerOffsetR\-0.5\ikLeftHandUiViewerOffsetU\0.5\ikLeftHandUiViewerRotationP\0\ikLeftHandUiViewerRotationY\0\ikLeftHandUiViewerRotationR\0\parentWeaponName\m60\doGibbing\1\maxGibDistance\6000\altScopeADSTransInTime\0\altScopeADSTransOutTime\0\meleeSwipeEffect\\meleeImpactEffect\\meleeImpactNoBloodEffect\\throwBackType\\camo\camo_m60\customFloat0\0\customFloat1\0\customFloat2\0\customBool0\0\customBool1\0\customBool2\0\attachments\\attachmentUniques\
+	```
+- Save it and go in "`ZM60\english\localizedstrings\` and make a new file called `mod.str`
+- Add the following contents into the `mod.str`
+```
+VERSION             "1"
+CONFIG              "C:/projects/cod/t6/bin/StringEd.cfg"
+FILENOTES           ""
+
+REFERENCE           WEAPON_M60
+LANG_ENGLISH        "M60"
+
+REFERENCE           WEAPON_M60_UPGRADED
+LANG_ENGLISH        "MeatMincer6000"
+
+ENDMARKER
+```
+- `WEAPON_M60` is a variable that'll be assigned a display name (which in this case is `M60`) and `WEAPON_M60_UPGRADED` is the PaP'ed M60 variable where you'll give it a special cheezy name like that one up there
+- I ain't giving it any special name color because I don't feel like it, you can do so if you want though. Just be sure to use the valid colors from this list of all color codes (*Credits to Munnopoly*):
+```
+^0	// Black
+^1	// Red
+^2	// Green
+^3	// Yellow
+^4	// Blue
+^5	// Cyan
+^6	// Pink
+^7	// White
+```
+- For the sounds, export all sounds from `cmn_root.all.sabl` (M60 sounds found within this file) and paste its files into `ZM60\sound\`
+- Next up, make a new file in `ZM60\soundbank\` called `mod.all.aliases.csv` and open it as well as the soundbank file of the fast file that your took your weapon from (`wpn_m60.all.aliases.csv`) and PaP sounds from (`zmb_transit.all.aliases.csv`)
+- For that, first add these starting lines into your `mod.all.aliases.csv`:
+```
+name,file,template,loadspec,secondary,group,vol_min,vol_max,team_vol_mod,dist_min,dist_max,dist_reverb_max,volume_falloff_curve,reverb_falloff_curve,volume_min_falloff_curve,reverb_min_falloff_curve,limit_count,limit_type,entity_limit_count,entity_limit_type,pitch_min,pitch_max,team_pitch_mod,min_priority,max_priority,min_priority_threshold,max_priority_threshold,spatialized,type,loop,randomize_type,probability,start_delay,reverb_send,duck,duck_group,pan,center_send,envelop_min,envelop_max,envelop_percentage,occlusion_level,occlusion_wet_dry,is_big,distance_lpf,move_type,move_time,real_delay,subtitle,mature,doppler,futz,context_type,context_value,compression,timescale,music,fade_in,fade_out,pc_format,pause,stop_on_death,bus,snapshot
+```
+- Now, go in the **next line**, copy-paste all M60 sounds to `mod.all.aliases.csv` from `wpn_m60.all.aliases.csv` (and also PaP 1911 related sounds from, for example `zmb_transit.all.aliases.csv`). These are all the sounds for your soundbank:
+```
+fly_m60_1st_bonk,raw\sound\wpn\lmg\m60\reload\fly_m60_1st_bonk.LN65.pc.snd,,,,grp_foley,13075,18470,,0,5000,5000,default,default,allon,allon,8,priority,8,oldest,31143,34396,,70,70,63,-1,,loaded,nonlooping,volume,-1,0,20,,snp_foley,2d,0,0,0,0,63,,no,yes,none,0,,,,no,0,0,0,,yes,no,0,0,,yes,no,bus_fx,
+fly_m60_2nd_bonk,raw\sound\wpn\lmg\m60\reload\fly_m60_2nd_bonk.LN65.pc.snd,,,,grp_foley,13075,18470,,0,5000,5000,default,default,allon,allon,8,priority,8,oldest,31143,34396,,70,70,63,-1,,loaded,nonlooping,volume,-1,0,20,,snp_foley,2d,0,0,0,0,63,,no,yes,none,0,,,,no,0,0,0,,yes,no,0,0,,yes,no,bus_fx,
+fly_m60_box_off,raw\sound\wpn\lmg\m60\reload\fly_m60_box_off.LN65.pc.snd,,,,grp_foley,13075,18470,,0,5000,5000,default,default,allon,allon,8,priority,8,oldest,31143,34396,,70,70,63,-1,,loaded,nonlooping,volume,-1,0,20,,snp_foley,2d,0,0,0,0,63,,no,yes,none,0,,,,no,0,0,0,,yes,no,0,0,,yes,no,bus_fx,
+fly_m60_box_on,raw\sound\wpn\lmg\m60\reload\fly_m60_box_on.LN65.pc.snd,,,,grp_foley,13075,18470,,0,5000,5000,default,default,allon,allon,8,priority,8,oldest,31143,34396,,70,70,63,-1,,loaded,nonlooping,volume,-1,0,20,,snp_foley,2d,0,0,0,0,63,,no,yes,none,0,,,,no,0,0,0,,yes,no,0,0,,yes,no,bus_fx,
+fly_m60_charge,raw\sound\wpn\lmg\m60\reload\fly_m60_charge.LN65.pc.snd,,,,grp_foley,13075,18470,,0,5000,5000,default,default,allon,allon,8,priority,8,oldest,31143,34396,,70,70,63,-1,,loaded,nonlooping,volume,-1,0,20,,snp_foley,2d,0,0,0,0,63,,no,yes,none,0,,,,no,0,0,0,,yes,no,0,0,,yes,no,bus_fx,
+fly_m60_close,raw\sound\wpn\lmg\m60\reload\fly_m60_close.LN65.pc.snd,,,,grp_foley,13075,18470,,0,5000,5000,default,default,allon,allon,8,priority,8,oldest,31143,34396,,70,70,63,-1,,loaded,nonlooping,volume,-1,0,20,,snp_foley,2d,0,0,0,0,63,,no,yes,none,0,,,,no,0,0,0,,yes,no,0,0,,yes,no,bus_fx,
+fly_m60_futz,raw\sound\wpn\lmg\m60\reload\fly_m60_futz.LN65.pc.snd,,,,grp_foley,13075,18470,,0,5000,5000,default,default,allon,allon,8,priority,8,oldest,31143,34396,,70,70,63,-1,,loaded,nonlooping,volume,-1,0,20,,snp_foley,2d,0,0,0,0,63,,no,yes,none,0,,,,no,0,0,0,,yes,no,0,0,,yes,no,bus_fx,
+fly_m60_lid_close,raw\sound\wpn\lmg\m60\reload\fly_m60_lid_close.LN65.pc.snd,,,,grp_foley,13075,18470,,0,5000,5000,default,default,allon,allon,8,priority,8,oldest,31143,34396,,70,70,63,-1,,loaded,nonlooping,volume,-1,0,20,,snp_foley,2d,0,0,0,0,63,,no,yes,none,0,,,,no,0,0,0,,yes,no,0,0,,yes,no,bus_fx,
+fly_m60_lid_flip,raw\sound\wpn\lmg\m60\reload\fly_m60_lid_flip.LN65.pc.snd,,,,grp_foley,13075,18470,,0,5000,5000,default,default,allon,allon,8,priority,8,oldest,31143,34396,,70,70,63,-1,,loaded,nonlooping,volume,-1,0,20,,snp_foley,2d,0,0,0,0,63,,no,yes,none,0,,,,no,0,0,0,,yes,no,0,0,,yes,no,bus_fx,
+fly_m60_open,raw\sound\wpn\lmg\m60\reload\fly_m60_open.LN65.pc.snd,,,,grp_foley,13075,18470,,0,5000,5000,default,default,allon,allon,8,priority,8,oldest,31143,34396,,70,70,63,-1,,loaded,nonlooping,volume,-1,0,20,,snp_foley,2d,0,0,0,0,63,,no,yes,none,0,,,,no,0,0,0,,yes,no,0,0,,yes,no,bus_fx,
+fly_m60_place_belt,raw\sound\wpn\lmg\m60\reload\fly_m60_place_belt.LN65.pc.snd,,,,grp_foley,13075,18470,,0,5000,5000,default,default,allon,allon,8,priority,8,oldest,31143,34396,,70,70,63,-1,,loaded,nonlooping,volume,-1,0,20,,snp_foley,2d,0,0,0,0,63,,no,yes,none,0,,,,no,0,0,0,,yes,no,0,0,,yes,no,bus_fx,
+fly_m60_pull_belt,raw\sound\wpn\lmg\m60\reload\fly_m60_pull_belt.LN65.pc.snd,,,,grp_foley,13075,18470,,0,5000,5000,default,default,allon,allon,8,priority,8,oldest,31143,34396,,70,70,63,-1,,loaded,nonlooping,volume,-1,0,20,,snp_foley,2d,0,0,0,0,63,,no,yes,none,0,,,,no,0,0,0,,yes,no,0,0,,yes,no,bus_fx,
+fly_scope_zoom,raw\sound\wpn\scope\zoom\wpn_scope_zoom.LN65.pc.snd,,,,grp_foley,11653,11653,,0,5000,5000,default,default,allon,allon,3,oldest,8,oldest,32767,32767,,70,70,63,-1,,loaded,nonlooping,volume,-1,0,20,,snp_never_duck,2d,0,0,0,0,63,,no,yes,none,0,,,,no,0,0,0,,yes,no,0,0,,yes,no,bus_fx,
+wpn_m60_1straise_npc,raw\sound\fly\gear\rattle\fly_cloth_00.LN65.pc.snd,,,,grp_foley,3685,3685,,75,500,500,default,default,allon,allon,4,priority,8,oldest,31107,34515,,15,30,63,-1,,loaded,nonlooping,volume,-1,0,20,,snp_foley,3d,0,25,250,3685,63,,no,yes,none,0,,,,no,0,0,0,,yes,no,0,0,,yes,no,bus_fx,
+wpn_m60_1straise_npc,raw\sound\fly\gear\rattle\fly_cloth_01.LN65.pc.snd,,,,grp_foley,3685,3685,,75,500,500,default,default,allon,allon,4,priority,8,oldest,31107,34515,,15,30,63,-1,,loaded,nonlooping,volume,-1,0,20,,snp_foley,3d,0,25,250,3685,63,,no,yes,none,0,,,,no,0,0,0,,yes,no,0,0,,yes,no,bus_fx,
+wpn_m60_1straise_npc,raw\sound\fly\gear\rattle\fly_cloth_02.LN65.pc.snd,,,,grp_foley,3685,3685,,75,500,500,default,default,allon,allon,4,priority,8,oldest,31107,34515,,15,30,63,-1,,loaded,nonlooping,volume,-1,0,20,,snp_foley,3d,0,25,250,3685,63,,no,yes,none,0,,,,no,0,0,0,,yes,no,0,0,,yes,no,bus_fx,
+wpn_m60_1straise_npc,raw\sound\fly\gear\rattle\fly_cloth_03.LN65.pc.snd,,,,grp_foley,3685,3685,,75,500,500,default,default,allon,allon,4,priority,8,oldest,31107,34515,,15,30,63,-1,,loaded,nonlooping,volume,-1,0,20,,snp_foley,3d,0,25,250,3685,63,,no,yes,none,0,,,,no,0,0,0,,yes,no,0,0,,yes,no,bus_fx,
+wpn_m60_1straise_plr,raw\sound\fly\gear\rattle\fly_cloth_00.LN65.pc.snd,,,,grp_foley,13075,18470,,0,5000,5000,default,default,allon,allon,8,priority,8,oldest,31143,34396,,70,70,63,-1,,loaded,nonlooping,volume,-1,0,20,,snp_foley,2d,0,0,0,0,63,,no,yes,none,0,,,,no,0,0,0,,yes,no,0,0,,yes,no,bus_fx,
+wpn_m60_1straise_plr,raw\sound\fly\gear\rattle\fly_cloth_01.LN65.pc.snd,,,,grp_foley,13075,18470,,0,5000,5000,default,default,allon,allon,8,priority,8,oldest,31143,34396,,70,70,63,-1,,loaded,nonlooping,volume,-1,0,20,,snp_foley,2d,0,0,0,0,63,,no,yes,none,0,,,,no,0,0,0,,yes,no,0,0,,yes,no,bus_fx,
+wpn_m60_1straise_plr,raw\sound\fly\gear\rattle\fly_cloth_02.LN65.pc.snd,,,,grp_foley,13075,18470,,0,5000,5000,default,default,allon,allon,8,priority,8,oldest,31143,34396,,70,70,63,-1,,loaded,nonlooping,volume,-1,0,20,,snp_foley,2d,0,0,0,0,63,,no,yes,none,0,,,,no,0,0,0,,yes,no,0,0,,yes,no,bus_fx,
+wpn_m60_1straise_plr,raw\sound\fly\gear\rattle\fly_cloth_03.LN65.pc.snd,,,,grp_foley,13075,18470,,0,5000,5000,default,default,allon,allon,8,priority,8,oldest,31143,34396,,70,70,63,-1,,loaded,nonlooping,volume,-1,0,20,,snp_foley,2d,0,0,0,0,63,,no,yes,none,0,,,,no,0,0,0,,yes,no,0,0,,yes,no,bus_fx,
+wpn_m60_belt_npc,raw\sound\wpn\lmg\mk48\plr\belt\wpn_mk48_fire_plr_belt.LN65.pc.snd,,,wpn_m60_fire_npc_dist,grp_weapon,1467,1467,,200,350,350,default,default,allon,rcurve1,10,priority,3,oldest,30927,34715,,50,90,89,-1,,loaded,nonlooping,variant,-1,0,3685,,snp_wpn_3p,3d,0,0,0,0,63,,no,no,none,0,,,,no,0,0,0,,yes,no,0,0,,yes,no,bus_fx,
+wpn_m60_belt_plr,raw\sound\wpn\lmg\mk48\plr\belt\wpn_mk48_fire_plr_belt.LN65.pc.snd,,,wpn_m60_decay,grp_weapon,3685,3685,,0,5000,5000,default,default,allon,allon,8,priority,3,oldest,32767,32767,,90,90,63,-1,,loaded,nonlooping,volume,-1,0,6553,,snp_wpn_1p,2d,0,0,0,0,63,,no,no,none,0,,,,no,0,0,0,,yes,no,0,0,,yes,no,bus_fx,
+wpn_m60_decay,raw\sound\wpn\assault\decay\ext\wpn_assault_decay_ext.LN65.pc.snd,,,wpn_m60_reflection_l,grp_weapon,1467,1467,,0,5000,5000,default,default,allon,allon,3,oldest,8,oldest,32767,32767,,90,90,63,-1,,loaded,nonlooping,volume,-1,75,368,,snp_wpn_1p,2d,0,0,0,0,63,,no,no,none,0,,,,no,0,2155298321,3434048311,,yes,no,0,0,,yes,no,bus_fx,
+wpn_m60_decay,raw\sound\wpn\assault\decay\int\wpn_assault_decay_int.LN65.pc.snd,,,,grp_weapon,1467,1467,,0,5000,5000,default,default,allon,allon,3,oldest,8,oldest,32767,32767,,90,90,63,-1,,loaded,nonlooping,volume,-1,0,368,,snp_wpn_1p,2d,0,0,0,0,63,,no,no,none,0,,,,no,0,2155298321,1609388568,,yes,no,0,0,,yes,no,bus_fx,
+wpn_m60_decay_npc,raw\sound\wpn\assault\decay\ext\wpn_assault_decay_ext.LN65.pc.snd,,,,grp_weapon,4639,4639,,50,900,900,default,default,allon,rcurve1,3,priority,1,oldest,30927,34715,,20,70,38,-1,,loaded,nonlooping,volume,-1,0,368,,snp_wpn_3p,3d,0,0,0,0,63,,no,no,none,0,,,,no,0,2155298321,3434048311,,yes,no,0,0,,yes,no,bus_fx,
+wpn_m60_decay_npc,raw\sound\wpn\assault\decay\int\wpn_assault_decay_int.LN65.pc.snd,,,,grp_weapon,1467,1467,,50,900,900,default,default,allon,rcurve1,3,priority,1,oldest,30927,34715,,20,70,38,-1,,loaded,nonlooping,volume,-1,0,368,,snp_wpn_3p,3d,0,0,0,0,63,,no,no,none,0,,,,no,0,2155298321,1609388568,,yes,no,0,0,,yes,no,bus_fx,
+wpn_m60_dryfire_npc,raw\sound\wpn\lmg\dry_fire\npc\dry_fire_00.LN65.pc.snd,,,,grp_weapon,11653,11653,,900,900,901,alloff,default,cosdelay,cosdelay,8,priority,2,oldest,30927,34715,,50,90,63,-52,,loaded,nonlooping,variant,-1,0,2072,,snp_wpn_3p,3d,0,0,0,0,63,,no,no,none,0,,,,no,0,0,0,,yes,no,0,0,,yes,no,bus_fx,
+wpn_m60_dryfire_plr,raw\sound\wpn\lmg\dry_fire\plr\dry_fire_00.LN65.pc.snd,,,,grp_weapon,29273,29273,,0,5000,5000,default,default,allon,allon,2,oldest,8,oldest,32767,32767,,90,90,63,-1,,loaded,nonlooping,volume,-1,0,2072,,snp_wpn_1p,2d,0,0,0,0,63,,no,no,none,0,,,,no,0,0,0,,yes,no,0,0,,yes,no,bus_fx,
+wpn_m60_fire_npc,raw\sound\wpn\lmg\mk48\plr\shot\wpn_mk48_fire_plr.LN65.pc.snd,,,wpn_m60_LFE_npc,grp_weapon,11653,11653,,900,900,901,alloff,default,cosdelay,cosdelay,8,priority,2,oldest,27553,38966,,50,90,63,-52,,loaded,nonlooping,variant,-1,0,2072,,snp_wpn_3p,3d,0,0,0,0,63,,no,no,none,0,,,,no,0,0,0,,yes,no,0,0,,yes,no,bus_fx,
+wpn_m60_fire_npc_dist,raw\sound\wpn\dist_guns\lmg\wpn_lmg_dist_00.LN65.pc.snd,,,wpn_m60_decay_npc,grp_weapon,11653,11653,,900,6000,12500,default,allon,sindelay,sindelay,8,priority,3,oldest,27553,38966,,90,40,63,-1,,loaded,nonlooping,,-1,0,6553,,snp_wpn_3p,3d,0,0,0,0,63,,no,no,none,0,,,,no,0,0,0,,yes,no,0,0,,yes,no,bus_fx,
+wpn_m60_fire_npc_dist,raw\sound\wpn\dist_guns\lmg\wpn_lmg_dist_01.LN65.pc.snd,,,wpn_m60_decay_npc,grp_weapon,11653,11653,,900,6000,12500,default,allon,sindelay,sindelay,8,priority,3,oldest,27553,38966,,90,40,63,-1,,loaded,nonlooping,,-1,0,6553,,snp_wpn_3p,3d,0,0,0,0,63,,no,no,none,0,,,,no,0,0,0,,yes,no,0,0,,yes,no,bus_fx,
+wpn_m60_fire_npc_dist,raw\sound\wpn\dist_guns\lmg\wpn_lmg_dist_02.LN65.pc.snd,,,wpn_m60_decay_npc,grp_weapon,11653,11653,,900,6000,12500,default,allon,sindelay,sindelay,8,priority,3,oldest,27553,38966,,90,40,63,-1,,loaded,nonlooping,,-1,0,6553,,snp_wpn_3p,3d,0,0,0,0,63,,no,no,none,0,,,,no,0,0,0,,yes,no,0,0,,yes,no,bus_fx,
+wpn_m60_fire_plr,raw\sound\wpn\lmg\mk48\plr\shot\wpn_mk48_fire_plr.LN65.pc.snd,,,wpn_m60_LFE,grp_weapon,29273,29273,,0,5000,5000,default,default,allon,allon,2,oldest,8,oldest,30927,34715,,90,90,63,-1,,loaded,nonlooping,volume,-1,0,2072,,snp_wpn_1p,2d,0,0,0,0,63,,no,no,none,0,,,,no,0,0,0,,yes,no,0,0,,yes,no,bus_fx,
+wpn_m60_LFE,raw\sound\wpn\lmg\mk48\plr\lfe\wpn_mk48_lfe.LN65.pc.snd,,,wpn_m60_belt_plr,grp_wpn_lfe,13075,13075,,0,5000,5000,default,default,allon,allon,8,priority,2,oldest,32767,32767,,85,90,63,-1,,loaded,nonlooping,volume,-1,0,0,,snp_wpn_1p,2d,0,0,0,0,63,,no,no,none,0,,,,no,0,0,0,,no,no,0,0,,yes,no,bus_hdrfx,
+wpn_m60_LFE_npc,raw\sound\wpn\lmg\mk48\plr\lfe\wpn_mk48_lfe.LN65.pc.snd,,,wpn_m60_belt_npc,grp_wpn_lfe,6553,6553,,125,550,550,default,default,allon,allon,3,priority,1,oldest,32767,32767,,40,90,63,-65,,loaded,nonlooping,volume,-1,0,0,,snp_wpn_3p,3d,0,0,0,0,63,,no,no,none,0,,,,no,0,0,0,,no,no,0,0,,yes,no,bus_hdrfx,
+wpn_m60_pickup_npc,raw\sound\fly\pickups\weapon\fly_weapon_pickup_00.LN65.pc.snd,,,,grp_foley,3685,3685,,75,500,500,default,default,allon,allon,2,priority,1,reject,31834,33727,,15,30,63,-1,,loaded,nonlooping,volume,-1,0,20,,snp_foley,3d,0,25,250,3685,63,,no,yes,none,0,,,,no,0,0,0,,yes,no,0,0,,yes,no,bus_fx,
+wpn_m60_pickup_npc,raw\sound\fly\pickups\weapon\fly_weapon_pickup_01.LN65.pc.snd,,,,grp_foley,3685,3685,,75,500,500,default,default,allon,allon,2,priority,1,reject,31834,33727,,15,30,63,-1,,loaded,nonlooping,volume,-1,0,20,,snp_foley,3d,0,25,250,3685,63,,no,yes,none,0,,,,no,0,0,0,,yes,no,0,0,,yes,no,bus_fx,
+wpn_m60_pickup_plr,raw\sound\fly\pickups\weapon\fly_weapon_pickup_00.LN65.pc.snd,,,,grp_foley,3685,3685,,0,5000,5000,default,default,allon,allon,1,reject,8,oldest,31143,34396,,70,70,63,-1,,loaded,nonlooping,volume,-1,0,20,,snp_foley,2d,0,0,0,0,63,,no,yes,none,0,,,,no,0,0,0,,yes,no,0,0,,yes,no,bus_fx,
+wpn_m60_pickup_plr,raw\sound\fly\pickups\weapon\fly_weapon_pickup_01.LN65.pc.snd,,,,grp_foley,3685,3685,,0,5000,5000,default,default,allon,allon,1,reject,8,oldest,31143,34396,,70,70,63,-1,,loaded,nonlooping,volume,-1,0,20,,snp_foley,2d,0,0,0,0,63,,no,yes,none,0,,,,no,0,0,0,,yes,no,0,0,,yes,no,bus_fx,
+wpn_m60_raise_npc,raw\sound\fly\gear\rattle\fly_cloth_00.LN65.pc.snd,,,,grp_foley,3685,3685,,75,500,500,default,default,allon,allon,4,priority,8,oldest,31107,34515,,15,30,63,-1,,loaded,nonlooping,volume,-1,0,20,,snp_foley,3d,0,25,250,3685,63,,no,yes,none,0,,,,no,0,0,0,,yes,no,0,0,,yes,no,bus_fx,
+wpn_m60_raise_npc,raw\sound\fly\gear\rattle\fly_cloth_01.LN65.pc.snd,,,,grp_foley,3685,3685,,75,500,500,default,default,allon,allon,4,priority,8,oldest,31107,34515,,15,30,63,-1,,loaded,nonlooping,volume,-1,0,20,,snp_foley,3d,0,25,250,3685,63,,no,yes,none,0,,,,no,0,0,0,,yes,no,0,0,,yes,no,bus_fx,
+wpn_m60_raise_npc,raw\sound\fly\gear\rattle\fly_cloth_02.LN65.pc.snd,,,,grp_foley,3685,3685,,75,500,500,default,default,allon,allon,4,priority,8,oldest,31107,34515,,15,30,63,-1,,loaded,nonlooping,volume,-1,0,20,,snp_foley,3d,0,25,250,3685,63,,no,yes,none,0,,,,no,0,0,0,,yes,no,0,0,,yes,no,bus_fx,
+wpn_m60_raise_npc,raw\sound\fly\gear\rattle\fly_cloth_03.LN65.pc.snd,,,,grp_foley,3685,3685,,75,500,500,default,default,allon,allon,4,priority,8,oldest,31107,34515,,15,30,63,-1,,loaded,nonlooping,volume,-1,0,20,,snp_foley,3d,0,25,250,3685,63,,no,yes,none,0,,,,no,0,0,0,,yes,no,0,0,,yes,no,bus_fx,
+wpn_m60_raise_plr,raw\sound\fly\gear\rattle\fly_cloth_00.LN65.pc.snd,,,,grp_foley,13075,18470,,0,5000,5000,default,default,allon,allon,8,priority,8,oldest,31143,34396,,70,70,63,-1,,loaded,nonlooping,volume,-1,0,20,,snp_foley,2d,0,0,0,0,63,,no,yes,none,0,,,,no,0,0,0,,yes,no,0,0,,yes,no,bus_fx,
+wpn_m60_raise_plr,raw\sound\fly\gear\rattle\fly_cloth_01.LN65.pc.snd,,,,grp_foley,13075,18470,,0,5000,5000,default,default,allon,allon,8,priority,8,oldest,31143,34396,,70,70,63,-1,,loaded,nonlooping,volume,-1,0,20,,snp_foley,2d,0,0,0,0,63,,no,yes,none,0,,,,no,0,0,0,,yes,no,0,0,,yes,no,bus_fx,
+wpn_m60_raise_plr,raw\sound\fly\gear\rattle\fly_cloth_02.LN65.pc.snd,,,,grp_foley,13075,18470,,0,5000,5000,default,default,allon,allon,8,priority,8,oldest,31143,34396,,70,70,63,-1,,loaded,nonlooping,volume,-1,0,20,,snp_foley,2d,0,0,0,0,63,,no,yes,none,0,,,,no,0,0,0,,yes,no,0,0,,yes,no,bus_fx,
+wpn_m60_raise_plr,raw\sound\fly\gear\rattle\fly_cloth_03.LN65.pc.snd,,,,grp_foley,13075,18470,,0,5000,5000,default,default,allon,allon,8,priority,8,oldest,31143,34396,,70,70,63,-1,,loaded,nonlooping,volume,-1,0,20,,snp_foley,2d,0,0,0,0,63,,no,yes,none,0,,,,no,0,0,0,,yes,no,0,0,,yes,no,bus_fx,
+wpn_m60_reflection_l,raw\sound\wpn\common\early_reflection\4000\wpn_mp7_reflection_4000_l.LN65.pc.snd,,,wpn_m60_reflection_r,grp_weapon,825,825,,25,900,900,default,default,allon,allon,8,priority,4,priority,32129,33416,,20,40,63,-1,,loaded,nonlooping,variant,-1,250,65,,snp_wpn_3p,3d,0,0,0,0,63,,no,no,left_shot,7000,,,,no,0,0,0,,yes,no,0,0,,yes,no,bus_fx,
+wpn_m60_reflection_r,raw\sound\wpn\common\early_reflection\4000\wpn_mp7_reflection_4000_r.LN65.pc.snd,,,,grp_weapon,825,825,,25,900,900,default,default,allon,allon,8,priority,4,priority,32129,33416,,20,40,63,-1,,loaded,nonlooping,variant,-1,250,65,,snp_wpn_3p,3d,0,0,0,0,63,,no,no,right_shot,7000,,,,no,0,0,0,,yes,no,0,0,,yes,no,bus_fx,
+wpn_m60_silencer_fire_npc,raw\sound\wpn\lmg\lsat\plr\shot\silenced\wpn_lsat_sil_shot_plr.LN65.pc.snd,,,wpn_m60_silencer_LFE_npc,grp_weapon,11653,11653,,900,900,901,alloff,default,cosdelay,cosdelay,8,priority,2,oldest,31834,33727,,40,90,63,-52,,loaded,nonlooping,volume,-1,0,0,,snp_wpn_3p,3d,0,0,0,0,63,,no,no,none,0,,,,no,0,0,0,,yes,no,0,0,,yes,no,bus_fx,
+wpn_m60_silencer_fire_npc_decay,raw\sound\wpn\assault\decay\int\silenced\wpn_aslt_decay_silenced_int.LN65.pc.snd,,,,grp_weapon,1467,1467,,50,900,900,default,default,allon,rcurve1,3,priority,1,oldest,30927,34715,,20,70,38,-1,,loaded,nonlooping,volume,-1,0,368,,snp_wpn_3p,3d,0,0,0,0,63,,no,no,none,0,,,,no,0,2155298321,1609388568,,yes,no,0,0,,yes,no,bus_fx,
+wpn_m60_silencer_fire_npc_decay,raw\sound\wpn\pistol\decay\ext\silenced\wpn_pistol_decay_silenced_ext.LN65.pc.snd,,,,grp_weapon,4639,4639,,50,900,900,default,default,allon,rcurve1,3,priority,1,oldest,30927,34715,,20,70,38,-1,,loaded,nonlooping,volume,-1,0,368,,snp_wpn_3p,3d,0,0,0,0,63,,no,no,none,0,,,,no,0,2155298321,3434048311,,yes,no,0,0,,yes,no,bus_fx,
+wpn_m60_silencer_fire_plr,raw\sound\wpn\lmg\lsat\plr\shot\silenced\wpn_lsat_sil_shot_plr.LN65.pc.snd,,,wpn_m60_silencer_LFE,grp_weapon,29273,29273,,0,5000,5000,default,default,allon,allon,3,oldest,8,oldest,31834,33727,,90,90,63,-1,,loaded,nonlooping,volume,-1,0,0,,snp_wpn_1p,2d,0,0,0,0,63,,no,no,none,0,,,,no,0,0,0,,yes,no,0,0,,yes,no,bus_fx,
+wpn_m60_silencer_fire_plr_decay,raw\sound\wpn\assault\decay\int\silenced\wpn_aslt_decay_silenced_int.LN65.pc.snd,,,,grp_weapon,9257,9257,,0,5000,5000,default,default,allon,allon,3,oldest,8,oldest,31834,33727,,90,90,63,-1,,loaded,nonlooping,volume,-1,0,3685,,snp_wpn_1p,2d,0,0,0,0,63,,no,no,none,0,,,,no,0,2155298321,1609388568,,yes,no,0,0,,yes,no,bus_fx,
+wpn_m60_silencer_fire_plr_decay,raw\sound\wpn\pistol\decay\ext\silenced\wpn_pistol_decay_silenced_ext.LN65.pc.snd,,,,grp_weapon,9257,9257,,0,5000,5000,default,default,allon,allon,3,oldest,8,oldest,31834,33727,,90,90,63,-1,,loaded,nonlooping,volume,-1,0,2072,,snp_wpn_1p,2d,0,0,0,0,63,,no,no,none,0,,,,no,0,2155298321,3434048311,,yes,no,0,0,,yes,no,bus_fx,
+wpn_m60_silencer_lfe,raw\sound\wpn\smg\mp7\plr\lfe\wpn_mp7_fire_lfe.LN65.pc.snd,,,wpn_m60_silencer_fire_plr_decay,grp_wpn_lfe,13075,13075,,0,5000,5000,default,default,allon,allon,8,priority,2,oldest,32767,32767,,85,90,63,-1,,loaded,nonlooping,volume,-1,0,0,,snp_wpn_1p,2d,0,0,0,0,63,,no,no,none,0,,,,no,0,0,0,,no,no,0,0,,yes,no,bus_hdrfx,
+wpn_m60_silencer_LFE_npc,raw\sound\wpn\smg\mp7\plr\lfe\wpn_mp7_fire_lfe.LN65.pc.snd,,,wpn_m60_silencer_fire_npc_decay,grp_wpn_lfe,7353,7353,,25,225,225,default,default,allon,allon,3,priority,1,oldest,32767,32767,,40,90,63,-65,,loaded,nonlooping,volume,-1,0,0,,snp_wpn_3p,3d,0,0,0,0,63,,no,no,none,0,,,,no,0,0,0,,no,no,0,0,,yes,no,bus_hdrfx,
+wpn_1911_fire_plr_pap,raw\sound\wpn\pap\pap_shot_st.LN65.pc.snd,,,wpn_1911_flux_l_plr_pap,grp_weapon,14671,14671,,0,5000,5000,default,default,allon,allon,1,oldest,8,oldest,32767,32767,,90,90,63,-1,,loaded,nonlooping,volume,-1,0,2072,,snp_wpn_1p,2d,0,0,0,0,63,,no,no,none,0,,,,no,0,0,0,,yes,no,0,0,,yes,no,bus_hdrfx,
+wpn_1911_fire_plr_rh,raw\sound\wpn\pistol\fnp45\plr\shot\wpn_fnp45_fire_plr.LN65.pc.snd,,,wpn_1911_LFE,grp_weapon,20723,20723,,0,5000,5000,default,default,allon,allon,2,oldest,8,oldest,32767,32767,,90,90,63,-1,,loaded,nonlooping,volume,-1,0,1165,,snp_wpn_1p,2d,0,0,0,0,63,,no,no,none,0,,,,no,0,0,0,,yes,no,0,0,,yes,no,bus_fx,
+wpn_1911_dryfire_npc,raw\sound\wpn\smg\dry_fire\plr\dry_fire_plr.LN65.pc.snd,,,,grp_weapon,11653,11653,,900,900,900,alloff,default,cosdelay,cosdelay,6,priority,2,oldest,27857,38541,,20,90,63,-52,,loaded,nonlooping,volume,-1,0,368,,snp_wpn_3p,3d,0,0,0,0,63,,no,no,none,0,,,,no,0,0,0,,yes,no,0,0,,yes,no,bus_fx,
+wpn_1911_dryfire_plr,raw\sound\wpn\smg\dry_fire\plr\dry_fire_plr.LN65.pc.snd,,,,grp_weapon,20723,20723,,0,5000,5000,default,default,allon,allon,2,oldest,8,oldest,32767,32767,,90,90,63,-1,,loaded,nonlooping,volume,-1,0,1165,,snp_wpn_1p,2d,0,0,0,0,63,,no,no,none,0,,,,no,0,0,0,,yes,no,0,0,,yes,no,bus_fx,
+wpn_1911_fire_npc,raw\sound\wpn\pistol\fiveseven\plr\shot\wpn_fiveseven_shot_plr.LN65.pc.snd,,,wpn_1911_fire_npc_dist,grp_weapon,11653,11653,,900,900,900,alloff,default,cosdelay,cosdelay,6,priority,2,oldest,32297,33243,,20,90,63,-52,,loaded,nonlooping,,-1,0,368,,snp_wpn_3p,3d,0,0,0,0,76,,no,no,none,0,,,,no,0,0,0,,yes,no,0,0,,yes,no,bus_fx,
+```
+- Save the `mod.all.aliases.csv`
+- To precache our weapon, make a new file called `precache.gsc` in `ZM60\scripts\zm\` (`precache` can be named something else), open it using notepad and copy-paste this text into it:
+```
+#include maps\mp_utility;
+#include common_scripts\utility;
+#include maps\mp\zombies_zm_utility;
+
+init()
+{
+	precacheitem( "m60_zm" );
+	precacheitem( "m60_upgraded_zm" );
+}
+```
+- Save this file. No script compiling required
+- Now you'll have to add map GSC/CSC files from Zombies maps patch fast files that include weapons. The CSC file includes weapon in box and GSC makes the weapon PaP-able. You'll also have to include only the required threads.
+- For ease of access, you can [download](https://mega.nz/file/Mi9WWAIZ#SqlqUOje7f-1hGMDZqyrl3KCbJ0FaWKoDV7IsTjfvX8) the edited ones (credits to Sehteria)
+- In each of the CSC files you'll have to include these:
+	- In `include_weapons()` thread:
+	```
+	    include_weapon( "m60_zm" );
+	    include_weapon( "m60_upgraded_zm", 0 );
+	```
+- And in each of the GSC files, add:
+	- In `include_weapons()` thread:
+	```
+	    include_weapon( "m60_zm" );
+	    include_weapon( "m60_upgraded_zm", 0 );
+	```
+	- In `custom_add_weapons()` thread:
+	```
+	    add_zombie_weapon( "m60_zm", "m60_upgraded_zm", &"WEAPON_M60", 50, "", "", undefined );
+	```
+- For PaP camos, first copy the `camo_m60.json` from `weapons!m60_sp.ff` and add it your mod's `camo` folder. In this you'll need to add MOTD and Origins PaP camos
+- An important thing to note is that **4th** " `materials": [` index is for **Victus maps** and **Nuketown** PaP camo, **9th** is for **MOTD** and **13th** is for **Origins**. You'll have to do this by making new indexes and taking Origins and MOTD weapons as a reference
+- The weapon coverage is a bit complex so I added abit more stuff here than normal. Mine looks something like this:
+```
+{
+    "_type": "weaponCamo",
+    "_version": 1,
+    "camoMaterials": [
+        {
+            "materials": [
+                {
+                    "materialOverrides": [
+                        {
+                            "baseMaterial": "mc/mtl_t6_wpn_lmg_m60_camo1",
+                            "camoMaterial": "mc/mtl_weapon_camo_gold"
+                        }
+                    ],
+                    "shaderConsts": [
+                        10.0,
+                        10.0,
+                        0.7799999713897705,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "useColorMap": false,
+                    "useNormalMap": true,
+                    "useSpecularMap": true
+                },
+                {
+                    "materialOverrides": [
+                        {
+                            "baseMaterial": "mc/mtl_t6_wpn_lmg_m60_camo2",
+                            "camoMaterial": "mc/mtl_weapon_camo_gold_alt"
+                        }
+                    ],
+                    "shaderConsts": [
+                        10.0,
+                        10.0,
+                        0.7200000286102295,
+                        0.6899999976158142,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "useColorMap": false,
+                    "useNormalMap": true,
+                    "useSpecularMap": true
+                }
+            ]
+        },
+        {
+            "materials": [
+                {
+                    "materialOverrides": [
+                        {
+                            "baseMaterial": "mc/mtl_t6_wpn_lmg_m60_camo1",
+                            "camoMaterial": "mc/mtl_weapon_camo_carbon_fiber"
+                        }
+                    ],
+                    "shaderConsts": [
+                        10.0,
+                        10.0,
+                        0.20999999344348907,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "useColorMap": false,
+                    "useNormalMap": true,
+                    "useSpecularMap": true
+                },
+                {
+                    "materialOverrides": [
+                        {
+                            "baseMaterial": "mc/mtl_t6_wpn_lmg_m60_camo2",
+                            "camoMaterial": "mc/mtl_weapon_camo_carbon_fiber_alt"
+                        }
+                    ],
+                    "shaderConsts": [
+                        10.0,
+                        10.0,
+                        0.38999998569488525,
+                        0.3100000023841858,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "useColorMap": false,
+                    "useNormalMap": true,
+                    "useSpecularMap": true
+                }
+            ]
+        },
+        {
+            "materials": [
+                {
+                    "materialOverrides": [],
+                    "shaderConsts": [
+                        8.0,
+                        8.0,
+                        0.0,
+                        1.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "useColorMap": false,
+                    "useNormalMap": false,
+                    "useSpecularMap": false
+                },
+                {
+                    "materialOverrides": [],
+                    "shaderConsts": [
+                        1.0,
+                        1.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "useColorMap": false,
+                    "useNormalMap": true,
+                    "useSpecularMap": false
+                }
+            ]
+        },
+        {
+            "materials": [
+                {
+                    "materialOverrides": [
+                        {
+                            "baseMaterial": "mc/mtl_t6_wpn_lmg_m60_camo1",
+                            "camoMaterial": "mc/mtl_weapon_camo_zombies"
+                        },
+                        {
+                            "baseMaterial": "mc/mtl_t6_wpn_lmg_m60_camo2",
+                            "camoMaterial": "mc/mtl_weapon_camo_zombies_1"
+                        },
+                        {
+                            "baseMaterial": "mc/mtl_t6_wpn_lmg_m60_camo3",
+                            "camoMaterial": "mc/mtl_weapon_camo_zombies_2"
+                        }
+                    ],
+                    "shaderConsts": [
+                        3.0,
+                        3.0,
+                        0.0,
+                        1.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "useColorMap": false,
+                    "useNormalMap": true,
+                    "useSpecularMap": false
+                }
+            ]
+        },
+        {
+            "materials": [
+                {
+                    "materialOverrides": [],
+                    "shaderConsts": [
+                        1.0,
+                        1.0,
+                        0.0,
+                        1.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "useColorMap": false,
+                    "useNormalMap": true,
+                    "useSpecularMap": true
+                },
+                {
+                    "materialOverrides": [],
+                    "shaderConsts": [
+                        1.0,
+                        1.0,
+                        0.0,
+                        1.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "useColorMap": false,
+                    "useNormalMap": true,
+                    "useSpecularMap": true
+                }
+            ]
+        },
+        {
+            "materials": [
+                {
+                    "materialOverrides": [],
+                    "shaderConsts": [
+                        1.0,
+                        1.0,
+                        1.0,
+                        1.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "useColorMap": false,
+                    "useNormalMap": false,
+                    "useSpecularMap": true
+                },
+                {
+                    "materialOverrides": [],
+                    "shaderConsts": [
+                        1.0,
+                        1.0,
+                        0.0,
+                        1.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "useColorMap": false,
+                    "useNormalMap": true,
+                    "useSpecularMap": true
+                }
+            ]
+        },
+        {
+            "materials": [
+                {
+                    "materialOverrides": [],
+                    "shaderConsts": [
+                        1.0,
+                        1.0,
+                        0.0,
+                        1.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "useColorMap": false,
+                    "useNormalMap": true,
+                    "useSpecularMap": true
+                },
+                {
+                    "materialOverrides": [],
+                    "shaderConsts": [
+                        1.0,
+                        1.0,
+                        0.0,
+                        1.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "useColorMap": false,
+                    "useNormalMap": true,
+                    "useSpecularMap": true
+                }
+            ]
+        },
+        {
+            "materials": [
+                {
+                    "materialOverrides": [],
+                    "shaderConsts": [
+                        1.0,
+                        1.0,
+                        1.0,
+                        1.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "useColorMap": false,
+                    "useNormalMap": true,
+                    "useSpecularMap": true
+                },
+                {
+                    "materialOverrides": [],
+                    "shaderConsts": [
+                        10.0,
+                        10.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "useColorMap": false,
+                    "useNormalMap": true,
+                    "useSpecularMap": true
+                }
+            ]
+        },
+        {
+            "materials": [
+                {
+                    "materialOverrides": [
+                        {
+                            "baseMaterial": "mc/mtl_t6_wpn_lmg_m60_camo1",
+                            "camoMaterial": "mc/mtl_weapon_camo_zmb_dlc2"
+                        }
+                    ],
+                    "shaderConsts": [
+                        1.0,
+                        1.0,
+                        0.0,
+                        1.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "useColorMap": false,
+                    "useNormalMap": true,
+                    "useSpecularMap": true
+                },
+                {
+                    "materialOverrides": [
+                        {
+                            "baseMaterial": "mc/mtl_t6_wpn_lmg_m60_camo3",
+                            "camoMaterial": "mc/mtl_weapon_camo_zmb_dlc2_alt"
+                        },
+			{
+                            "baseMaterial": "mc/mtl_t6_wpn_lmg_m60_camo2",
+                            "camoMaterial": "mc/mtl_weapon_camo_zmb_dlc2_alt"
+			}
+                    ],
+                    "shaderConsts": [
+                        1.0,
+                        1.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "useColorMap": false,
+                    "useNormalMap": true,
+                    "useSpecularMap": true
+                }
+            ]
+        },
+        {
+            "materials": [
+                {
+                    "materialOverrides": [],
+                    "shaderConsts": [
+                        1.0,
+                        1.0,
+                        0.0,
+                        1.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "useColorMap": false,
+                    "useNormalMap": true,
+                    "useSpecularMap": true
+                },
+                {
+                    "materialOverrides": [],
+                    "shaderConsts": [
+                        1.0,
+                        1.0,
+                        0.0,
+                        1.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "useColorMap": false,
+                    "useNormalMap": true,
+                    "useSpecularMap": true
+                }
+            ]
+        },
+        {
+            "materials": [
+                {
+                    "materialOverrides": [],
+                    "shaderConsts": [
+                        1.0,
+                        1.0,
+                        0.0,
+                        1.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "useColorMap": false,
+                    "useNormalMap": true,
+                    "useSpecularMap": true
+                },
+                {
+                    "materialOverrides": [],
+                    "shaderConsts": [
+                        10.0,
+                        10.0,
+                        0.0,
+                        1.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "useColorMap": false,
+                    "useNormalMap": true,
+                    "useSpecularMap": true
+                }
+            ]
+        },
+        {
+            "materials": [
+                {
+                    "materialOverrides": [],
+                    "shaderConsts": [
+                        1.0,
+                        1.0,
+                        0.0,
+                        1.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "useColorMap": false,
+                    "useNormalMap": true,
+                    "useSpecularMap": true
+                },
+                {
+                    "materialOverrides": [],
+                    "shaderConsts": [
+                        1.0,
+                        1.0,
+                        0.0,
+                        1.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "useColorMap": false,
+                    "useNormalMap": true,
+                    "useSpecularMap": true
+                }
+            ]
+        },
+        {
+            "materials": [
+                {
+                    "materialOverrides": [
+                        {
+                            "baseMaterial": "mc/mtl_t6_wpn_lmg_m60_camo2",
+                            "camoMaterial": "mc/mtl_weapon_camo_3layer"
+                        },
+                        {
+                            "baseMaterial": "mc/mtl_t6_wpn_lmg_m60_camo1",
+                            "camoMaterial": "mc/mtl_weapon_camo_3layer"
+                        }
+                    ],
+                    "shaderConsts": [
+                        2.7100000381469727,
+                        1.7799999713897705,
+                        0.0,
+                        0.20000000298023224,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "useColorMap": false,
+                    "useNormalMap": true,
+                    "useSpecularMap": true
+                },
+                {
+                    "materialOverrides": [
+                        {
+                            "baseMaterial": "mc/mtl_t6_wpn_lmg_m60_camo3",
+                            "camoMaterial": "mc/mtl_weapon_camo_zmb_dlc4_alt"
+                        }
+                    ],
+                    "shaderConsts": [
+                        5.130000114440918,
+                        5.119999885559082,
+                        0.0,
+                        1.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "useColorMap": false,
+                    "useNormalMap": true,
+                    "useSpecularMap": true
+                }
+            ]
+        }
+    ],
+    "camoSets": [
+        {
+            "patternCamoImage": "t6_camo_devgru_pattern",
+            "patternOffset": {
+                "x": 0.5,
+                "y": 0.4000000059604645
+            },
+            "patternScale": 8.0,
+            "solidCamoImage": "t6_camo_devgru_solid"
+        },
+        {
+            "patternCamoImage": "t6_camo_atacs_pattern",
+            "patternOffset": {
+                "x": 0.20000000298023224,
+                "y": 0.30000001192092896
+            },
+            "patternScale": 8.0,
+            "solidCamoImage": "t6_camo_atacs_solid"
+        },
+        {
+            "patternCamoImage": "t6_camo_erdl_pattern",
+            "patternOffset": {
+                "x": 0.4000000059604645,
+                "y": 0.699999988079071
+            },
+            "patternScale": 10.0,
+            "solidCamoImage": "t6_camo_erdl_solid"
+        },
+        {
+            "patternCamoImage": "t6_camo_siberia_pattern",
+            "patternOffset": {
+                "x": 0.699999988079071,
+                "y": 0.5
+            },
+            "patternScale": 7.0,
+            "solidCamoImage": "t6_camo_siberia_solid"
+        },
+        {
+            "patternCamoImage": "t6_camo_choco_pattern",
+            "patternOffset": {
+                "x": 0.4000000059604645,
+                "y": 0.6000000238418579
+            },
+            "patternScale": 10.0,
+            "solidCamoImage": "t6_camo_choco_solid"
+        },
+        {
+            "patternCamoImage": "t6_camo_tiger_blue_pattern",
+            "patternOffset": {
+                "x": 0.7699999809265137,
+                "y": 1.0
+            },
+            "patternScale": 9.0,
+            "solidCamoImage": "t6_camo_tiger_blue_solid"
+        },
+        {
+            "patternCamoImage": "t6_camo_bloodshot_pattern",
+            "patternOffset": {
+                "x": 0.4000000059604645,
+                "y": 0.10000000149011612
+            },
+            "patternScale": 9.0,
+            "solidCamoImage": "t6_camo_bloodshot_solid"
+        },
+        {
+            "patternCamoImage": "t6_camo_ghostex_delta6_pattern",
+            "patternOffset": {
+                "x": 0.4000000059604645,
+                "y": 0.30000001192092896
+            },
+            "patternScale": 10.0,
+            "solidCamoImage": "t6_camo_ghostex_delta6_solid"
+        },
+        {
+            "patternCamoImage": "t6_camo_kryptek_typhon_pattern",
+            "patternOffset": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "patternScale": 8.0,
+            "solidCamoImage": "t6_camo_kryptek_typhon_solid"
+        },
+        {
+            "patternCamoImage": "t6_camo_blossom_pattern",
+            "patternOffset": {
+                "x": 1.0,
+                "y": 1.0
+            },
+            "patternScale": 10.0,
+            "solidCamoImage": "t6_camo_blossom_solid"
+        },
+        {
+            "patternCamoImage": "t6_camo_artofwar_pattern",
+            "patternOffset": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "patternScale": 4.769999980926514,
+            "solidCamoImage": "t6_camo_artofwar_solid"
+        },
+        {
+            "patternCamoImage": "t6_camo_ronin_pattern",
+            "patternOffset": {
+                "x": 0.15000000596046448,
+                "y": 0.05000000074505806
+            },
+            "patternScale": 8.550000190734863,
+            "solidCamoImage": "t6_camo_ronin_solid"
+        },
+        {
+            "patternCamoImage": "t6_camo_skulls_pattern",
+            "patternOffset": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "patternScale": 7.860000133514404,
+            "solidCamoImage": "t6_camo_skulls_solid"
+        },
+        {
+            "patternCamoImage": "t6_camo_bo2collectors_pattern",
+            "patternOffset": {
+                "x": 0.0,
+                "y": 0.09000000357627869
+            },
+            "patternScale": 9.729999542236328,
+            "solidCamoImage": "dark_grey_swatch"
+        },
+        {
+            "patternCamoImage": "t6_camo_elite_pattern",
+            "patternOffset": {
+                "x": 0.3499999940395355,
+                "y": 0.0
+            },
+            "patternScale": 8.350000381469727,
+            "solidCamoImage": "t6_camo_elite_solid"
+        },
+        {
+            "patternCamoImage": "t6_camo_massacre_pattern",
+            "patternOffset": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "patternScale": 1.0,
+            "solidCamoImage": "t6_camo_massacre_solid"
+        },
+        {
+            "patternOffset": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "patternScale": 1.0
+        },
+        {
+            "patternOffset": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "patternScale": 1.0
+        },
+        {
+            "patternOffset": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "patternScale": 1.0
+        },
+        {
+            "patternOffset": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "patternScale": 1.0
+        },
+        {
+            "patternOffset": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "patternScale": 1.0
+        },
+        {
+            "patternOffset": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "patternScale": 1.0
+        },
+        {
+            "patternOffset": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "patternScale": 1.0
+        },
+        {
+            "patternOffset": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "patternScale": 1.0
+        },
+        {
+            "patternCamoImage": "t6_camo_nevada_pattern",
+            "patternOffset": {
+                "x": 0.23999999463558197,
+                "y": 0.38999998569488525
+            },
+            "patternScale": 7.909999847412109,
+            "solidCamoImage": "t6_camo_nevada_solid"
+        },
+        {
+            "patternCamoImage": "t6_camo_sahara_pattern",
+            "patternOffset": {
+                "x": 0.4000000059604645,
+                "y": 0.4000000059604645
+            },
+            "patternScale": 8.010000228881836,
+            "solidCamoImage": "t6_camo_sahara_solid"
+        },
+        {
+            "patternCamoImage": "t6_camo_urban_russia_pattern",
+            "patternOffset": {
+                "x": 0.0,
+                "y": 0.5
+            },
+            "patternScale": 6.650000095367432,
+            "solidCamoImage": "t6_camo_urban_russia_solid"
+        },
+        {
+            "patternCamoImage": "t6_camo_flecktarn_pattern",
+            "patternOffset": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "patternScale": 8.65999984741211,
+            "solidCamoImage": "t6_camo_flecktarn_solid"
+        },
+        {
+            "patternCamoImage": "t6_camo_flora_pattern",
+            "patternOffset": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "patternScale": 8.319999694824219,
+            "solidCamoImage": "t6_camo_flora_solid"
+        },
+        {
+            "patternCamoImage": "t6_camo_tiger_jungle_pattern",
+            "patternOffset": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "patternScale": 5.840000152587891,
+            "solidCamoImage": "t6_camo_tiger_jungle_solid"
+        }
+    ],
+    "patternBaseImage": "camo_off_pattern",
+    "solidBaseImage": "camo_off_solid"
+}
+```
+- You'll also have to copy M60's `materials` files to `M60\materials\` from `weapons!m60_sp`
+- Next up, go in `ZM60\zone_source\` and create a new file called `mod.zone`. Then go in `ZM60\zone_source\additions\` and make 3 files called `zm_m60.zone`, `scriptadd.zone` and `papcamos.zone` respectively
+- Add these contents to them respectively:
+	- `mod.zone`
+	```
+	>game,T6
+	>type,fastfile
+	>name,mod
+	
+	>level.ipak_read,weapons
+	>level.ipak_read,base
+	>level.ipak_read,lowmip
+	>level.ipak_read,code_post_gfx
+	>level.ipak_read,common
+	>level.ipak_read,zm_prison
+	>level.ipak_read,zm_transit
+	>level.ipak_read,zm_tomb
+	>level.ipak_read,base
+	>level.ipak_read,dlczm4
+	>level.ipak_read,dlczm3
+	>level.ipak_read,dlczm2
+	>level.ipak_read,dlczm1
+	>level.ipak_read,dlczm0
+	>level.ipak_read,zm
+	
+	include,additions/papcamos
+	include,additions/scriptadd
+	include,additions/zm_m60
+	
+	localize,mod
+	
+	soundbank,mod.all
+	```
+	- `scriptadd.zone`
+	```
+	script,scripts/zm/precache.gsc
+	script,scripts/zm/zm_transit/zm_transit.gsc
+	script,scripts/zm/zm_transit/zm_transit.csc
+	script,scripts/zm/zm_highrise/zm_highrise.gsc
+	script,scripts/zm/zm_highrise/zm_highrise.csc
+	script,scripts/zm/zm_buried/zm_buried.gsc
+	script,scripts/zm/zm_buried/zm_buried.csc
+	script,scripts/zm/zm_prison/zm_prison.gsc
+	script,scripts/zm/zm_prison/zm_prison.csc
+	script,scripts/zm/zm_nuked/zm_nuked.gsc
+	script,scripts/zm/zm_nuked/zm_nuked.csc
+	script,scripts/zm/zm_tomb/zm_tomb.gsc
+	script,scripts/zm/zm_tomb/zm_tomb.csc
+	```
+	- `papcamos.zone`
+	```
+	image,camo_zombies_nml
+	image,~-gcamo_code_spc
+	image,camo_code_nml
+	image,~~-gcamo_zombies_spc-rgb&~-rc~9a2e3000
+	image,~-gcamo_zombies_col
+	material,mc/mtl_weapon_camo_zombies
+	material,mc/mtl_weapon_camo_3layer
+	material,mc/mtl_weapon_camo_3layer_1
+	material,mc/mtl_weapon_camo_3layer_2
+	material,mc/mtl_weapon_camo_3layer_3
+	image,camo_zmb_dlc4_alt_nml
+	image,~~-gcamo_zmb_dlc4_alt_spc-rgb~fc3ae34a
+	image,~-gcamo_zmb_dlc4_alt_col
+	material,mc/mtl_weapon_camo_zmb_dlc4_alt
+	material,mc/mtl_weapon_camo_zmb_dlc4_alt_1
+	image,camo_zmb_dlc2_ember
+	image,camo_zmb_dlc2_nml
+	image,camo_zmb_dlc2_reveal
+	image,~~-gcamo_zmb_dlc2_spc-rgb&~-r~471adc2c
+	image,~-gcamo_zmb_dlc2_col
+	image,camo_zmb_dlc2_heat
+	material,mc/mtl_weapon_camo_zmb_dlc2
+	image,camo_zmb_dlc2_alt_nml
+	image,~~-gcamo_zmb_dlc2_alt_spc-rgb~805ae131
+	image,~-gcamo_zmb_dlc2_alt_col
+	material,mc/mtl_weapon_camo_zmb_dlc2_alt
+	```
+	- `zm_m60.zone` (needs including of PaP flashes M60, ACOG, Grip related assets as well as replacement of the SP's M60  includes with our ZM60 😎)
+	```
+	camo,camo_m60
+	techniqueset,mc_lit_sm_r0c0n0s0o0_3z86zq2z
+	techniqueset,mc_sw4_3d_thermal_weapon_e4q357fj
+	image,~~-gt6_wpn_lmg_m60_spc-rgb&~-~b74fb21d
+	image,t6_wpn_lmg_m60_nml
+	image,~t6_wpn_lmg_m60_ao-l&t6_wpn_l~c329efe4
+	image,~-gt6_wpn_lmg_m60_col
+	image,camo_off_pattern
+	image,thermal_gradient2
+	image,~t6_wpn_lmg_m60_ir-r&t6_wpn_l~dbbb898a
+	image,sw_radiant_default
+	material,mc/mtl_t6_wpn_lmg_m60_thermal
+	material,mc/mtl_t6_wpn_lmg_m60_camo1
+	image,weapon_camo_neutral
+	material,mc/mtl_t6_wpn_lmg_m60_camo2
+	material,mc/mtl_t6_wpn_lmg_m60_camo3
+	xmodel,t6_wpn_lmg_m60_view
+	techniqueset,effect_8f63534j
+	techniqueset,effect_50567j38
+	techniqueset,effect_23712j0e
+	material,gfx_fxt_gas_flash_z0
+	material,gfx_fxt_gas_flash
+	image,fxt_fire_gas_flash
+	material,gfx_fxt_gas_flash_blnd
+	image,fxt_fire_flame_vert_e
+	material,gfx_fxt_fire_flame_vert_e_blnd
+	material,gfx_fxt_light_incandescent
+	fx,weapon/muzzleflashes/fx_muz_lg_gas_flash_1p
+	techniqueset,effect_w77q49e8
+	material,gfx_fxt_smk_puff
+	fx,weapon/muzzleflashes/fx_muz_lg_smk_1p
+	fx,weapon/muzzleflashes/fx_muz_break_lg_4_sqr
+	fx,weapon/muzzleflashes/fx_muz_mg_flash_1p_4_sqr_mb
+	techniqueset,effect_5e098749
+	material,gfx_fxt_fire_flame_vert_c
+	material,gfx_fxt_fire_flame_vert_d
+	fx,weapon/muzzleflashes/fx_muz_lg_gas_flash_3p
+	material,gfx_fxt_smk_light_z10
+	fx,weapon/muzzleflashes/fx_muz_md_smk_3p
+	fx,weapon/muzzleflashes/fx_muz_mg_flash_3p
+	techniqueset,mc_lit_sm_r0c0s0_986ezzjq
+	image,~~-gfx_bullet_chain_spc-rgb&~~cf27f2d4
+	image,$identitynormalmap
+	image,~-gfx_bullet_chain_col
+	material,mc/mtl_fx_bullet_chain
+	xmodel,fx_bullet_chain
+	fx,weapon/shellejects/fx_saw_link_resting
+	techniqueset,mc_lit_sm_b0c0s0_805w75j2
+	material,mc/mtl_fx_bullet_chain_alpha
+	xmodel,fx_bullet_chain_blur
+	techniqueset,mc_lit_sm_r0c0n0s0_zqq1fze7
+	techniqueset,mc_sw4_3d_thermal_w9wzw265
+	xmodel,fx_rifle_shell
+	fx,weapon/shellejects/fx_rifle_resting
+	techniqueset,mc_sw4_3d_viewmodel_transparent_z9z0z75f
+	xmodel,fx_rifle_shell_blur
+	fx,weapon/shellejects/fx_saw
+	techniqueset,trivial_9z33feqw
+	physpreset,weapon
+	xmodel,t6_wpn_lmg_m60_world
+	material,gfx_tracer
+	tracer,lmg
+	techniqueset,mc_sw4_3d_weapon_camo_7q56e02q
+	techniqueset,mc_sw4_3d_weapon_camo_sparkles_11e55e22
+	image,camo_off_solid
+	image,t6_camo_devgru_solid
+	image,t6_camo_devgru_pattern
+	image,t6_camo_atacs_solid
+	image,t6_camo_atacs_pattern
+	image,t6_camo_erdl_solid
+	image,t6_camo_erdl_pattern
+	image,t6_camo_siberia_solid
+	image,t6_camo_siberia_pattern
+	image,t6_camo_choco_solid
+	image,t6_camo_choco_pattern
+	image,t6_camo_tiger_blue_solid
+	image,t6_camo_tiger_blue_pattern
+	image,t6_camo_bloodshot_solid
+	image,t6_camo_bloodshot_pattern
+	image,t6_camo_ghostex_delta6_solid
+	image,t6_camo_ghostex_delta6_pattern
+	image,t6_camo_kryptek_typhon_solid
+	image,t6_camo_kryptek_typhon_pattern
+	image,t6_camo_blossom_solid
+	image,t6_camo_blossom_pattern
+	image,t6_camo_artofwar_solid
+	image,t6_camo_artofwar_pattern
+	image,t6_camo_ronin_solid
+	image,t6_camo_ronin_pattern
+	image,t6_camo_skulls_solid
+	image,t6_camo_skulls_pattern
+	image,dark_grey_swatch
+	image,t6_camo_bo2collectors_pattern
+	image,t6_camo_elite_solid
+	image,t6_camo_elite_pattern
+	image,t6_camo_massacre_solid
+	image,t6_camo_massacre_pattern
+	image,t6_camo_nevada_solid
+	image,t6_camo_nevada_pattern
+	image,t6_camo_sahara_solid
+	image,t6_camo_sahara_pattern
+	image,t6_camo_urban_russia_solid
+	image,t6_camo_urban_russia_pattern
+	image,t6_camo_flecktarn_solid
+	image,t6_camo_flecktarn_pattern
+	image,t6_camo_flora_solid
+	image,t6_camo_flora_pattern
+	image,t6_camo_tiger_jungle_solid
+	image,t6_camo_tiger_jungle_pattern
+	image,camo_gold_nml
+	image,~-gcamo_code_spc
+	image,camo_code_nml
+	image,~~-gcamo_gold_spc-rgb&~-rcamo~051392e5
+	image,~-gcamo_gold_col
+	material,mc/mtl_weapon_camo_gold
+	image,camo_gold_alt_nml
+	image,~~-gcamo_gold_alt_spc-rgb&~-r~543e1b2e
+	image,~-gcamo_gold_alt_col
+	material,mc/mtl_weapon_camo_gold_alt
+	image,camo_carbon_fiber_nml
+	image,~~-gcamo_carbon_fiber_spc-rgb~a10b17ea
+	image,~-gcamo_carbon_fiber_col
+	material,mc/mtl_weapon_camo_carbon_fiber
+	material,mc/mtl_weapon_camo_carbon_fiber_alt
+	xanim,viewmodel_m60_t6_idle
+	xanim,viewmodel_m60_t6_fire
+	xanim,viewmodel_m60_t6_reload
+	xanim,viewmodel_m60_t6_pullout
+	xanim,viewmodel_m60_t6_first_raise
+	xanim,viewmodel_m60_t6_putaway
+	xanim,viewmodel_m60_t6_sprint_in
+	xanim,viewmodel_m60_t6_sprint_loop
+	xanim,viewmodel_m60_t6_sprint_out
+	xanim,viewmodel_m60_t6_crawl_in
+	xanim,viewmodel_m60_t6_crawl_forward
+	xanim,viewmodel_m60_t6_crawl_back
+	xanim,viewmodel_m60_t6_crawl_right
+	xanim,viewmodel_m60_t6_crawl_left
+	xanim,viewmodel_m60_t6_crawl_out
+	xanim,viewmodel_m60_t6_ads_fire
+	xanim,viewmodel_m60_t6_d2p_in
+	xanim,viewmodel_m60_t6_d2p_loop
+	xanim,viewmodel_m60_t6_d2p_out
+	xanim,viewmodel_m60_t6_ads_up
+	xanim,viewmodel_m60_t6_ads_down
+	rawfile,rumble/heavygun_fire
+	rawfile,rumble/heavygun_fire_h.rmb
+	rawfile,rumble/heavygun_fire_l.rmb
+	material,reticle_side_small
+	image,menu_mp_weapons_m60
+	material,menu_mp_weapons_m60
+	techniqueset,mc_lit_sm_r0c0n0s0o0_909j993q
+	image,~~-gmtl_t6_attach_optic_colt3~6f863fd5
+	image,mtl_t6_attach_optic_colt3x_nml
+	image,~mtl_t6_attach_optic_colt3x_a~2f70d746
+	image,~-gmtl_t6_attach_optic_colt3x_col
+	image,camo_off_01
+	material,mc/mtl_t6_attach_optic_colt3x
+	material,mc/mtl_t6_attach_optic_scope_inside
+	techniqueset,mc_sw4_3d_viewmodel_unlit_alpha_85z6j5w5
+	image,mtl_t6_attach_optic_colt3x_reticle
+	material,mc/mtl_t6_attach_optic_colt3x_reticle
+	material,mc/mtl_t6_attach_optic_acog_lens
+	xmodel,t6_attach_optic_colt3x_view
+	xmodel,t6_attach_optic_colt3x_world
+	xmodel,t6_attach_grip_view
+	xmodel,t6_attach_grip_world
+	image,~~-gmtl_t6_attach_optic_aimpo~db82b3c5
+	image,mtl_t6_attach_optic_aimpoint_nml
+	image,~mtl_t6_attach_optic_aimpoint~b176704f
+	image,~-gmtl_t6_attach_optic_aimpoint_col
+	material,mc/mtl_t6_attach_optic_aimpoint
+	material,mc/mtl_t6_attach_optic_reflex_reticle
+	techniqueset,mc_sw4_3d_optic_lens_4w47028j
+	image,mtl_t6_attach_optic_reflex_lens_nml
+	image,~-gmtl_t6_attach_optic_reflex_lens_spc
+	image,~-gmtl_t6_attach_optic_reflex_lens_col
+	image,~-rmtl_t6_attach_optic_reflex~4b36dbe7
+	material,mc/mtl_t6_attach_optic_aimpoint_lens
+	xmodel,t6_attach_optic_aimpoint_view
+	xmodel,t6_attach_optic_aimpoint_world
+	techniqueset,mc_lit_sm_r0c0n0s0_7j414q0z
+	techniqueset,mc_sw4_3d_reticle_dynamic_9820jqfj
+	xanim,viewmodel_m60_t6_reflex_ads_up
+	xanim,viewmodel_m60_t6_reflex_ads_down
+	techniqueset,mc_lit_sm_r0c0n0_2z223015
+	xanim,viewmodel_m60_t6_acog_ads_up
+	xanim,viewmodel_m60_t6_acog_ads_down
+	fx,weapon/muzzleflashes/fx_muz_md_smk
+	xanim,viewmodel_m60_t6_grip_idle
+	xanim,viewmodel_m60_t6_grip_fire
+	xanim,viewmodel_m60_t6_grip_reload
+	xanim,viewmodel_m60_t6_grip_pullout
+	xanim,viewmodel_m60_t6_grip_first_raise
+	xanim,viewmodel_m60_t6_grip_putaway
+	xanim,viewmodel_m60_t6_grip_sprint_in
+	xanim,viewmodel_m60_t6_grip_sprint_loop
+	xanim,viewmodel_m60_t6_grip_sprint_out
+	xanim,viewmodel_m60_t6_grip_crawl_in
+	xanim,viewmodel_m60_t6_grip_crawl_forward
+	xanim,viewmodel_m60_t6_grip_crawl_back
+	xanim,viewmodel_m60_t6_grip_crawl_right
+	xanim,viewmodel_m60_t6_grip_crawl_left
+	xanim,viewmodel_m60_t6_grip_crawl_out
+	xanim,viewmodel_m60_t6_grip_ads_fire
+	xanim,viewmodel_m60_t6_grip_d2p_in
+	xanim,viewmodel_m60_t6_grip_d2p_loop
+	xanim,viewmodel_m60_t6_grip_d2p_out
+	xanim,viewmodel_m60_t6_grip_ads_up
+	xanim,viewmodel_m60_t6_grip_ads_down
+	weapon,m60_zm
+	weapon,m60_upgraded_zm
+	fx,weapon/muzzleflashes_zmb_ug/fx_zmb_muz_sm_gas_flash_1p
+	fx,weapon/muzzleflashes_zmb_ug/fx_zmb_muz_sm_gas_flash_3p
+	```
+- Now go in `ZM60\` and select all folders except `sound` and `zone_source` folders and make a zip file with Compression level 0. Rename that zip file to `mod.iwd`, overwriting the file extension
+- Then make a `New Text Document.txt` in `FNZM45\`, rename it to `mod.json` and this text:
+```
+{
+	"name": "ZM60",
+	"author": "(YOURNAME)",
+	"description": "(ANYDESCRIPTION)",
+	"version": "(VERSION)"
+}
+```
+- You can replace the `(YOURNAME)` with your name, `(ANYDESCRIPTION)` with description like `M60 port for ZM` and `(VERSION)` with anything like `Take 1` or `v1.0`. You can also replace the `ZM60` but why'd you do that here?
+- Make a `New Text Document.txt`, rename it to `Compile.bat`, right-click it, left-click `Edit` and paste this text:
+```
+set GAME_FOLDER=D:\STEAM\steamapps\common\Call of Duty - Black Ops 2
+set OAT_BASE=C:\Users\USER\Desktop\Applications\OAT
+set WEAPON_CLUMP=C:\Users\USER\Desktop\Applications\OAT\weapon_clump_dump
+set MOD_BASE=%cd%
+"%OAT_BASE%\linker.exe" ^
+-v ^
+--load "%GAME_FOLDER%\zone\all\common_mp.ff" ^
+--load "%GAME_FOLDER%\zone\all\common_zm.ff" ^
+--load "%GAME_FOLDER%\zone\all\common.ff" ^
+--load "%WEAPON_CLUMP%\weapons!m60_sp.ff" ^
+--load "%GAME_FOLDER%\zone\all\zm_prison.ff" ^
+--load "%GAME_FOLDER%\zone\all\zm_transit.ff" ^
+--load "%GAME_FOLDER%\zone\all\zm_tomb.ff" ^
+--load "%GAME_FOLDER%\zone\all\zm_nuked.ff" ^
+--load "%GAME_FOLDER%\zone\all\zm_highrise.ff" ^
+--load "%GAME_FOLDER%\zone\all\zm_buried.ff" ^
+--base-folder "%OAT_BASE%" ^
+--asset-search-path "%MOD_BASE%" ^
+--source-search-path "%MOD_BASE%\zone_source" ^
+--output-folder "%MOD_BASE%\zone" ^ mod
+
+if %ERRORLEVEL% NEQ 0 pause
+
+set err=%ERRORLEVEL%
+
+if %err% EQU 0 (
+XCOPY "%MOD_BASE%\zone\mod.ff" "%LOCALAPPDATA%\Plutonium\storage\t6\mods\zm_zm60\mod.ff" /Y
+XCOPY "%MOD_BASE%\zone\mod.all.sabl" "%LOCALAPPDATA%\Plutonium\storage\t6\mods\zm_zm60\mod.all.sabl" /Y
+XCOPY "%MOD_BASE%\mod.iwd" "%LOCALAPPDATA%\Plutonium\storage\t6\mods\zm_zm60\mod.iwd" /Y
+XCOPY "%MOD_BASE%\mod.json" "%LOCALAPPDATA%\Plutonium\storage\t6\mods\zm_zm60\mod.json" /Y
+) ELSE (
+COLOR C
+echo FAIL!
+)
+
+pause
+```
+-> You'll have to edit the `GAME_FOLDER`, `OAT_BASE` and `WEAPON_CLUMP` paths to the required paths
+
+-> After that, save, run the `Compile.bat` and it should start compiling the mod and shall automatically place the compiled build in Plutonium's mod directory
+
+# ZM Map-2-Map & Gamemode-2-Gamemode Porting Examples (T6)
+
+- Section Work-In-Progress. Gomen Nasai!
+- How about master porting weapons till then?
+
+#
